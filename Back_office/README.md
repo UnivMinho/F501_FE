@@ -1,198 +1,105 @@
-# [Vue-Black Dashboard](https://demos.creative-tim.com/vue-black-dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?text=Black%20Dashboard%20by%20Creative%20Tim&url=https%3A%2F%2Fdemos.creative-tim.com%2Fblack-dashboard%2Fexamples%2Fdashboard.html&via=CreativeTim)
+# [AdminLTE - Bootstrap 4 Admin Dashboard](https://adminlte.io)
 
-![version](https://img.shields.io/badge/version-1.1.3-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/black-dashboard/issues.svg?maxAge=2592000)](https://github.com/creativetimofficial/black-dashboard/issues/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+[![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
+[![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
+[![cdn version](https://data.jsdelivr.com/v1/package/npm/admin-lte/badge)](https://www.jsdelivr.com/package/npm/admin-lte)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/ColorlibHQ/AdminLTE)
+[![Discord Invite](https://img.shields.io/badge/discord-join%20now-green)](https://discord.gg/jfdvjwFqfz)
 
-![Product Gif](https://github.com/creativetimofficial/vue-black-dashboard/blob/live-demo/src/assets/demo/product-gif.gif?raw=true)
+**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4.6](https://getbootstrap.com/)** framework and also the JS/jQuery plugin.
+Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
 
-**Vue Black Dashboard** is a beautiful Bootstrap 4 Admin Dashboard with a huge number of components built to fit together and look amazing. If you are looking for a tool to manage and visualize data about your business, this dashboard is the thing for you. It combines colors that are easy on the eye, spacious cards, beautiful typography, and graphics.
+**Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
 
-**Vue Black Dashboard** comes packed with all plugins that you might need inside a project and documentation on how to get started. It is light and easy to use, and also very powerful.
+## Looking for Premium Templates?
 
-Vue Black Dashboard features over 16 individual components, giving you the freedom of choosing and combining. This means that there are thousands of possible combinations. All components can take variations in color, that you can easily modify using SASS files. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
-We thought about everything, so this dashboard comes with 2 versions, Dark Mode and Light Mode.
+AdminLTE.io just opened a new premium templates page. Hand picked to ensure the best quality and the most affordable
+prices. Visit <https://adminlte.io/premium> for more information.
 
-We are very excited to share this dashboard with you and we look forward to hearing your feedback!
+!["AdminLTE Presentation"](https://adminlte.io/AdminLTE3.png "AdminLTE Presentation")
 
-## Table of Contents
-
-- [Demo](#demo)
-- [Quick Start](#quick-start)
-- [Documentation](#documentation)
-- [File Structure](#file-structure)
-- [Browser Support](#browser-support)
-- [Resources](#resources)
-- [Reporting Issues](#reporting-issues)
-- [Technical Support or Questions](#technical-support-or-questions)
-- [Licensing](#licensing)
-- [Useful Links](#useful-links)
-
-## Demo
-
-- [Start page](https://demos.creative-tim.com/vue-black-dashboard)
-- [User profile page](https://demos.creative-tim.com/vue-black-dashboard/#/profile)
-- [Tables page ](https://demos.creative-tim.com/vue-black-dashboard/#/table-list)
-- [Maps Page](https://demos.creative-tim.com/vue-black-dashboard/#/maps)
-- [Notifications page](https://demos.creative-tim.com//vue-black-dashboard/#/notifications)
-
-[View More](https://demos.creative-tim.com/vue-black-dashboard).
+**AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
+SCSS has been used to increase code customizability.
 
 ## Quick start
+There are multiple ways to install AdminLTE.
 
-- Clone the repo: `git clone https://github.com/creativetimofficial/vue-black-dashboard.git`.
-- [Download from Github](https://github.com/creativetimofficial/vue-black-dashboard/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/vue-black-dashboard).
+### Download & Changelog:
+Always Recommended to download from GitHub latest release [AdminLTE 3](https://github.com/ColorlibHQ/AdminLTE/releases/latest) for bug free and latest features.\
+Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to view the changelog.\
+Legacy Releases are [AdminLTE 2](https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.4.18) / [AdminLTE 1](https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1).
+
+## Stable release
+### Grab from [jsdelivr](https://www.jsdelivr.com/package/npm/admin-lte) CDN:
+_**Important Note**: You needed to add separately cdn links for plugins in your project._
+```html
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+```
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+```
+### Using The Command Line:
+_**Important Note**: To install it via npm/Yarn, you need at least Node.js 14 or higher._
+#### Via npm
+```bash
+npm install admin-lte@^3.2 --save
+```
+#### Via Yarn
+```bash
+yarn add admin-lte@^3.2
+```
+#### Via Composer
+```bash
+composer require "almasaeed2010/adminlte=~3.2"
+```
+#### Via Git
+```bash
+git clone https://github.com/ColorlibHQ/AdminLTE.git
+```
 
 ## Documentation
 
-The documentation for the Vue Black Dashboard is hosted at our [website](https://demos.creative-tim.com/vue-black-dashboard/documentation).
+Visit the [online documentation](https://adminlte.io/docs/3.2/) for the most
+updated guide. Information will be added on a weekly basis.
 
-## File Structure
+## Browsers support
 
-Within the download you'll find the following directories and files:
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Samsung | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Electron |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions
 
-```
-|-- Vue Black Dashboard
-    |-- .babelrc
-    |-- .env
-    |-- .eslintrc
-    |-- .gitattributes
-    |-- .gitignore
-    |-- CHANGELOG.md
-    |-- CONTRIBUTING.md
-    |-- LICENSE.md
-    |-- README.md
-    |-- package.json
-    |-- vue.config.js
-    |-- src
-        |-- App.vue
-        |-- i18n.js
-        |-- main.js
-        |-- assets
-        |   |-- css
-        |   |   |-- nucleo-icons.css
-        |   |-- demo
-        |   |   |-- demo.css
-        |   |-- fonts
-        |   |   |-- nucleo.eot
-        |   |   |-- nucleo.ttf
-        |   |   |-- nucleo.woff
-        |   |   |-- nucleo.woff2
-        |   |-- sass
-        |       |-- black-dashboard.scss
-        |       |-- black-dashboard
-        |           |-- bootstrap
-        |           |-- custom
-        |           |-- plugins
-        |-- components
-        |   |-- BaseAlert.vue
-        |   |-- BaseButton.vue
-        |   |-- BaseCheckbox.vue
-        |   |-- BaseDropdown.vue
-        |   |-- BaseNav.vue
-        |   |-- BaseTable.vue
-        |   |-- CloseButton.vue
-        |   |-- Modal.vue
-        |   |-- NavbarToggleButton.vue
-        |   |-- index.js
-        |   |-- Cards
-        |   |   |-- Card.vue
-        |   |   |-- StatsCard.vue
-        |   |-- Charts
-        |   |   |-- BarChart.js
-        |   |   |-- LineChart.js
-        |   |   |-- config.js
-        |   |   |-- utils.js
-        |   |-- Inputs
-        |   |   |-- BaseInput.vue
-        |   |-- NotificationPlugin
-        |   |   |-- Notification.vue
-        |   |   |-- Notifications.vue
-        |   |   |-- index.js
-        |   |-- SidebarPlugin
-        |       |-- SideBar.vue
-        |       |-- SidebarLink.vue
-        |       |-- index.js
-        |-- directives
-        |   |-- click-ouside.js
-        |-- layout
-        |   |-- dashboard
-        |       |-- Content.vue
-        |       |-- ContentFooter.vue
-        |       |-- DashboardLayout.vue
-        |       |-- MobileMenu.vue
-        |       |-- SidebarSharePlugin.vue
-        |       |-- TopNavbar.vue
-        |-- locales
-        |   |-- ar.json
-        |   |-- en.json
-        |-- pages
-        |   |-- Dashboard.vue
-        |   |-- Icons.vue
-        |   |-- Maps.vue
-        |   |-- NotFoundPage.vue
-        |   |-- Notifications.vue
-        |   |-- Profile.vue
-        |   |-- TableList.vue
-        |   |-- Typography.vue
-        |   |-- Dashboard
-        |   |   |-- TaskList.vue
-        |   |   |-- UserTable.vue
-        |   |-- Notifications
-        |   |   |-- NotificationTemplate.vue
-        |   |-- Profile
-        |       |-- EditProfileForm.vue
-        |       |-- UserCard.vue
-        |-- plugins
-        |   |-- RTLPlugin.js
-        |   |-- blackDashboard.js
-        |   |-- globalComponents.js
-        |   |-- globalDirectives.js
-        |   |-- liveDemo.js
-        |-- router
-            |-- index.js
-            |-- routes.js
+## Light Mode (Only Dark Mode Removed)
+You can use light-mode-only version, if you are not using dark mode and also file size less without dark-mode.
 
-```
+File Location `./dist/css/alt/adminlte.light.css`
 
-## Browser Support
 
-At present, we officially aim to support the last two versions of the following browsers:
+## Compile dist files
 
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
+To compile the dist files you need Node.js/npm, clone/download the repo then:
 
-## Reporting Issues
+1. `npm install` (install npm deps)
+2. _Optional:_ `npm run dev` (developer mode, autocompile with browsersync support for live demo)
+3. `npm run production` (compile css/js files)
 
-We use GitHub Issues as the official bug tracker for the Vue Black Dashboard. Here are some advices for our users that want to report an issue:
 
-1. Make sure that you are using the latest version of the Vue Black Dashboard. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+## Contributing
 
-## Technical Support or Questions
+Please read through our [contributing guidelines](https://github.com/ColorlibHQ/AdminLTE/tree/master/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
+Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
 
-## Licensing
 
-- Copyright 2024 Creative Tim (https://www.creative-tim.com/)
+## License
 
-- Licensed under MIT (https://github.com/creativetimofficial/vue-black-dashboard/issues/blob/master/LICENSE.md)
+AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
+AdminLTE.io reserves the right to change the license of future releases.
 
-## Useful Links
+## Image Credits
 
-- [More products](https://www.creative-tim.com/bootstrap-themes) from Creative Tim
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free) from Creative Tim
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new) (earn money)
-
-##### Social Media
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
+- [Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
+- [Graphicsfuel](https://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
+- [Pickaface](https://pickaface.net/)
+- [Unsplash](https://unsplash.com/)
+- [Uifaces](http://uifaces.com/)

@@ -1,15 +1,6 @@
-# Auto detect text files and perform LF normalization
-*.scss linguist-language=Vue
-*.css linguist-language=Vue
+# Enforce Unix newlines
+* text=auto eol=lf
 
-# Standard to msysgit
-*.doc	 diff=astextplain
-*.DOC	 diff=astextplain
-*.docx diff=astextplain
-*.DOCX diff=astextplain
-*.dot  diff=astextplain
-*.DOT  diff=astextplain
-*.pdf  diff=astextplain
-*.PDF	 diff=astextplain
-*.rtf	 diff=astextplain
-*.RTF	 diff=astextplain
+# Ignores for analysis is used to produce the language stats bar which displays the languages percentages
+plugins/* linguist-vendored=true
+docs/* linguist-vendored=true
