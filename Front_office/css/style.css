@@ -59,6 +59,46 @@ body {
   text-align: left;
   background-color: #fff; }
 
+  /* acrecentado*/
+  
+
+
+
+.Form {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+
+.doacao-wrap {
+  background: #fff; }
+
+  .doacao-wrap h3 {
+    color: #000000; }
+
+    .doacaoForm .label {
+      color: black !important;
+      font-size: 18px;
+      font-weight: bold;}
+    
+      .doacaoForm .form-control {
+        border: 1px solid #000000;
+        padding: 10px;
+        height: 50px;
+        background: #fff !important;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+        border-radius: 4px;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+      
+      /*    forms iniciativas */
+
+      
+
+/* ate aqui*/
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
 
