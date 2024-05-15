@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Simple Tables</title>
+  <title>Iniciativas</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/style_sugestoes.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -27,7 +27,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="Iniciativas.html" class="nav-link">Iniciativas</a>
+        <a href="../index.html" class="nav-link">Iniciativas</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Colaboradores</a>
@@ -98,12 +98,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+               <li class="nav-item">
+                <a href="../index.html" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard Center
-                        <i class="right fas fa-angle-left"></i>
+                        
                     </p>
                 </a>
             </li>
@@ -151,12 +151,13 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div id="title_sugestoes" class="col-sm-6">
-                  <h1>Sugestão de Iniciativas</h1>
+                  <h1>Iniciativas</h1>
               </div>
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
                       <!-- Botões -->
                       <button class="btn btn-secondary float-right mr-2">Criar Iniciativa</button>
+                      <a href="VerSugestoes.html"><button class="btn btn-secondary float-right mr-2" >Ver Sugestões</button></a>
                   </ol>
               </div>
           </div>
@@ -173,7 +174,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Sugestão de Iniciativas</h3>
+                <h3 class="card-title">Iniciativas</h3>
               </div>
               <!-- ./card-header -->
               <div class="card-body">
@@ -185,6 +186,7 @@
                       <th>Data</th>
                       <th>Vagas</th>
                       <th>Tipo</th>
+                      <th>Email</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,12 +196,7 @@
                       <td>11-7-2014</td>
                       <td>Approved</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -216,12 +213,7 @@
                       <td>11-7-2014</td>
                       <td>Pending</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -238,12 +230,7 @@
                       <td>11-7-2014</td>
                       <td>Approved</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -260,12 +247,7 @@
                       <td>11-7-2014</td>
                       <td>Denied</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -282,12 +264,7 @@
                       <td>11-7-2014</td>
                       <td>Approved</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -304,12 +281,8 @@
                       <td>11-7-2014</td>
                       <td>Pending</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
+                     
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -326,12 +299,7 @@
                       <td>11-7-2014</td>
                       <td>Approved</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
@@ -348,12 +316,7 @@
                       <td>11-7-2014</td>
                       <td>Denied</td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>
-                        <div class="btn-group">
-                            <button class="btn btn-success btn-circle"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></button>
-                        </div>
-                      </td>
+                      <td>example@email.com</td>
                     </tr>
                     <tr class="expandable-body">
                       <td colspan="5">
