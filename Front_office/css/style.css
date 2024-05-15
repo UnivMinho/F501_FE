@@ -94,11 +94,10 @@ body {
         box-shadow: none ;
       }
       
-      /*    forms iniciativas */
+      /*    Login CSS */
       
      
-      body {
-        font-family: Arial, sans-serif;
+      .Login {
         margin: 0;
         padding: 0;
         text-align: center;
