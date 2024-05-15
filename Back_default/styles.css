@@ -1,0 +1,32 @@
+body {
+    background-color: #f8f9fa;
+}
+
+#sidebar {
+    background-color: #dc3545;
+    color: white;
+    min-height: 100vh;
+}
+
+#sidebar .nav-link {
+    color: white;
+}
+
+#sidebar .nav-link.active {
+    background-color: #c82333;
+}
+
+.card-header {
+    background-color: #dc3545;
+    color: white;
+}
+
+.card.text-white.bg-success .card-header,
+.card.text-white.bg-warning .card-header,
+.card.text-white.bg-danger .card-header {
+    background-color: inherit;
+}
+
+.sidebar-sticky{
+    background-color:#dc3545;
+}
