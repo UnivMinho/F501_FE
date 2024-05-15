@@ -94,7 +94,48 @@ body {
       }
       
       /*    forms iniciativas */
-
+      
+     
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    h1 {
+        margin-bottom: 20px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #fff; /* Cor de fundo branca */
+        color: #000; /* Cor do texto preto */
+        border: 2px solid #000; /* Borda preta de 2px */
+        cursor: pointer;
+        border-radius: 20px; /* Bordas arredondadas */
+    }
+    
+    button:hover {
+        background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+    }
+    
+    .google-icon {
+        width: 20px; /* Ajuste o tamanho conforme necessário */
+        margin-right: 10px;
+    }
+    
+    
+    
       
 
 /* ate aqui*/
