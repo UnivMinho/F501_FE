@@ -1,12 +1,9 @@
-<!--ver os colaboradores como fazer
-ver o tipo que nao esta editado
-ver o botao submit do form criar iniciativa ver se da para tirar-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Criar Iniciativa</title>
+  <title>Adicionar Material</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -108,7 +105,7 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
                 </a>
             </li>
             
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="GestaoInventario.html" class="nav-link menu-open">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -150,8 +147,8 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
     <section class="content-header">
       <div class="container-fluid">
           <div class="row mb-2">
-              <div id="title_criariniciativa" class="col-sm-6">
-                  <h1>Criar Iniciativa</h1>
+              <div id="title_adicionar_material" class="col-sm-6">
+                  <h1>Adicionar Material</h1>
               </div>
               
           </div>
@@ -165,139 +162,49 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
     <section class="content">
         <section class="content">
             <div class="container-fluid">
-              <div class="row">
-
-        <!--left-->        
-        <div class="col-md-6">
-              <!--form criar iniciativa-->
-        <div class="card card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">Criar Iniciativa</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="iniciativa">Iniciativa</label>
-                  <input type="text" class="form-control" id="iniciativa">
-                </div>
-                <div class="form-group">
-                  <label for="descricao">Descrição da Iniciativa</label>
-                  <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="local">Local</label>
-                  <input type="text" class="form-control" id="local">
-                </div>
-                <div class="form-group">
-                    <label for="data">Data Inicio</label>
-                    <input type="date" class="form-control" id="data">
-                  </div>
-                  <div class="form-group">
-                    <label for="lider">Project Leader</label>
-                    <input type="number" class="form-control" id="lider">
-                  </div>
-                  <div class="form-group">
-                    <label for="vagas">Vagas</label>
-                    <input type="number" class="form-control" id="vagas">
-                  </div>
-                  <div class="form-group">
-                    <label for="tipo">Tipo</label>
-                    <select id="tipo" class="form-select form-select-lg" >
-                        <option value="#">Tipo 1</option>
-                        <option value="#">Tipo 2</option>
-                        <option value="#">Tipo 3</option>
-                        <option value="#">Tipo 4</option>
-                    </select>
-                  </div>
-                
-              </div>
-              <!-- /.card-body -->
-
-              <div class="card-footer">
-                <button id ="botao_submeter_material" type="submit" class="btn btn-primary">Submit</button>     
-                
-        </div>
-
-        
-                </form>
-        </div>
-        
+              <div class="row d-flex justify-content-center align-items-center">
        
-
-        </div>
-
-        <!--right-->
-        <div class="col-md-6">
-        
-            <!--form material-->
-            <div class="card card-secondary">
+            <div class="col-md-6">
+            
+                <div class="card card-secondary">
                     <div class="card-header">
-                      <h3 class="card-title">Materiais</h3>
+                      <h3 class="card-title">Adicionar Material</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form>
                       <div class="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="material1">
-                            <label class="form-check-label" for="material1">
-                              Material 1
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="material2">
-                            <label class="form-check-label" for="material2">
-                              Material 2
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="material3">
-                            <label class="form-check-label" for="material3">
-                              Material 3
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="material4">
-                            <label class="form-check-label" for="material4">
-                              Material 4
-                            </label>
-                          </div>
-                        
-                      </div>
-                      <!-- /.card-body -->
-      
-                    </form>
-            </div>
-            
-            <div class="card card-secondary">
-                <div class="card-header">
-                  <h3 class="card-title">Colaboradores</h3>
-                </div>
-                <!-- /.card-header -->
-
-                    <form>
-                      <div class="card-body">
                         <div class="form-group">
-                          <label for="colaboradores_criariniciativa">Selecione os colaboradores para esta iniciativa</label>
-                          <input type="number" class="form-control" id="colaboradores_criariniciativa">
+                          <label for="nome_material_adicionar">Nome</label>
+                          <input type="text" class="form-control" id="nome_material_adicionar">
+                        </div>   
+                        <div class="form-group">
+                          <label for="tipo_material_adicionar">Tipo</label>
+                          <input type="text" class="form-control" id="tipo_material_adicionar">
                         </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição da Iniciativa</label>
+                            <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
+                          </div>
+                        <div class="form-group">
+                            <label for="quantidade_material_adicionar">Quantidade</label>
+                            <input type="number" class="form-control" id="quantidade_material_adicionar">
+                          </div>
+                          
                         
                       </div>
                       <!-- /.card-body -->
-      
-                    </form>
-                    
-                 
-                  <!-- /.card-body -->
         
-        </div>
-        <a href="Iniciativas.html"><button id="botao_cancelar_iniciativa" class="btn btn-secondary">Cancelar</button></a>
-        <button id="botao_criar_iniciativa" class="btn btn-success">Criar Iniciativa</button>
+                      <div class="card-footer text-center">
+                        <button id ="botao_material_adicionar" type="submit" class="btn btn-success">Adicionar Material</button>     
+                        
+                </div>
         
-      </div>
-              
+                
+                        </form>
+                </div>  
+                
+            </div>
                 <!-- /.col -->
               </div>
             
