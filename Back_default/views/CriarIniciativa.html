@@ -1,3 +1,6 @@
+<!--ver os colaboradores como fazer
+ver o tipo que nao esta editado
+ver o botao submit do form criar iniciativa ver se da para tirar-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,11 +180,11 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="iniciativa">Iniciativa</label>
-                  <input type="number" class="form-control" id="iniciativa">
+                  <input type="text" class="form-control" id="iniciativa">
                 </div>
                 <div class="form-group">
                   <label for="descricao">Descrição da Iniciativa</label>
-                  <input type="text" class="form-control" id="descricao">
+                  <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="local">Local</label>
@@ -201,7 +204,7 @@
                   </div>
                   <div class="form-group">
                     <label for="tipo">Tipo</label>
-                    <select id="tipo" class="form-select" >
+                    <select id="tipo" class="form-select form-select-lg" >
                         <option value="#">Tipo 1</option>
                         <option value="#">Tipo 2</option>
                         <option value="#">Tipo 3</option>
@@ -217,11 +220,7 @@
                 
         </div>
 
-        <!--right-->
-        <div class="col-md-6">
         
-       
-                  </div>
                 </form>
         </div>
         
@@ -278,16 +277,27 @@
                 </div>
                 <!-- /.card-header -->
 
-                  <div class="card-body">
-                    5
+                    <form>
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="colaboradores_criariniciativa">Selecione os colaboradores para esta iniciativa</label>
+                          <input type="number" class="form-control" id="colaboradores_criariniciativa">
+                        </div>
+                        
+                      </div>
+                      <!-- /.card-body -->
+      
+                    </form>
                     
-                  </div>
+                 
                   <!-- /.card-body -->
         
         </div>
-    
-            </div>
-
+        <a href="Iniciativas.html"><button id="botao_cancelar_iniciativa" class="btn btn-secondary">Cancelar</button></a>
+        <button id="botao_criar_iniciativa" class="btn btn-success">Criar Iniciativa</button>
+        
+      </div>
+              
                 <!-- /.col -->
               </div>
             
