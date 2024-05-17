@@ -15,6 +15,14 @@
     color: white;
 }
 
+#title_iniciativas{
+    color: white;
+}
+
+#title_sugestoes_recusadas{
+    color: white;
+}
+
 .form-check{
     margin-top: 15px;
 }
