@@ -64,15 +64,15 @@ body {
    /*Para a tabela proponente*/
 
    .table-custom {
-    width: 100%;
-    border-collapse: collapse;
-    
+    width: 20px;
+    border-collapse: collapse;  
   }
   
   .table-custom th, .table-custom td {
     border: 1px solid #000;
     padding: 10px;
     text-align: center;
+ 
   }
   
   .table-custom th {
@@ -101,17 +101,29 @@ body {
   .suggest-button {
     display: block;
     width: 200px;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 10px;
-    background-color: #FF5C5C;
+    background-color: #eb5757;
     color: #fff;
     text-align: center;
     border-radius: 5px;
-    font-size: 16px;
+    text-decoration: none;
     font-weight: bold;
-  }
+}
 
   /* Acaba Aqui */
+
+  /* CSS para a Info Iniciativas */
+  
+  .main-image img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.footer a img {
+    width: 24px;
+    height: 24px;
+}
 
   
   
