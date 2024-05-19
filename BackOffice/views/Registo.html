@@ -56,57 +56,59 @@
 </head>
 <body>
     <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
-        <div class="login-card">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="mb-4">Registo Profissionais</h2>
-                    <form>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-user"></i>
-                            <input type="text" class="form-control" placeholder="Username" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-envelope"></i>
-                            <input type="text" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-user"></i>
-                            <input type="text" class="form-control" placeholder="Nome (Primeiro e Ultimo)" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-phone"></i>
-                            <input type="text" class="form-control" placeholder="Número Telemóvel" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-house"></i>
-                            <input type="text" class="form-control" placeholder="Morada" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" class="form-control" placeholder="Password" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" class="form-control" placeholder="Repetir Password" required>
-                        </div>
-                        <div class="form-group position-relative">
-                            <label for="funcao">Função</label>
-                            <select id="funcao" class="form-select form-select-lg" >
-                                <option value="#">Tipo 1</option>
-                                <option value="#">Tipo 2</option>
-                                <option value="#">Tipo 3</option>
-                                <option value="#">Tipo 4</option>
-                            </select>
-                          </div>
-                        
-                        <button type="submit" class="btn btn-dark btn-block">Registar</button>
-                    </form>
-                </div>
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <img src="../assets/logo_PW-removebg.png" alt="Ajuda Humanitária de Braga" class="img-fluid">
+        <form id="1">    
+            <div class="login-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="mb-4">Registo Profissionais</h2>
+                        <form>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control" placeholder="Nome (Primeiro e Ultimo)" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-phone"></i>
+                                <input type="text" class="form-control" placeholder="Número Telemóvel" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-house"></i>
+                                <input type="text" class="form-control" placeholder="Morada" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" class="form-control" placeholder="Repetir Password" required>
+                            </div>
+                            <div class="form-group position-relative">
+                                <label for="funcao">Função</label>
+                                <select id="funcao" class="form-select form-select-lg" >
+                                    <option value="#">Médico</option>
+                                    <option value="#">Responsável de Limpeza</option>
+                                    <option value="#">Segurança</option>
+                                    <option value="#">Responsável de Atividade</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-dark btn-block">Registar</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center align-items-center">
+                        <img src="../assets/logo_PW-removebg.png" alt="Ajuda Humanitária de Braga" class="img-fluid">
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
