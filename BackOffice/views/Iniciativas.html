@@ -183,9 +183,8 @@
               <div class="card-header">
                 <h3 class="card-title">Iniciativas</h3>
               </div>
-              <!-- ./card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="iniciativas-table">
                   <thead>
                     <tr>
                       <th>Iniciativa</th>
@@ -197,153 +196,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Approved</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td>Pending</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="true">
-                      <td>657</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td>Approved</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Denied</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>134</td>
-                      <td>Jim Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Approved</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>494</td>
-                      <td>Victoria Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Pending</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                     
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>832</td>
-                      <td>Michael Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Approved</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                      <td>982</td>
-                      <td>Rocky Doe</td>
-                      <td>11-7-2014</td>
-                      <td>Denied</td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td>example@email.com</td>
-                    </tr>
-                    <tr class="expandable-body">
-                      <td colspan="5">
-                        <p>
-                          <strong>Descrição:</strong>
-                          Descrição da Iniciativa
-                          <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-                        </p>
-                      </td>
-                    </tr>
+                    <!-- As linhas serão inseridas aqui dinamicamente -->
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
           </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </section>
+    <script src="../js/Iniciativas.js"></script>    
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
