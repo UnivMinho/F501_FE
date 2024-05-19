@@ -67,7 +67,7 @@
                         <div class="row no-gutters">
                             <div class="col-md-7">
                                 <div class="doacao-wrap w-100 p-md-5 p-4">
-                                    <form method="POST" id="doacaoForm" name="doacaoForm" class="doacaoForm">
+                                    <form method="POST" id="doacaoForm" name="doacaoForm" class="doacaoForm" onsubmit="return ArmazenarDoacao()">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -116,7 +116,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="PrimeiroNome" id="cvc" placeholder="Primeiro Nome">
+                                                        <input type="text" class="form-control" name="PrimeiroNome" id="Nome" placeholder="Primeiro Nome">
                                                     </div>
                                                 </div>
     
@@ -221,6 +221,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 		<script src="js/google-map.js"></script>
 		<script src="js/main.js"></script>
+        <script src="js/script.js"></script>
 		
 	</body>
 	</html>
