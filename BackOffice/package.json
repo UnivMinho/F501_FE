@@ -1,0 +1,29 @@
+{
+  "name": "backoffice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "9.3.0"
+  },
+  "dependencies": {
+    "@eonasdan/tempus-dominus": "^6.9.7",
+    "@haroenv/react-sparklines": "^1.7.1",
+    "admin-lte": "^3.2.0",
+    "bootstrap": "^5.3.3",
+    "chart.js": "^2.7.3",
+    "daterangepicker": "^3.1.0",
+    "husky": "^9.0.11",
+    "jquery": "^3.7.1",
+    "jquery-knob": "^1.2.11",
+    "jqvmap": "^1.0.1",
+    "overlayscrollbars": "^2.8.0",
+    "summernote": "^0.8.20"
+  }
+}
