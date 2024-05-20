@@ -92,7 +92,7 @@ function atualizarTabela() {
     iniciativasArray.forEach(function(iniciativa) {
         var newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td>${iniciativa.Desiniciativa}</td>
+            <td>${iniciativa.drop}</td>
             <td>${iniciativa.local}</td>
             <td>${iniciativa.dataEvento}</td>
             <td><span class="botao pendente">PENDENTE</span></td>
