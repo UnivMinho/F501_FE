@@ -180,7 +180,7 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form>
+            <form id="form_criarIniciativa" onsubmit="criarIniciativa()">
               <div class="card-body">
                 <div class="form-group">
                   <label for="iniciativa">Iniciativa</label>
@@ -207,8 +207,8 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
                     <input type="number" class="form-control" id="vagas">
                   </div>
                   <div class="form-group">
-                    <label for="tipo_editar">Tipo</label>
-                    <select id="tipo_editar" class="form-control">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" class="form-control">
                         <option value="#">Tipo 1</option>
                         <option value="#">Tipo 2</option>
                         <option value="#">Tipo 3</option>
@@ -329,6 +329,7 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
 </div>
 <!-- ./wrapper -->
 
+<script src="../js/Iniciativas.js"></script>
 <!-- jQuery -->
 <script src="../plugins/scripts/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

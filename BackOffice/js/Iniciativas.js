@@ -46,3 +46,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  function criarIniciativa(){
+
+      var iniciativa = document.getElementById("iniciativa").value;
+      var descricao = document.getElementById("descricao").value;
+      var local = document.getElementById("local").value;
+      var data = document.getElementById("data").value;
+      var lider = document.getElementById("lider").value;
+      var vagas = document.getElementById("vagas").value;
+      var tipo = document.getElementById("tipo").value;
+
+      var dadosIniciativa = {
+          iniciativa: iniciativa,
+          descricao: descricao,
+          local: local,
+          data: data,
+          lider: lider,
+          vagas: vagas,
+          tipo: tipo
+      };
+
+      var storedIniciativas = localStorage.getItem("iniciativas");
+      var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
+      iniciativasArray.push(dadosIniciativa);
+
+      localStorage.setItem("iniciativas", JSON.stringify(iniciativasArray));
+  }
