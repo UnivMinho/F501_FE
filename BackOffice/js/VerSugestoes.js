@@ -63,6 +63,7 @@
   */
 
   function AddDataSugestoes(){
+    
     var tipo = document.getElementById("drop").value;
     var local = document.getElementById("local").value;
     var data = document.getElementById("dataEvento").value;
