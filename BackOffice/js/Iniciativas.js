@@ -5,19 +5,19 @@
       .then(data => {
         const tableBody = document.querySelector('#iniciativas-table tbody');
   
-        data.forEach(inciativa => {
+        data.forEach(iniciativa => {
      
           let row = document.createElement('tr');
           row.setAttribute('data-widget', 'expandable-table');
           row.setAttribute('aria-expanded', 'false');
   
           row.innerHTML = `
-            <td>${inciativa.iniciativa}</td>
-            <td>${inciativa.local}</td>
-            <td>${inciativa.data}</td>
-            <td>${inciativa.vagas}</td>
-            <td>${inciativa.tipo}</td>
-            <td>${inciativa.email}</td>
+            <td>${iniciativa.iniciativa}</td>
+            <td>${iniciativa.local}</td>
+            <td>${iniciativa.data}</td>
+            <td>${iniciativa.vagas}</td>
+            <td>${iniciativa.tipo}</td>
+            <td>${iniciativa.email}</td>
           `;
   
           tableBody.appendChild(row);
@@ -27,7 +27,7 @@
           expandableRow.innerHTML = `
             <td colspan="6">
               <p>
-                <strong>Descrição:</strong> ${inciativa.descricao}
+                <strong>Descrição:</strong> ${iniciativa.descricao}
                 <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
               </p>
             </td>
@@ -71,11 +71,11 @@
           tipo: tipo
       };
 
-      var storedIniciativas = localStorage.getinciativa("iniciativas");
+      var storedIniciativas = localStorage.getiniciativa("iniciativas");
       var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
       iniciativasArray.push(dadosIniciativa);
 
-      localStorage.setinciativa("iniciativas", JSON.stringify(iniciativasArray));
+      localStorage.setiniciativa("iniciativas", JSON.stringify(iniciativasArray));
 
       alert('Iniciativa criada com sucesso!');
       displayIniciativas();
@@ -86,7 +86,7 @@
 });
 
 function displayIniciativas() {
-    var storedIniciativas = localStorage.getinciativa("iniciativas");
+    var storedIniciativas = localStorage.getItem("iniciativas");
     var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
 
     var tableBody = document.querySelector('#iniciativas-table tbody');
@@ -97,12 +97,12 @@ function displayIniciativas() {
         row.setAttribute('data-widget', 'expandable-table');
         row.setAttribute('aria-expanded', 'false');
         row.innerHTML = `
-            <td>${inciativa.iniciativa}</td>
-            <td>${inciativa.local}</td>
-            <td>${inciativa.data}</td>
-            <td>${inciativa.vagas}</td>
-            <td>${inciativa.tipo}</td>
-            <td>${inciativa.lider}</td>
+            <td>${iniciativa.iniciativa}</td>
+            <td>${iniciativa.local}</td>
+            <td>${iniciativa.data}</td>
+            <td>${iniciativa.vagas}</td>
+            <td>${iniciativa.tipo}</td>
+            <td>${iniciativa.lider}</td>
         `;
 
         tableBody.appendChild(row);
@@ -112,7 +112,7 @@ function displayIniciativas() {
         expandableRow.innerHTML = `
             <td colspan="6">
                 <p>
-                    <strong>Descrição:</strong> ${inciativa.descricao}
+                    <strong>Descrição:</strong> ${iniciativa.descricao}
                 </p>
             </td>
         `;
