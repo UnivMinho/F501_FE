@@ -125,8 +125,10 @@ body {
     height: 24px;
 }
 
-  
-  
+  .botao{
+    text-align: center;
+    
+  }
 
 
 .Form {
