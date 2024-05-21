@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function ArmazenarIniciativa() {
+    // Obter valores dos campos do formulário
     var drop = document.getElementById("drop").value;
     var Desiniciativa = document.getElementById("Desiniciativa").value;
     var local = document.getElementById("local").value;
@@ -32,6 +33,7 @@ function ArmazenarIniciativa() {
     var contactoResp = document.getElementById("contactoResp").value;
     var imagemIniciativa = document.getElementById("imagemIniciativa").files[0];
 
+    // Função para converter uma imagem em Base64
     function getBase64(file, callback) {
         var reader = new FileReader();
         reader.readAsDataURL(file);
@@ -43,6 +45,7 @@ function ArmazenarIniciativa() {
         };
     }
 
+    // Função para salvar os dados da iniciativa
     function saveIniciativa(base64Image) {
         var dadosIniciativa = {
             drop: drop,
@@ -54,18 +57,22 @@ function ArmazenarIniciativa() {
             imagemIniciativa: base64Image
         };
 
+        // Recuperar iniciativas armazenadas no localStorage
         var storedIniciativas = localStorage.getItem("iniciativas");
         var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
         iniciativasArray.push(dadosIniciativa);
 
+        // Salvar o array atualizado no localStorage
         localStorage.setItem("iniciativas", JSON.stringify(iniciativasArray));
 
-        // Atualizar a tabela após armazenar a iniciativa
+        // Atualizar a tabela com os dados armazenados
         atualizarTabela();
 
+        // Exibir mensagem de sucesso
         alert("Formulário Enviado com Sucesso");
     }
 
+    // Verificar se há uma imagem e processá-la em Base64
     if (imagemIniciativa) {
         getBase64(imagemIniciativa, function(base64Image) {
             saveIniciativa(base64Image);
@@ -74,6 +81,7 @@ function ArmazenarIniciativa() {
         saveIniciativa(null);
     }
 
+    // Impedir o envio do formulário para que a página não seja recarregada
     return false;
 }
 
@@ -100,6 +108,7 @@ function atualizarTabela() {
         table.appendChild(newRow);
     });
 }
+
 
 
 

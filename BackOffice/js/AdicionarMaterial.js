@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var table = document.querySelector('.materialTable tbody');
 
     // Limpar qualquer conteúdo existente na tabela
-    table.innerHTML = '';
 
     // Iterar sobre os dados e inseri-los na tabela
     materiaisArray.forEach(function(material) {
