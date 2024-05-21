@@ -1,122 +1,111 @@
-/* document.addEventListener('DOMContentLoaded', function () {
+function validateForm(){
+  var iniciativa = document.getElementById("iniciativa").value;
+  var local = document.getElementById("local").value;
+  var data = document.getElementById("data").value;
+  var vagas = document.getElementById("vagas").value;
+  var tipo = document.getElementById("tipo").value;
+  var lider = document.getElementById("lider").value;
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector('#iniciativas-table tbody');
-  
-        data.forEach(iniciativa => {
-     
-          let row = document.createElement('tr');
-          row.setAttribute('data-widget', 'expandable-table');
-          row.setAttribute('aria-expanded', 'false');
-  
-          row.innerHTML = `
-            <td>${iniciativa.iniciativa}</td>
-            <td>${iniciativa.local}</td>
-            <td>${iniciativa.data}</td>
-            <td>${iniciativa.vagas}</td>
-            <td>${iniciativa.tipo}</td>
-            <td>${iniciativa.email}</td>
-          `;
-  
-          tableBody.appendChild(row);
-  
-          let expandableRow = document.createElement('tr');
-          expandableRow.classList.add('expandable-body');
-          expandableRow.innerHTML = `
-            <td colspan="6">
-              <p>
-                <strong>Descrição:</strong> ${iniciativa.descricao}
-                <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
-              </p>
-            </td>
-          `;
-  
-          tableBody.appendChild(expandableRow);
-        });
-      })
-      .catch(error => console.error('Erro ao buscar os dados:', error));
-  });
-  
-  document.addEventListener('click', function (e) {
-    if (e.target && e.target.classList.contains('ver-mais')) {
-      const expandableRow = e.target.closest('tr').nextElementSibling;
-      expandableRow.classList.toggle('show');
-    }
-  }); */
-
-  document.getElementById('form_criarIniciativa').addEventListener('submit', function (event) {
-    event.preventDefault();
-    criarIniciativa();
-});
-
-  function criarIniciativa(){
-
-      var iniciativa = document.getElementById("iniciativa").value;
-      var descricao = document.getElementById("descricao").value;
-      var local = document.getElementById("local").value;
-      var data = document.getElementById("data").value;
-      var lider = document.getElementById("lider").value;
-      var vagas = document.getElementById("vagas").value;
-      var tipo = document.getElementById("tipo").value;
-
-      var dadosIniciativa = {
-          iniciativa: iniciativa,
-          descricao: descricao,
-          local: local,
-          data: data,
-          lider: lider,
-          vagas: vagas,
-          tipo: tipo
-      };
-
-      var storedIniciativas = localStorage.getiniciativa("iniciativas");
-      var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
-      iniciativasArray.push(dadosIniciativa);
-
-      localStorage.setiniciativa("iniciativas", JSON.stringify(iniciativasArray));
-
-      alert('Iniciativa criada com sucesso!');
-      displayIniciativas();
+  if(iniciativa == ""){
+    alert("Nome iniciativa em falta!");
+    return false;
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    displayIniciativas();
-});
+  if(local == ""){
+    alert("Local iniciativa em falta!");
+    return false;
+  }
 
-function displayIniciativas() {
-    var storedIniciativas = localStorage.getItem("iniciativas");
-    var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
+  if(data == ""){
+    alert("Data iniciativa em falta!");
+    return false;
+  }
 
-    var tableBody = document.querySelector('#iniciativas-table tbody');
-    tableBody.innerHTML = ''; // Limpar a tabela antes de adicionar os dados
+  if(vagas == ""){
+    alert("Vagas iniciativa em falta!");
+    return false;
+  }
+  else if(vagas<1){
+    alert("Não pode colocar um número negativo nas vagas");
+    return false;
+  }
 
-    iniciativasArray.forEach(function(iniciativa) {
-        var row = document.createElement('tr');
-        row.setAttribute('data-widget', 'expandable-table');
-        row.setAttribute('aria-expanded', 'false');
-        row.innerHTML = `
-            <td>${iniciativa.iniciativa}</td>
-            <td>${iniciativa.local}</td>
-            <td>${iniciativa.data}</td>
-            <td>${iniciativa.vagas}</td>
-            <td>${iniciativa.tipo}</td>
-            <td>${iniciativa.lider}</td>
-        `;
+  if(lider == ""){
+    alert("Lider iniciativa em falta!");
+    return false;
+  }
+  else if(lider<1){
+    alert("Selecione o id correto");
+    return false;
+  }
 
-        tableBody.appendChild(row);
-
-        let expandableRow = document.createElement('tr');
-        expandableRow.classList.add('expandable-body');
-        expandableRow.innerHTML = `
-            <td colspan="6">
-                <p>
-                    <strong>Descrição:</strong> ${iniciativa.descricao}
-                </p>
-            </td>
-        `;
-
-        tableBody.appendChild(expandableRow);
-    });
+  return true;
 }
+
+function showDataIniciativas(){
+  var iniciativas;
+  if(localStorage.getItem("iniciativas")==null){
+    iniciativas = [];
+  }
+  else{
+    iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
+  }
+
+  var html = "";
+
+  iniciativas.forEach(function(element, index) {
+    html += "<tr>";
+    html += "<td>" + element.iniciativa + "</td>";
+    html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.data + "</td>";
+    html += "<td>" + element.vagas + "</td>";
+    html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.lider + "</td>";
+  });
+
+  document.querySelector("#iniciativas-table tbody").innerHTML = html;
+
+}
+
+document.onload = showDataIniciativas();
+
+function AddData(){
+  if(validateForm() == true){
+    var iniciativa = document.getElementById("iniciativa").value;
+    var local = document.getElementById("local").value;
+    var data = document.getElementById("data").value;
+    var vagas = document.getElementById("vagas").value;
+    var tipo = document.getElementById("tipo").value;
+    var lider = document.getElementById("lider").value;
+
+
+  var iniciativas;
+  if(localStorage.getItem("iniciativas")==null){
+    iniciativas = [];
+  }
+  else{
+    iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
+  }
+
+  iniciativas.push({
+    iniciativa : iniciativa,
+    local : local,
+    data : data,
+    vagas : vagas,
+    tipo : tipo,
+    lider : lider
+  });
+
+  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  showDataIniciativas();
+  document.getElementById("iniciativa").value = "";
+  document.getElementById("local").value = "";
+  document.getElementById("data").value = "";
+  document.getElementById("vagas").value = "";
+  document.getElementById("tipo").value = "";
+  document.getElementById("lider").value = "";
+  }
+}
+
+
+
