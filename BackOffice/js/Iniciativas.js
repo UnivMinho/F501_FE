@@ -1,23 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
+/* document.addEventListener('DOMContentLoaded', function () {
 
     fetch(url)
       .then(response => response.json())
       .then(data => {
         const tableBody = document.querySelector('#iniciativas-table tbody');
   
-        data.forEach(item => {
+        data.forEach(inciativa => {
      
           let row = document.createElement('tr');
           row.setAttribute('data-widget', 'expandable-table');
           row.setAttribute('aria-expanded', 'false');
   
           row.innerHTML = `
-            <td>${item.iniciativa}</td>
-            <td>${item.local}</td>
-            <td>${item.data}</td>
-            <td>${item.vagas}</td>
-            <td>${item.tipo}</td>
-            <td>${item.email}</td>
+            <td>${inciativa.iniciativa}</td>
+            <td>${inciativa.local}</td>
+            <td>${inciativa.data}</td>
+            <td>${inciativa.vagas}</td>
+            <td>${inciativa.tipo}</td>
+            <td>${inciativa.email}</td>
           `;
   
           tableBody.appendChild(row);
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
           expandableRow.innerHTML = `
             <td colspan="6">
               <p>
-                <strong>Descrição:</strong> ${item.descricao}
+                <strong>Descrição:</strong> ${inciativa.descricao}
                 <button class="btn btn-sm btn-success ver-mais">Ver mais</button>
               </p>
             </td>
@@ -44,7 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const expandableRow = e.target.closest('tr').nextElementSibling;
       expandableRow.classList.toggle('show');
     }
-  });
+  }); */
+
+  document.getElementById('form_criarIniciativa').addEventListener('submit', function (event) {
+    event.preventDefault();
+    criarIniciativa();
+});
 
   function criarIniciativa(){
 
@@ -66,9 +71,52 @@ document.addEventListener('DOMContentLoaded', function () {
           tipo: tipo
       };
 
-      var storedIniciativas = localStorage.getItem("iniciativas");
+      var storedIniciativas = localStorage.getinciativa("iniciativas");
       var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
       iniciativasArray.push(dadosIniciativa);
 
-      localStorage.setItem("iniciativas", JSON.stringify(iniciativasArray));
+      localStorage.setinciativa("iniciativas", JSON.stringify(iniciativasArray));
+
+      alert('Iniciativa criada com sucesso!');
+      displayIniciativas();
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    displayIniciativas();
+});
+
+function displayIniciativas() {
+    var storedIniciativas = localStorage.getinciativa("iniciativas");
+    var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
+
+    var tableBody = document.querySelector('#iniciativas-table tbody');
+    tableBody.innerHTML = ''; // Limpar a tabela antes de adicionar os dados
+
+    iniciativasArray.forEach(function(iniciativa) {
+        var row = document.createElement('tr');
+        row.setAttribute('data-widget', 'expandable-table');
+        row.setAttribute('aria-expanded', 'false');
+        row.innerHTML = `
+            <td>${inciativa.iniciativa}</td>
+            <td>${inciativa.local}</td>
+            <td>${inciativa.data}</td>
+            <td>${inciativa.vagas}</td>
+            <td>${inciativa.tipo}</td>
+            <td>${inciativa.lider}</td>
+        `;
+
+        tableBody.appendChild(row);
+
+        let expandableRow = document.createElement('tr');
+        expandableRow.classList.add('expandable-body');
+        expandableRow.innerHTML = `
+            <td colspan="6">
+                <p>
+                    <strong>Descrição:</strong> ${inciativa.descricao}
+                </p>
+            </td>
+        `;
+
+        tableBody.appendChild(expandableRow);
+    });
+}
