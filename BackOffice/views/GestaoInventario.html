@@ -169,23 +169,23 @@
             <div class="container-fluid">
               <div class="row">
         <!--left-->       
-        <div class="col-md-6">
-          <a href="AdicionarMaterial.html"><button id="botao_adicionar_material" class="btn btn-success">Adicionar Material</button></a> 
-          <table id="materialTable" class="table table-bordered" style="background-color: white;">
-            <thead>
-                <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Material</th>
-                    <th>Quantidade</th>
-                    <th>Progresso</th>
-                    <th style="width: 40px">Label</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Linhas de materiais serão adicionadas dinamicamente aqui -->
-            </tbody>
-          </table>
-        </div>
+            <div class="col-md-6">
+              <a href="AdicionarMaterial.html"><button id="botao_adicionar_material" class="btn btn-success">Adicionar Material</button></a> 
+              <table class="table materialTable" style="background-color: white;">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Material</th>
+                        <th>Quantidade</th>
+                        <th>Progresso</th>
+                        <th style="width: 40px">Label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas de materiais serão adicionadas dinamicamente aqui -->
+                </tbody>
+              </table>
+            </div>
         <!--right-->
         <div class="col-md-6">
         
@@ -250,6 +250,8 @@
 </div>
 <!-- ./wrapper -->
 
+
+<script src="../js/AdicionarMaterial.js"></script>
 <!-- jQuery -->
 <script src="../plugins/scripts/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

@@ -176,7 +176,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form id="AdicionarMaterial">
+                    <form method="POST" id="AdicionarMaterial" onsubmit="return ArmazenarMaterial()">
                       <div class="card-body">
                         <div class="form-group">
                           <label for="nome_material_adicionar">Nome</label>
@@ -200,7 +200,7 @@
                       <!-- /.card-body -->
         
                       <div class="card-footer text-center">
-                        <button id ="botao_material_adicionar" type="submit" class="btn btn-success">Adicionar Material</button>     
+                        <a href="GestaoInventario.html"><button id ="botao_material_adicionar" type="submit" class="btn btn-success">Adicionar Material</button></a>   
                         
                 </div>
         
@@ -217,7 +217,6 @@
           
 
     </section>
-    <script src="../js/AdicionarMaterial.js"></script>
 
 
     <!-- /.content -->
@@ -238,6 +237,7 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="../js/AdicionarMaterial.js"></script>
 <!-- jQuery -->
 <script src="../plugins/scripts/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
