@@ -118,39 +118,42 @@ function atualizarTabela() {
 
 
 function ArmazenarDoacao() {
-    
-
-    var primeiroNome = document.getElementById("primeiroNome").value;
-    var Apelido = document.getElementById("Apelido").value;
+    var valor = document.getElementById("valor").value;
+    var NomeCartao = document.getElementById("NomeCartao").value;
+    var ApelidoCartao = document.getElementById("ApelidoCartao").value;
     var nrCartao = document.getElementById("nrCartao").value;
     var cvc = document.getElementById("cvc").value;
     var validade = document.getElementById("validade").value;
     var Nome = document.getElementById("Nome").value;
-    var Apelido2= document.getElementById("Apelido2").value;
-    var email= document.getElementById("email").value;
-    
+    var Apelido = document.getElementById("Apelido").value;
+    var email = document.getElementById("email").value;
 
-    
     var dadosDoacao = {
-        primeiroNome: primeiroNome,
-        Apelido: Apelido,
+        valor:valor,
+        NomeCartao: NomeCartao,
+        ApelidoCartao: ApelidoCartao,
         nrCartao: nrCartao,
         cvc: cvc,
         validade: validade,
         Nome: Nome,
-        Apelido2: Apelido2,
+        Apelido: Apelido,
         email: email
     };
 
-    
-    var dadosFormularioJSON = JSON.stringify(dadosDoacao);
+    // Recuperar as doações existentes do localStorage
+    var doacoesExistentes = localStorage.getItem("Doacoes");
+    var arrayDoacoes = doacoesExistentes ? JSON.parse(doacoesExistentes) : [];
 
-    
-    localStorage.setItem("Doacao", dadosFormularioJSON);
+    // Adicionar a nova doação ao array
+    arrayDoacoes.push(dadosDoacao);
 
-    
+    // Converter o array atualizado para JSON
+    var dadosFormularioJSON = JSON.stringify(arrayDoacoes);
+
+    // Armazenar o array atualizado no localStorage
+    localStorage.setItem("Doacoes", dadosFormularioJSON);
+
     alert("Formulário Enviado com Sucesso");
 
-    
     return false;
 }
