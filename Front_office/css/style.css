@@ -67,6 +67,8 @@ body {
     width: 20px;
     border-collapse: collapse;  
   }
+
+  
   
   .table-custom th, .table-custom td {
     border: 1px solid #000;
@@ -74,6 +76,7 @@ body {
     text-align: center;
  
   }
+
   
   .table-custom th {
     background-color: #f2f2f2;
