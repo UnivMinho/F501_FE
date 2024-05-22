@@ -62,6 +62,31 @@
   
   */
 
+  function showDataSugestoes(){
+    var sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
+  
+    var html = "";
+  
+    sugestoes.forEach(function(element, index) {
+      html += "<tr>";
+      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.local + "</td>";
+      html += "<td>" + element.data + "</td>";
+      html += "<td>" + element.email + "</td>";
+      html += "<td>" + element.contacto + "</td>";
+    });
+  
+    document.querySelector("#sugestoes-table tbody").innerHTML = html;
+  }
+
+  document.onload = showDataSugestoes();
+
   function AddDataSugestoes(){
     
     var tipo = document.getElementById("drop").value;
@@ -98,28 +123,6 @@
   }
 
 
-document.onload = showDataSugestoes();
 
 
-function showDataSugestoes(){
-  var sugestoes;
-  if(localStorage.getItem("sugestoes")==null){
-    sugestoes = [];
-  }
-  else{
-    sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
-  }
 
-  var html = "";
-
-  sugestoes.forEach(function(element, index) {
-    html += "<tr>";
-    html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.local + "</td>";
-    html += "<td>" + element.data + "</td>";
-    html += "<td>" + element.email + "</td>";
-    html += "<td>" + element.contacto + "</td>";
-  });
-
-  document.querySelector("#sugestoes-table tbody").innerHTML = html;
-}
