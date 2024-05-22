@@ -1,40 +1,44 @@
 function showDataSugestoes(){
-    var sugestoes;
-    if(localStorage.getItem("sugestoes")==null){
-      sugestoes = [];
-    }
-    else{
-      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
-    }
-  
-    var html = "";
-  
-    sugestoes.forEach(function(element, index) {
-      html += "<tr>";
-      html += "<td>" + element.tipo + "</td>";
-      html += "<td>" + element.local + "</td>";
-      html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.email + "</td>";
-      html += "<td>" + element.contacto + "</td>";
-      html += 
-      '<td><button onclick="acceptData(' +
-      index + 
-      ')" class="fa fa-check"></button><button onclick="updateData(' +
-      index +
-      ')"class="fa fa-pencil"></button><button onclick="deleteData(' +
-      index + 
-      ')" class="fa fa-trash"></button>';
-      html += "</tr>";
-
-    });
-  
-    const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2");
-
-    tables.forEach(table =>{
-      table.innerHTML = html;
-    });
-
+  var sugestoes;
+  if(localStorage.getItem("sugestoes")==null){
+    sugestoes = [];
   }
+  else{
+    sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+  }
+
+  var html = "";
+
+  sugestoes.forEach(function(element, index) {
+    html += "<tr>";
+    html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.data + "</td>";
+    html += "<td>" + element.email + "</td>";
+    html += "<td>" + element.contacto + "</td>";
+    html += 
+    '<td><button onclick="acceptData(' +
+    index + 
+    ')" class="fa fa-check"></button><button onclick="updateData(' +
+    index +
+    ')"class="fa fa-pencil"></button><button onclick="deleteData(' +
+    index + 
+    ')" class="fa fa-trash"></button>';
+    html += "</tr>";
+
+  });
+
+  const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
+
+  tables.forEach(table =>{
+    table.innerHTML = html;
+  });
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded", showDataSugestoes);
 
   document.onload = showDataSugestoes();
 
