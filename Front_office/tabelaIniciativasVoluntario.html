@@ -26,6 +26,13 @@
   
   </head>
   <body>
+
+    <script>
+      if (!localStorage.getItem('loggedIn')) {
+        window.location.href = 'Front_office/login.html';
+      }
+    </script>
+
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
           <div class="container">
               <a href="index.html">
