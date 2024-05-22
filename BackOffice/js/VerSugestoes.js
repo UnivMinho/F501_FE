@@ -8,7 +8,7 @@ function showDataSugestoes(){
     }
   
     var html = "";
-  
+
     sugestoes.forEach(function(element, index) {
       html += "<tr>";
       html += "<td>" + element.tipo + "</td>";
@@ -19,11 +19,11 @@ function showDataSugestoes(){
       html += 
       '<td><button onclick="acceptData(' +
       index + 
-      ')" class="fa fa-check"></button><button onclick="updateData(' +
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="updateData(' +
       index +
-      ')"class="fa fa-pencil"></button><button onclick="deleteData(' +
+      ')"class="fa fa-pencil" style="margin-left:10px; background-color:yellow;"></button><button onclick="deleteData(' +
       index + 
-      ')" class="fa fa-trash"></button>';
+      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
       html += "</tr>";
 
     });
@@ -81,8 +81,19 @@ function updateData(){
 
 }
 
-function deleteData(){
-  
+function deleteData(index){
+  var sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
+
+  sugestoes.splice(index, 1);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+  showDataSugestoes();
+
 }
 
 
