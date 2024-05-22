@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os dados do localStorage
     var storedIniciativas = localStorage.getItem("iniciativas");
     var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
-    
 
     // Selecionar a tabela onde os dados serão inseridos
     var table = document.querySelector('.table-custom tbody');
@@ -21,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         table.appendChild(novaLinha);
     });
+
+    // Adicionar event listener ao botão de envio do formulário
+    var submitButton = document.getElementById('submit-button');
+    if (submitButton) {
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Impedir o envio do formulário
+            ArmazenarIniciativa();
+        });
+    }
 });
 
 
