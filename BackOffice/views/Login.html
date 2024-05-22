@@ -53,24 +53,42 @@
             </div>
             <div class="col-md-6">
                 <h2 class="text-center mb-4">Login</h2>
-                <form>
+                <form id="login-form">
                     <div class="form-group position-relative mb-4">
                         <i class="fas fa-user"></i>
-                        <input type="text" class="form-control" placeholder="Username" required>
+                        <input type="email" class="form-control" id="login-email" placeholder="Email" required>
                     </div>
                     <div class="form-group position-relative mb-4">
                         <i class="fas fa-lock"></i>
-                        <input type="password" class="form-control" placeholder="Password" required>
+                        <input type="password" class="form-control" id="login-password" placeholder="Password" required>
                     </div>
                     <div class="form-group form-check mb-4">
                         <input type="checkbox" class="form-check-input" id="rememberMe">
                         <label class="form-check-label" for="rememberMe">Relembrar-me</label>
                     </div>
-                    <button type="submit" class="btn btn-dark btn-block">Log in</button>
+                    <button type="submit" class="btn btn-dark btn-block" id="loginBtn">Log in</button>
+                    <a href="./Registo.html"><button type="button" onclick="" class="btn btn-dark btn-block" id="register-Btn">Register</button></a>
                 </form>
             </div>
         </div>
     </div>
+
+    <script type="module" defer src="../js/Auth.js"></script>
+
+    <script>
+        /*document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+          
+            if (email === 'admin@admin.com' && password === 'admin123') {
+                localStorage.setItem('loggedIn', true);
+                window.location.href = '../index.html';
+            } else {
+              alert('Invalid login credentials');
+            }
+        });*/
+    </script>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group position-relative">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" class="form-control" placeholder="Email" required>
+                                <input type="text" class="form-control" placeholder="Email" id="register-email" required>
                             </div>
                             <div class="form-group position-relative">
                                 <i class="fas fa-user"></i>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="form-group position-relative">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" class="form-control" placeholder="Password" required>
+                                <input type="password" class="form-control" placeholder="Password" id="register-password" required>
                             </div>
                             <div class="form-group position-relative">
                                 <i class="fas fa-lock"></i>
@@ -100,7 +100,7 @@
                                 </select>
                             </div>
                             
-                            <button type="submit" class="btn btn-dark btn-block">Registar</button>
+                            <button type="submit" class="btn btn-dark btn-block" id="registerBtn">Registar</button>
                         </form>
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -111,6 +111,7 @@
         </form>
     </div>
 
+    <script type="module" defer src="../js/Auth.js"></script>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

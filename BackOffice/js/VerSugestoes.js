@@ -71,31 +71,31 @@
     var contacto = document.getElementById("contactoResp").value;
 
 
-  var sugestoes;
-  if(localStorage.getItem("sugestoes")==null){
-    sugestoes = [];
-  }
-  else{
-    sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
-  }
+    var sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
 
-  sugestoes.push({
-    tipo : tipo,
-    local : local,
-    data : data,
-    email : email,
-    contacto : contacto
-  });
+    sugestoes.push({
+      tipo : tipo,
+      local : local,
+      data : data,
+      email : email,
+      contacto : contacto
+    });
 
-  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
-  showDataSugestoes();
-  document.getElementById("drop").value = "";
-  document.getElementById("local").value = "";
-  document.getElementById("dataEvento").value = "";
-  document.getElementById("emailResp").value = "";
-  document.getElementById("contactoResp").value = "";
+    localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+    showDataSugestoes();
+    document.getElementById("drop").value = "";
+    document.getElementById("local").value = "";
+    document.getElementById("dataEvento").value = "";
+    document.getElementById("emailResp").value = "";
+    document.getElementById("contactoResp").value = "";
   
-}
+  }
 
 
 document.onload = showDataSugestoes();

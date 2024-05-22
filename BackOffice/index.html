@@ -25,6 +25,11 @@
   <link rel="stylesheet" href="plugins/exp/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+<script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = './views/Login.html';
+  }
+</script>
 <div class="wrapper ">
 
   <!-- Preloader -->
@@ -413,11 +418,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
+    Trabalho Realizado por <strong>Grupo 501</strong>
   </footer>
 
   <!-- Control Sidebar -->
