@@ -2,7 +2,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
   
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
   
 
@@ -16,37 +16,51 @@
   };
 
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth();
+  const auth = getAuth(app);
+  auth.languageCode = 'pt';
   const provider = new GoogleAuthProvider();
 
-  const signInButton = document.getElementById('button-google');
-
-  const userSignIn = async () => { 
-
-    signInWithPopup (auth, provider)
-    .then ((result) => {
-
-      const user = result.user;
-      console.log(user);
-
-    }).catch ((error) => {
-      
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    })
-  }
-
-  const userSignOut  = async () => {
-    signOut(auth).then(() => {
-      alert("Desconectado com sucesso!");
-    }).catch ((error) => {})
-  }
-
-  onAuthStateChanged(auth, (user) => {
-    if (user){
-        alert("Já está logado!")
-    } else {
+  document.addEventListener("DOMContentLoaded", function () {
+    // Verifica se a página atual é a página de login
+    if (document.getElementById("button-google")) {
+      const submitLoginGoogle = document.getElementById("button-google");
+      submitLoginGoogle.addEventListener("click", googleLogin);
     }
-  })
+  
 
-  signInButton.addEventListener('click', userSignIn);
+  
+    const logoutBtn = document.querySelector('#logout-btn');
+    logoutBtn.addEventListener('click', e => {
+      e.preventDefault();
+      auth.signOut();
+      console.log('User signed out!');
+    })
+  
+    function signOut(event) {
+      event.preventDefault();
+      auth.signOut().then(() => {
+        alert("User signed out!");
+        window.location.href = "../views/login.html";
+      }).catch((error) => {
+        alert("Error: " + error.errorMessage);
+      });
+    }
+  
+    function googleLogin(event) {
+      event.preventDefault();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const user = result.user;
+          console.log(user);
+          localStorage.setItem("loggedIn", true);
+          window.location.href = "/Front_office/index.html"
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+    }
+});
