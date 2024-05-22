@@ -82,7 +82,12 @@
       html += "<td>" + element.contacto + "</td>";
     });
   
-    document.querySelector("#sugestoes-table tbody").innerHTML = html;
+    const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2");
+
+    tables.forEach(table =>{
+      table.innerHTML = html;
+    });
+
   }
 
   document.onload = showDataSugestoes();
