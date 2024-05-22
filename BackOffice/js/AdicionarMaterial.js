@@ -12,33 +12,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Limpar qualquer conteúdo existente na tabela
 
     // Iterar sobre os dados e inseri-los na tabela
-    materiaisArray.forEach(function(material) {
+    materiaisArray.forEach(function(material, index) {
         var novaLinha = document.createElement('tr');
         novaLinha.innerHTML = `
-            <td>1</td>
+            <td>${index + 1}</td>
             <td>${material.nome}</td>
-            <td class="quantidade">${material.quantidade}</td>
-            <td>
-                <div class="progress progress-xs">
-                    <div class="progress-bar bg-primary" style="width: ${material.quantidade}"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-primary">${material.quantidade}</span></td>
+            <td class="descricao">${material.descricao}</td>
+            <td><span class="badge bg-success">${material.quantidade}</span></td>
         `;
         table.appendChild(novaLinha);
     });
 });
 
 
-function ArmazenarMaterial() {
+function ArmazenarMaterial(event) {
+
+    event.preventDefault();
     var nome = document.getElementById("nome_material_adicionar").value;
-    var tipo = document.getElementById("tipo_material_adicionar").value;
     var descricao = document.getElementById("descricao").value;
     var quantidade = document.getElementById("quantidade_material_adicionar").value;
 
     var dadosMaterial = {
         nome: nome,
-        tipo: tipo,
         descricao: descricao,
         quantidade: quantidade
     };
@@ -51,9 +46,10 @@ function ArmazenarMaterial() {
 
     // Atualizar a tabela após armazenar a iniciativa
 
-    atualizarTabela();
-
     alert("Material adicionado com sucesso");
+
+    window.location.href = "../views/GestaoInventario.html";
+    atualizarTabela();
 
     return false;
 }
@@ -70,18 +66,13 @@ function atualizarTabela() {
     table.innerHTML = '';
 
     // Iterar sobre os dados e inseri-los na tabela
-    materiaisArray.forEach(function(material) {
+    materiaisArray.forEach(function(material, index) {
         var newRow = document.createElement('tr');
         newRow.innerHTML = `
-            <td>1</td>
+            <td>${index + 1}</td>
             <td>${material.nome}</td>
-            <td class="quantidade">${material.quantidade}</td>
-            <td>
-                <div class="progress progress-xs">
-                    <div class="progress-bar bg-primary" style="width: ${material.quantidade}"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-primary">${material.quantidade}</span></td>
+            <td class="descricao">${material.descricao}</td>
+            <td><span class="badge bg-success">${material.quantidade}</span></td>
         `;
         table.appendChild(newRow);
     });
