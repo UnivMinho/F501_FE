@@ -24,6 +24,11 @@
 </head>
 <body>
 
+    <script>
+        if (!localStorage.getItem('loggedIn')) {
+          window.location.href = '/Front_office/login.html';
+        }
+      </script>
 	
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
@@ -72,7 +77,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="label" for="info">Valor a Doar</label>
-                                                    <input type="number" class="form-control" name="info" id="info" placeholder="EUR">
+                                                    <input type="number" class="form-control" name="valor" id="valor" placeholder="EUR" min="1" required>
                                                 </div>
                                             </div>
 
@@ -83,28 +88,28 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="primeiroNome" id="primeiroNome" placeholder="Primeiro Nome">
+                                                    <input type="text" class="form-control" name="primeiroNome" id="NomeCartao" placeholder="Primeiro Nome" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="Apelido" id="Apelido" placeholder="Apelido">
+                                                    <input type="text" class="form-control" name="Apelido" id="ApelidoCartao" placeholder="Apelido" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="nrCartao" id="nrCartao" placeholder="Número do cartão">
+                                                    <input type="text" class="form-control" name="nrCartao" id="nrCartao" placeholder="Número do cartão" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="cvc" id="cvc" placeholder="CVC">
+                                                    <input type="text" class="form-control" name="cvc" id="cvc" placeholder="CVC" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="validade" id="validade" placeholder="Validade MM/YY">
+                                                    <input type="text" class="form-control" name="validade" id="validade" placeholder="Validade MM/YY" required>
                                                 </div>
 
                                             </div>
@@ -116,20 +121,20 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="PrimeiroNome" id="Nome" placeholder="Primeiro Nome">
+                                                        <input type="text" class="form-control" name="PrimeiroNome" id="Nome" placeholder="Primeiro Nome" required>
                                                     </div>
                                                 </div>
     
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" name="Apelido2" id="Apelido2" placeholder="Apelido">
+                                                        <input type="text" class="form-control" name="Apelido2" id="Apelido" placeholder="Apelido" required>
                                                     </div>
     
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                                                     </div>
     
                                                 </div>
