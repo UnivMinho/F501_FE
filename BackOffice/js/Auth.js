@@ -66,7 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        alert("Error: " + errorMessage);
       });
   }
+
+  const logoutBtn = document.querySelector('#logout-btn');
+    logoutBtn.addEventListener('click', e => {
+    e.preventDefault();
+    auth.signOut();
+    console.log('User signed out!');
+    })
+
+    function signOut(event) {
+        event.preventDefault();
+        auth.signOut().then(() => {
+            alert("User signed out!");
+            window.location.href = "../views/Login.html";
+        }).catch((error) => {
+           alert("Error: " + error.errorMessage);
+        });
+    }
 });
