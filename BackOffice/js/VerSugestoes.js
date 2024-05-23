@@ -140,6 +140,30 @@ function deleteData(index){
 }
 
 function recoverData(index){
+  var sugestoesrec;
+    if(localStorage.getItem("sugestoesrec")==null){
+      sugestoesrec = [];
+    }
+    else{
+      sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
+    }
+
+  var deletedSugestao = sugestoesrec[index];
+
+  sugestoesrec.splice(index, 1);
+  localStorage.setItem("sugestoesrec", JSON.stringify(sugestoesrec));
   
+  var sugestoes;
+  if (localStorage.getItem("sugestoes") == null) {
+    sugestoes = [];
+  } else {
+    sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+  }
+
+  sugestoes.push(deletedSugestao);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+
+  showDataSugestoesRec();
+
 }
 
