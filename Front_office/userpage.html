@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sobre</title>
+  <title>Perfil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -25,6 +25,13 @@
 
 </head>
 <body>
+
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = '/Front_office/login.html';
+    }
+  </script>
+
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a href="index.html">
@@ -40,7 +47,7 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
                 <li class="nav-item"><a href="causes.html" class="nav-link">Iniciativas</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Doações</a></li>
-                <li class="nav-item cta"><a href="login.html" class="nav-link">Login</a></li>
+                <li class="nav-item cta"><a href="userpage.html" class="nav-link">Perfil</a></li>
 				</ul>
 			</div>
 		</div>
@@ -69,18 +76,18 @@
     <h2 class="user-p">Perfil de Usuário</h2>
     <img class ="card-img" src="images_1/avatar.png">
       <div class="card-body">
-        <p class="card-text"> Username </p>
-        <p class="card-text"> E-mail</p>
-        <p class="card-text"> Contacto </p>
+        <p class="card-text username"> Username: </p>
+        <p class="card-text email"> E-mail:</p>
+        <p class="card-text"> Contacto: </p>
+        <p class="card-text"> Cargo: </p>
     </div>
     <div class="botao">
-        <a href="formsIniciativas.html" class="suggest-button">Sugerir Nova Iniciativa</a>
+        <a href="formsIniciativas.html" class="suggest-button" id="suggest-button">Sugerir Nova Iniciativa</a>
         <a href="tabelaIniciativaProponente.html" class="suggest-button">Consultar Iniciativas</a>
+       <button class="botao logout" id="button-logout">LogOut </button>
     </div>
   </div><br><br>
 </section>
-
-
 
 <footer class="footer">
   <div class="container">
@@ -145,6 +152,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfk0LqhI_4F8HXPYfvhvwZBtLOhoDkNgI&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+<script type="module" defer src="js/login.js"></script>
+	
 
 </body>
 </html>
