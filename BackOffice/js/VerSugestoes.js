@@ -1,5 +1,5 @@
 function showDataSugestoes(){
-  var sugestoes;
+  let sugestoes;
   if(localStorage.getItem("sugestoes")==null){
     sugestoes = [];
   }
@@ -7,7 +7,7 @@ function showDataSugestoes(){
     sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
   }
 
-  var html = "";
+  let html = "";
 
     sugestoes.forEach(function(element, index) {
       html += "<tr>";
@@ -39,7 +39,7 @@ function showDataSugestoes(){
   document.onload = showDataSugestoes();
 
 function showDataSugestoesRec(){
-  var sugestoesrec;
+  let sugestoesrec;
   if(localStorage.getItem("sugestoesrec")==null){
     sugestoesrec = [];
   }
@@ -47,7 +47,7 @@ function showDataSugestoesRec(){
     sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
   }
   
-  var html = "";
+  let html = "";
   
   sugestoesrec.forEach(function(element, index) {
     html += "<tr>";
@@ -70,14 +70,14 @@ function showDataSugestoesRec(){
 
 function AddDataSugestoes(){
     
-    var tipo = document.getElementById("drop").value;
-    var local = document.getElementById("local").value;
-    var data = document.getElementById("dataEvento").value;
-    var email = document.getElementById("emailResp").value;
-    var contacto = document.getElementById("contactoResp").value;
+    let tipo = document.getElementById("drop").value;
+    let local = document.getElementById("local").value;
+    let data = document.getElementById("dataEvento").value;
+    let email = document.getElementById("emailResp").value;
+    let contacto = document.getElementById("contactoResp").value;
 
 
-    var sugestoes;
+    let sugestoes;
     if(localStorage.getItem("sugestoes")==null){
       sugestoes = [];
     }
@@ -112,7 +112,7 @@ function updateData(){
 }
 
 function deleteData(index){
-  var sugestoes;
+  let sugestoes;
     if(localStorage.getItem("sugestoes")==null){
       sugestoes = [];
     }
@@ -120,12 +120,12 @@ function deleteData(index){
       sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
     }
 
-  var deletedSugestao = sugestoes[index];
+  let deletedSugestao = sugestoes[index];
 
   sugestoes.splice(index, 1);
   localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
   
-  var sugestoesrec;
+  let sugestoesrec;
   if (localStorage.getItem("sugestoesrec") == null) {
     sugestoesrec = [];
   } else {
@@ -140,7 +140,7 @@ function deleteData(index){
 }
 
 function recoverData(index){
-  var sugestoesrec;
+  let sugestoesrec;
     if(localStorage.getItem("sugestoesrec")==null){
       sugestoesrec = [];
     }
@@ -148,12 +148,12 @@ function recoverData(index){
       sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
     }
 
-  var deletedSugestao = sugestoesrec[index];
+  let deletedSugestao = sugestoesrec[index];
 
   sugestoesrec.splice(index, 1);
   localStorage.setItem("sugestoesrec", JSON.stringify(sugestoesrec));
   
-  var sugestoes;
+  let sugestoes;
   if (localStorage.getItem("sugestoes") == null) {
     sugestoes = [];
   } else {
