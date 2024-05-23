@@ -205,6 +205,22 @@ body {
       
 
 /* ate aqui*/
+.vazio{
+  margin-bottom: 50px;
+}
+
+#perfil-card {
+	margin-top: 100px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 25%;
+	margin: auto;
+	text-align: center;
+  }
+
+.user-p{
+	text-align: center;
+}
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }

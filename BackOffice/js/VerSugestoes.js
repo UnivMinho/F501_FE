@@ -16,9 +16,24 @@ function showDataSugestoes(){
       html += "<td>" + element.data + "</td>";
       html += "<td>" + element.email + "</td>";
       html += "<td>" + element.contacto + "</td>";
+      html += 
+      '<td><button onclick="acceptData(' +
+      index + 
+      ')" class="fa fa-check"></button><button onclick="updateData(' +
+      index +
+      ')"class="fa fa-pencil"></button><button onclick="deleteData(' +
+      index + 
+      ')" class="fa fa-trash"></button>';
+      html += "</tr>";
+
     });
   
-    document.querySelector("#sugestoes-table tbody").innerHTML = html;
+    const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2");
+
+    tables.forEach(table =>{
+      table.innerHTML = html;
+    });
+
   }
 
   document.onload = showDataSugestoes();
@@ -58,6 +73,17 @@ function showDataSugestoes(){
   
   }
 
+function acceptData(){
+
+}
+
+function updateData(){
+
+}
+
+function deleteData(){
+  
+}
 
 
 
