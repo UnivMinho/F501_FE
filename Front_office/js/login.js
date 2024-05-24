@@ -86,6 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
     cargoSelect.addEventListener('change', function() {
       const selectedCargo = cargoSelect.value;
       localStorage.setItem('cargo', selectedCargo);
+      updatePermissions(selectedCargo);
     });
+
+    updatePermissions(savedCargo);
   });
   
+  function updatePermissions(cargo) {
+    // Esconder ou mostrar os botões com base no cargo selecionado
+    if (cargo === 'voluntario') {
+      // Se o cargo for "Voluntário", ocultar os botões específicos
+      document.getElementById("sugerirIniciativa").style.display = 'none';
+      document.getElementById("consultarIniciativa").style.display = 'none';
+
+    } else {
+      // Para outros cargos, mostrar os botões
+      document.getElementById('botao1').style.display = 'block';
+      document.getElementById('botao2').style.display = 'block';
+    }
+  }
