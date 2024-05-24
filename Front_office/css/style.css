@@ -168,11 +168,10 @@ body {
 }
 
 .suggest-button-user {
-  display: inline-block;
-  position: 
+  display: block; /* Para que cada botão apareça em uma linha separada */
   width: 200px;
-  margin: 20px auto;
-  padding: 10px;
+  margin: 10px auto; /* Remova esta linha se quiser que os botões fiquem alinhados verticalmente */
+  padding: 5px;
   background-color: #eb5757;
   color: #fff;
   text-align: center;

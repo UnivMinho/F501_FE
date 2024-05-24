@@ -98,10 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
       // Se o cargo for "Voluntário", ocultar os botões específicos
       document.getElementById("sugerirIniciativa").style.display = 'none';
       document.getElementById("consultarIniciativa").style.display = 'none';
-
     } else {
-      // Para outros cargos, mostrar os botões
-      document.getElementById('botao1').style.display = 'block';
-      document.getElementById('botao2').style.display = 'block';
+      // Se não for "Voluntário", mostrar os botões
+      document.getElementById("sugerirIniciativa").style.display = 'block';
+      document.getElementById("consultarIniciativa").style.display = 'block';
     }
   }
