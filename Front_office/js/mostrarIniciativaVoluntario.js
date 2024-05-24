@@ -36,16 +36,13 @@ function inscreverVoluntario(){
 
 
 function inscrever(index) {
-    // Recupera as sugestões do localStorage
+    
     let sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
 
-    // Atualiza o estado da inscrição para a sugestão correspondente
     sugestoes[index].inscrito = true;
 
-    // Salva de volta no localStorage
     localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
 
-    // Atualiza a exibição do botão e do texto "Inscrito" correspondentes imediatamente
     let button = document.getElementById('inscreverButton' + index);
     let text = document.getElementById('inscritoText' + index);
 
