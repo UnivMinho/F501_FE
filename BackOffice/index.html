@@ -78,9 +78,7 @@
     
     <!-- Botão de login -->
     <li class="nav-item">
-        <a class="nav-link btn-login" href="#" role="button">
-            Login
-        </a>
+        <a class="nav-link btn-login" href="./views/Login.html" role="button" id="auth-link"></a>
     </li>
     
       
@@ -118,32 +116,33 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item menu-open">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt" style="color: white;"></i>
-                    <p style="color: white;">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
                         Dashboard Center
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
             </li>            
           <li class="nav-item">
             <a href="views/GestaoInventario.html" class="nav-link">
-              <i class="nav-icon fas fa-th" style="color: white;"></i>
-              <p style="color: white;">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
                 Inventário
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-user" style="color: white;"></i>
-              <p style="color: white;">
+              <i class="nav-icon far fa-user"></i>
+              <p>
                 Perfil
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt" style="color: white;"></i>
-              <p style="color: white;">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
                 Sair
               </p>
             </a>
@@ -182,62 +181,91 @@
     <section class="content ">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-
-
-        <div id="app" class="row">
+        <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box" style="background-color: #28A745;">
+            <div class="small-box custom-bg-28A745">
               <div class="inner" style="color: white;">
-                <h3>{{ iniciativas }}</h3>
+                <h3>53%</h3>
 
-                  <p>Iniciativas em Curso</p>
+                <p>Pedidos Aceites</p>
               </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            
+            <style>
+              .custom-bg-28A745 {
+                  background-color: #28A745;
+              }
+            </style>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box" style="background-color: #DC3545;">
+            <div class="small-box custom-bg-DC3545">
               <div class="inner" style="color: white;">
-                <h3>{{ sugestoes }}</h3>
+                <h3>65</h3>
 
-                  <p>Pedidos Pendentes</p>
+                <p>Iniciativas em curso</p>
               </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            
+            <style>
+              .custom-bg-DC3545 {
+                  background-color: #DC3545;
+              }
+            </style>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box" style="background-color: #e6af0d;">
+            <div class="small-box custom-bg-FFC107">
               <div class="inner" style="color: white;">
-                <h3>{{ sugestoesrec }}</h3>
+                <h3>44</h3>
 
-                  <p>Sugestões Recusadas</p>
+                <p>Profissionais Registados</p>
               </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            
+            <style>
+              .custom-bg-FFC107 {
+                  background-color: #e6af0d;
+              }
+            </style>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box" style="background-color: #3F474E;">
-              <div class="inner" style="color: white;">
-                <h3>{{ material }}</h3>
-
-                <p>Material</p>
+            <div class="small-box custom-bg-3F474E">
+              <div class="inner">
+                  <h3 class="text-white">150</h3>
+                  <p class="text-white">Pedidos Pendentes</p>
               </div>
+              <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-        
+          
+          <style>
+              .custom-bg-3F474E {
+                  background-color: #3F474E;
+              }
+              .custom-bg-3F474E .text-white {
+                  color: white;
+              }
+          </style>
           </div>
           <!-- ./col -->
         </div>
-
-
-
-
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
@@ -435,44 +463,5 @@
 <script src="plugins/exp/scripts/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="plugins/exp/scripts/dashboard.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-<script>
-  var app = new Vue({
-    el: '#app',
-    data: {
-      sugestoes: 0,
-      iniciativas: 0,
-      sugestoesrec: 0,
-      material: 0
-    },
-    mounted() {
-      console.log('Vue instance mounted');
-      this.loadData();
-    },
-    methods: {
-      loadData() {
-        console.log('Loading data from localStorage');
-        const sugestoesArray = JSON.parse(localStorage.getItem('sugestoes') || '[]');
-        const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
-        const sugestoesrecArray = JSON.parse(localStorage.getItem('sugestoesrec') || '[]');
-        const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
-        
-        this.sugestoes = sugestoesArray.length;
-        this.iniciativas = iniciativasArray.length;
-        this.sugestoesrec = sugestoesrecArray.length;
-        this.material = materialArray.length;
-
-        console.log(localStorage.getItem('sugestoes'));
-        console.log(localStorage.getItem('iniciativas'));
-        console.log(localStorage.getItem('sugestoesrec'));
-        console.log(localStorage.getItem('material'));
-      }
-    }
-  });
-</script>
-
-
 </body>
 </html>

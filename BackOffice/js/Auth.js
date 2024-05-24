@@ -3,7 +3,9 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut,
   } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
 
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     const email = document.getElementById("register-email").value;
     const password = document.getElementById("register-password").value;
-// 
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
@@ -80,26 +82,35 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  const logoutBtn = document.querySelector('#logout-btn');
-  logoutBtn.addEventListener('click', e => {
-    e.preventDefault();
-    auth.signOut();
-    console.log('User signed out!');
-  })
+  onAuthStateChanged(auth, (user) => {
+    const authLink = document.getElementById("auth-link");
+    if (user) {
+      // Usuário está logado
+      authLink.innerHTML =
+        '<a class="nav-link btn-login" role="button" id="auth-link">Sair</a>';
+      document
+        .getElementById("auth-link")
+        .addEventListener("click", logout);
+    } else {
+      // Usuário não está logado
+      authLink.innerHTML =
+        '<a class="nav-link btn-login" href="../views/Login.html" role="button" id="auth-link">Login</a>';
+    }
+  });
 
-  function signOut(event) {
-    event.preventDefault();
-    auth.signOut().then(() => {
-      alert("User signed out!");
-      window.location.href = "../views/Login.html";
-    }).catch((error) => {
-      alert("Error: " + error.errorMessage);
-    });
+  function logout() {
+    signOut(auth)
+      .then(() => {
+        localStorage.setItem("loggedIn", false);
+        window.location.href = "../index.html";
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
   }
 
   function googleLogin(event) {
     event.preventDefault();
-    alert("Google Login");
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
