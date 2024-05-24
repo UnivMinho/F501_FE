@@ -12,6 +12,7 @@ function showDataSugestoes(){
     sugestoes.forEach(function(element, index) {
       html += "<tr>";
       html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.descInic + "</td>";
       html += "<td>" + element.local + "</td>";
       html += "<td>" + element.data + "</td>";
       html += "<td>" + element.email + "</td>";
@@ -38,6 +39,14 @@ function showDataSugestoes(){
 
   document.onload = showDataSugestoes();
 
+
+
+
+
+
+
+
+
 function showDataSugestoesRec(){
   let sugestoesrec;
   if(localStorage.getItem("sugestoesrec")==null){
@@ -52,6 +61,7 @@ function showDataSugestoesRec(){
   sugestoesrec.forEach(function(element, index) {
     html += "<tr>";
     html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.descInic + "</td>";
     html += "<td>" + element.local + "</td>";
     html += "<td>" + element.data + "</td>";
     html += "<td>" + element.email + "</td>";
@@ -71,6 +81,7 @@ function showDataSugestoesRec(){
 function AddDataSugestoes(){
     
     let tipo = document.getElementById("drop").value;
+    let descInic = document.getElementById("Desiniciativa").value;
     let local = document.getElementById("local").value;
     let data = document.getElementById("dataEvento").value;
     let email = document.getElementById("emailResp").value;
@@ -87,6 +98,7 @@ function AddDataSugestoes(){
 
     sugestoes.push({
       tipo : tipo,
+      descInic : descInic,
       local : local,
       data : data,
       email : email,
@@ -96,6 +108,7 @@ function AddDataSugestoes(){
     localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
     showDataSugestoes();
     document.getElementById("drop").value = "";
+    document.getElementById("Desiniciativa").value = "";
     document.getElementById("local").value = "";
     document.getElementById("dataEvento").value = "";
     document.getElementById("emailResp").value = "";

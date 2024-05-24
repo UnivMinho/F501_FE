@@ -74,20 +74,27 @@
 <section>
   <div id="perfil-card" class="card">
     <h2 class="user-p">Perfil de Usuário</h2>
-    <img class ="card-img" src="images_1/avatar.png">
-      <div class="card-body">
-        <p class="card-text username"> Username: </p>
-        <p class="card-text email"> E-mail:</p>
-        <p class="card-text"> Contacto: </p>
-        <p class="card-text"> Cargo: </p>
+    <img class="card-img" src="images_1/avatar.png" alt="Foto do usuário">
+    <div class="card-body">
+      <p class="card-text username" id="displayName"></p>
+      <p class="card-text email" id="email"></p>
+      <select class="card-text cargo" id="cargo">
+        <option value="proponente">Proponente</option>
+        <option value="voluntario">Voluntário</option>
+      </select>
+
+
     </div>
     <div class="botao">
-        <a href="formsIniciativas.html" class="suggest-button" id="suggest-button">Sugerir Nova Iniciativa</a>
-        <a href="tabelaIniciativaProponente.html" class="suggest-button">Consultar Iniciativas</a>
-       <button class="botao logout" id="button-logout">LogOut </button>
+      <a href="formsIniciativas.html" class="suggest-button-user" id="sugerirIniciativa">Sugerir Nova Iniciativa</a>
+      <a href="tabelaIniciativaProponente.html" class="suggest-button-user" id="consultarIniciativa">Consultar Iniciativas</a>
+      <a href="inscreverIniciativaVoluntario.html" class="suggest-button-user" id="consultarInscricoes">Consultar inscrições</a>
+      <button class="botao logout" id="button-logout">Terminar Sessão </button>
     </div>
   </div><br><br>
 </section>
+
+
 
 <footer class="footer">
   <div class="container">

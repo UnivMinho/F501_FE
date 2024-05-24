@@ -2,18 +2,18 @@
 //comeca aqui
 document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os dados do localStorage
-    var storedMateriais = localStorage.getItem("material");
-    var materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
+    let storedMateriais = localStorage.getItem("material");
+    let materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
     
 
     // Selecionar a tabela onde os dados serão inseridos
-    var table = document.querySelector('.materialTable tbody');
+    let table = document.querySelector('.materialTable tbody');
 
     // Limpar qualquer conteúdo existente na tabela
 
     // Iterar sobre os dados e inseri-los na tabela
     materiaisArray.forEach(function(material, index) {
-        var novaLinha = document.createElement('tr');
+        let novaLinha = document.createElement('tr');
         novaLinha.innerHTML = `
             <td>${index + 1}</td>
             <td>${material.nome}</td>
@@ -28,18 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
 function ArmazenarMaterial(event) {
 
     event.preventDefault();
-    var nome = document.getElementById("nome_material_adicionar").value;
-    var descricao = document.getElementById("descricao").value;
-    var quantidade = document.getElementById("quantidade_material_adicionar").value;
+    let nome = document.getElementById("nome_material_adicionar").value;
+    let tipo = document.getElementById("tipo_material").value;
+    let descricao = document.getElementById("descricao").value;
+    let quantidade = document.getElementById("quantidade_material_adicionar").value;
 
-    var dadosMaterial = {
+    let dadosMaterial = {
         nome: nome,
+        tipo: tipo,
         descricao: descricao,
         quantidade: quantidade
     };
 
-    var storedMateriais = localStorage.getItem("material");
-    var materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
+    let storedMateriais = localStorage.getItem("material");
+    let materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
     materiaisArray.push(dadosMaterial);
 
     localStorage.setItem("material", JSON.stringify(materiaisArray));
@@ -56,18 +58,18 @@ function ArmazenarMaterial(event) {
 
 function atualizarTabela() {
     // Recuperar os dados do localStorage
-    var storedMateriais = localStorage.getItem("material");
-    var materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
+    let storedMateriais = localStorage.getItem("material");
+    let materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
 
     // Selecionar a tabela onde os dados serão inseridos
-    var table = document.querySelector('.materialTable tbody');
+    let table = document.querySelector('.materialTable tbody');
 
     // Limpar qualquer conteúdo existente na tabela
     table.innerHTML = '';
 
     // Iterar sobre os dados e inseri-los na tabela
     materiaisArray.forEach(function(material, index) {
-        var newRow = document.createElement('tr');
+        let newRow = document.createElement('tr');
         newRow.innerHTML = `
             <td>${index + 1}</td>
             <td>${material.nome}</td>

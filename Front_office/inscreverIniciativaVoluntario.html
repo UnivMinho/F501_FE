@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Tabela Voluntário</title>
+    <title>Tabela Proponente</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -29,10 +29,10 @@
 
     <script>
       if (!localStorage.getItem('loggedIn')) {
-        window.location.href = 'Front_office/login.html';
+        window.location.href = '/Front_office/login.html';
       }
     </script>
-
+    
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
           <div class="container">
               <a href="index.html">
@@ -55,18 +55,21 @@
       </nav>
   <!-- END nav -->
   
+  
+  
   <section class="hero-wrap hero-wrap-2" style="background-image: url('images_1/divSliderItem.jpeg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text align-items-end">
         <div class="col-md-9 ftco-animate pb-5">
          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
-          <span>Iniciativas Voluntários<i class="ion-ios-arrow-forward"></i></span></p>
-         <h1 class="mb-0 bread">Iniciativas Voluntários</h1>
+          <span>Iniciativas Disponíveis<i class="ion-ios-arrow-forward"></i></span></p>
+         <h1 class="mb-0 bread">Tabela de Inscrições</h1>
         </div>
      </div>
    </div>
   </section>
+
 
   <section class="ftco-section">
     <section class="content">
@@ -75,54 +78,37 @@
           <div class="col-12">
             <div class="card table-card">
               <div class="card-header text-center">
-                <h3 class="card-title font-weight-bold">Iniciativas Voluntários</h3>
+                  <h3 class="card-title font-weight-bold">Iniciativas Disponíveis</h3>
               </div>
               <!-- ./card-header -->
               <div class="card-body table-responsive">
-                <table class="table table-custom">
+                <table class="table table-custom" id="sugestoes-table-vol">
                   <thead>
-                    <tr>
-                      <th>Iniciativa</th>
-                      <th>Local</th>
-                      <th>Data</th>
-                      <th>Estado</th>
-                    </tr>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Local</th>
+                        <th>Data</th>
+                        <th>Ação</th>
+                      </tr>
+                      <tr>
+
+                      </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Recolha de alimentos</td>
-                      <td>Avenida Central de Braga</td>
-                      <td>30/03/2024</td>
-                      <td><span class="botao aceite">INSCRITO</span></td>
-                    </tr>
-                    <tr>
-                      <td>Visita a asilos</td>
-                      <td>Rua dos Oliveiras</td>
-                      <td>25/04/2024</td>
-                      <td><span class="botao aceite">INSCRITO</span></td>
-                    </tr>
-                    <tr>
-                      <td>Apoio em abrigos</td>
-                      <td>Rua do Raio</td>
-                      <td>10/04/2024</td>
-                      <td><span class="botao aceite">INSCRITO</span></td>
-                    </tr>
-                    <!-- Additional empty rows for spacing -->
                   </tbody>
                 </table>
-                
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
           </div>
           <!-- /.col-12 -->
         </div>
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
+    </section>
   </section>
-  </section>
+  
   
    
 
@@ -191,7 +177,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
-<script src="js/script.js"></script>
+<script src="js/mostrarIniciativaVoluntario.js"></script>
+
 
 </body>
 </html>
