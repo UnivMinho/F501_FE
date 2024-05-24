@@ -17,7 +17,7 @@ function showDataSugestoesVoluntarios(){
         html += 
         '<td><button id="inscreverButton' + index + 
         '" onclick="inscrever(' + index + 
-        ')" style="background: #eec857 border: 2px solid #eec857 color: #fff;">Inscrever</button><span id="inscritoText' + index + 
+        ')" style="background: #eec857 border: 2px solid #eec857 color: #fff; ">Inscrever</button><span id="inscritoText' + index + 
         '" style="display:none;">Inscrito</span></td>';
         html += "</tr>";
     });
