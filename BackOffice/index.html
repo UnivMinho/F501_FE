@@ -118,33 +118,32 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item menu-open">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
+                    <i class="nav-icon fas fa-tachometer-alt" style="color: white;"></i>
+                    <p style="color: white;">
                         Dashboard Center
-                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
             </li>            
           <li class="nav-item">
             <a href="views/GestaoInventario.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
+              <i class="nav-icon fas fa-th" style="color: white;"></i>
+              <p style="color: white;">
                 Inventário
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
-              <p>
+              <i class="nav-icon far fa-user" style="color: white;"></i>
+              <p style="color: white;">
                 Perfil
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
+              <i class="nav-icon fas fa-sign-out-alt" style="color: white;"></i>
+              <p style="color: white;">
                 Sair
               </p>
             </a>
@@ -183,91 +182,62 @@
     <section class="content ">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
+
+
+        <div id="app" class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-28A745">
+            <div class="small-box" style="background-color: #28A745;">
               <div class="inner" style="color: white;">
-                <h3>53%</h3>
+                <h3>{{ iniciativas }}</h3>
 
-                <p>Pedidos Aceites</p>
+                  <p>Iniciativas em Curso</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-28A745 {
-                  background-color: #28A745;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-DC3545">
+            <div class="small-box" style="background-color: #DC3545;">
               <div class="inner" style="color: white;">
-                <h3>65</h3>
+                <h3>{{ sugestoes }}</h3>
 
-                <p>Iniciativas em curso</p>
+                  <p>Pedidos Pendentes</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-DC3545 {
-                  background-color: #DC3545;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-FFC107">
+            <div class="small-box" style="background-color: #e6af0d;">
               <div class="inner" style="color: white;">
-                <h3>44</h3>
+                <h3>{{ sugestoesrec }}</h3>
 
-                <p>Profissionais Registados</p>
+                  <p>Sugestões Recusadas</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-FFC107 {
-                  background-color: #e6af0d;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-3F474E">
-              <div class="inner">
-                  <h3 class="text-white">150</h3>
-                  <p class="text-white">Pedidos Pendentes</p>
+            <div class="small-box" style="background-color: #3F474E;">
+              <div class="inner" style="color: white;">
+                <h3>{{ material }}</h3>
+
+                <p>Material</p>
               </div>
-              <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          
-          <style>
-              .custom-bg-3F474E {
-                  background-color: #3F474E;
-              }
-              .custom-bg-3F474E .text-white {
-                  color: white;
-              }
-          </style>
+        
           </div>
           <!-- ./col -->
         </div>
+
+
+
+
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
@@ -465,5 +435,44 @@
 <script src="plugins/exp/scripts/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="plugins/exp/scripts/dashboard.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      sugestoes: 0,
+      iniciativas: 0,
+      sugestoesrec: 0,
+      material: 0
+    },
+    mounted() {
+      console.log('Vue instance mounted');
+      this.loadData();
+    },
+    methods: {
+      loadData() {
+        console.log('Loading data from localStorage');
+        const sugestoesArray = JSON.parse(localStorage.getItem('sugestoes') || '[]');
+        const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
+        const sugestoesrecArray = JSON.parse(localStorage.getItem('sugestoesrec') || '[]');
+        const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
+        
+        this.sugestoes = sugestoesArray.length;
+        this.iniciativas = iniciativasArray.length;
+        this.sugestoesrec = sugestoesrecArray.length;
+        this.material = materialArray.length;
+
+        console.log(localStorage.getItem('sugestoes'));
+        console.log(localStorage.getItem('iniciativas'));
+        console.log(localStorage.getItem('sugestoesrec'));
+        console.log(localStorage.getItem('material'));
+      }
+    }
+  });
+</script>
+
+
 </body>
 </html>

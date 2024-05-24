@@ -16,8 +16,6 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/style.css">
 
-	<script src="./js/login.js" defer type="module" ></script>
-	
 </head>
 <body class="Login">
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -53,10 +51,11 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
                     <form action="action_page.php" method="post">
-                        <div class="container">
-                            <h1>Login</h1>
-							<button id="button-google">Login with Google</button>
-                        </div> 
+                        <button type="button" class="suggest-button" id="button-google">
+							Login
+						  </button>
+						  
+				 
                 </div>              
 		</div>
 	</section>
@@ -122,6 +121,8 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 		<script src="js/google-map.js"></script>
 		<script src="js/main.js"></script>
+		<script type="module" defer src="js/login.js"></script>
+	
 		
 	</body>
 	</html>

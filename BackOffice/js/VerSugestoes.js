@@ -1,77 +1,83 @@
-/*document.addEventListener('DOMContentLoaded', function () {
+function showDataSugestoes(){
+  let sugestoes;
+  if(localStorage.getItem("sugestoes")==null){
+    sugestoes = [];
+  }
+  else{
+    sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+  }
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector('#VerSugestoes-table tbody');
-  
-        data.forEach(item => {
+  let html = "";
 
-          let row = document.createElement('tr');
-          row.setAttribute('data-widget', 'expandable-table');
-          row.setAttribute('aria-expanded', 'false');
+    sugestoes.forEach(function(element, index) {
+      html += "<tr>";
+      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.local + "</td>";
+      html += "<td>" + element.data + "</td>";
+      html += "<td>" + element.email + "</td>";
+      html += "<td>" + element.contacto + "</td>";
+      html += 
+      '<td><button onclick="acceptData(' +
+      index + 
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="updateData(' +
+      index +
+      ')"class="fa fa-pencil" style="margin-left:10px; background-color:yellow;"></button><button onclick="deleteData(' +
+      index + 
+      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
+      html += "</tr>";
+
+  });
+
+  const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
+
+  tables.forEach(table =>{
+    table.innerHTML = html;
+  });
+
+}
+
+  document.onload = showDataSugestoes();
+
+function showDataSugestoesRec(){
+  let sugestoesrec;
+  if(localStorage.getItem("sugestoesrec")==null){
+    sugestoesrec = [];
+  }
+  else{
+    sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
+  }
   
-          row.innerHTML = `
-            <td>${item.iniciativa}</td>
-            <td>${item.local}</td>
-            <td>${item.data}</td>
-            <td>${item.vagas}</td>
-            <td>${item.tipo}</td>
-            <td>
-              <div class="btn-group">
-                  <button class="btn btn-success btn-circle" onclick="aprovarIniciativa('${item.iniciativa}')"><i class="fas fa-check"></i></button>
-                  <button class="btn btn-danger btn-circle" onclick="rejeitarIniciativa('${item.iniciativa}')"><i class="fas fa-trash"></i></button>
-              </div>
-            </td>
-          `;
+  let html = "";
   
-          tableBody.appendChild(row);
-  
-          
-          let expandableRow = document.createElement('tr');
-          expandableRow.classList.add('expandable-body');
-          expandableRow.innerHTML = `
-            <td colspan="6">
-              <p>
-                <strong>Descrição:</strong> ${item.descricao}
-                <button class="btn btn-sm btn-success ver-mais" onclick="toggleDescription(this)">Ver mais</button>
-              </p>
-            </td>
-          `;
-  
-          tableBody.appendChild(expandableRow);
-        });
-      })
-      .catch(error => console.error('Erro:', error));
+  sugestoesrec.forEach(function(element, index) {
+    html += "<tr>";
+    html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.data + "</td>";
+    html += "<td>" + element.email + "</td>";
+    html += "<td>" + element.contacto + "</td>";
+    html += 
+      '<td><button onclick="recoverData(' +
+      index + 
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button>';
+    html += "</td>";
   });
   
-  function toggleDescription(button) {
-    const expandableRow = button.closest('tr').nextElementSibling;
-    expandableRow.classList.toggle('show');
+  document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
   }
   
-  function aprovarInitiata(id) {
-    console.log(`Iniciativa ${id} aprovada.`);
-    // Adicionar codigo de aprovação
-  }
-  
-  function rejeitarIniciativa(id) {
-    console.log(`Iniciativa ${id} removida.`);
-    // Adicionar codigo de rejeição
-  }
-  
-  */
+    document.onload = showDataSugestoesRec();
 
-  function AddDataSugestoes(){
+function AddDataSugestoes(){
     
-    var tipo = document.getElementById("drop").value;
-    var local = document.getElementById("local").value;
-    var data = document.getElementById("dataEvento").value;
-    var email = document.getElementById("emailResp").value;
-    var contacto = document.getElementById("contactoResp").value;
+    let tipo = document.getElementById("drop").value;
+    let local = document.getElementById("local").value;
+    let data = document.getElementById("dataEvento").value;
+    let email = document.getElementById("emailResp").value;
+    let contacto = document.getElementById("contactoResp").value;
 
 
-    var sugestoes;
+    let sugestoes;
     if(localStorage.getItem("sugestoes")==null){
       sugestoes = [];
     }
@@ -95,31 +101,69 @@
     document.getElementById("emailResp").value = "";
     document.getElementById("contactoResp").value = "";
   
+}
+
+function acceptData(){
+
+}
+
+function updateData(){
+
+}
+
+function deleteData(index){
+  let sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
+
+  let deletedSugestao = sugestoes[index];
+
+  sugestoes.splice(index, 1);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+  
+  let sugestoesrec;
+  if (localStorage.getItem("sugestoesrec") == null) {
+    sugestoesrec = [];
+  } else {
+    sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
   }
 
+  sugestoesrec.push(deletedSugestao);
+  localStorage.setItem("sugestoesrec", JSON.stringify(sugestoesrec));
 
-document.onload = showDataSugestoes();
+  showDataSugestoes();
 
+}
 
-function showDataSugestoes(){
-  var sugestoes;
-  if(localStorage.getItem("sugestoes")==null){
+function recoverData(index){
+  let sugestoesrec;
+    if(localStorage.getItem("sugestoesrec")==null){
+      sugestoesrec = [];
+    }
+    else{
+      sugestoesrec = JSON.parse(localStorage.getItem("sugestoesrec"));
+    }
+
+  let deletedSugestao = sugestoesrec[index];
+
+  sugestoesrec.splice(index, 1);
+  localStorage.setItem("sugestoesrec", JSON.stringify(sugestoesrec));
+  
+  let sugestoes;
+  if (localStorage.getItem("sugestoes") == null) {
     sugestoes = [];
-  }
-  else{
+  } else {
     sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
   }
 
-  var html = "";
+  sugestoes.push(deletedSugestao);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
 
-  sugestoes.forEach(function(element, index) {
-    html += "<tr>";
-    html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.local + "</td>";
-    html += "<td>" + element.data + "</td>";
-    html += "<td>" + element.email + "</td>";
-    html += "<td>" + element.contacto + "</td>";
-  });
+  showDataSugestoesRec();
 
-  document.querySelector("#sugestoes-table tbody").innerHTML = html;
 }
+

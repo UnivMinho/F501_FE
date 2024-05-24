@@ -108,34 +108,33 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
                 <a href="../index.html" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard Center
-                        
+                    <i class="nav-icon fas fa-tachometer-alt" style="color: white;"></i>
+                    <p style="color: white;">
+                      Dashboard Center
                     </p>
                 </a>
             </li>
             
           <li class="nav-item menu-open">
             <a href="GestaoInventario.html" class="nav-link menu-open">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
+              <i class="nav-icon fas fa-th" style="color: white;"></i>
+              <p style="color: white;">
                 Inventário
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="../index.html" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
-              <p>
+              <i class="nav-icon far fa-user" style="color: white;"></i>
+              <p style="color: white;">
                 Perfil
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="../index.html" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
+              <i class="nav-icon fas fa-sign-out-alt" style="color: white;"></i>
+              <p style="color: white;">
                 Sair
               </p>
             </a>
@@ -183,16 +182,12 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="POST" id="AdicionarMaterial" onsubmit="return ArmazenarMaterial()">
+                    <form id="AdicionarMaterial" onsubmit="ArmazenarMaterial(event)">
                       <div class="card-body">
                         <div class="form-group">
                           <label for="nome_material_adicionar">Nome</label>
                           <input type="text" class="form-control" id="nome_material_adicionar">
                         </div>   
-                        <div class="form-group">
-                          <label for="tipo_material_adicionar">Tipo</label>
-                          <input type="text" class="form-control" id="tipo_material_adicionar">
-                        </div>
                         <div class="form-group">
                             <label for="descricao">Descrição da Iniciativa</label>
                             <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
@@ -207,7 +202,7 @@
                       <!-- /.card-body -->
         
                       <div class="card-footer text-center">
-                        <a href="GestaoInventario.html"><button id ="botao_material_adicionar" type="submit" class="btn btn-success">Adicionar Material</button></a>   
+                        <button id ="botao_material_adicionar" type="submit" class="btn btn-success">Adicionar Material</button>  
                         
                 </div>
         

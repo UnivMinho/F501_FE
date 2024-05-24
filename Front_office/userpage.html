@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Unicare - Free Bootstrap 4 Template by Colorlib</title>
+  <title>Perfil</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
@@ -15,82 +15,79 @@
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
 
+  
 
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="css/jquery.timepicker.css">
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-  <div class="container">
-    <a href="index.html">
-      <img class="navbar-brand" src="images_1/cruzHumanitriaDeBragaSemFundo5-removebg-preview.png">
-      </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span> Menu
-    </button>
 
-    <div class="collapse navbar-collapse" id="ftco-nav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
-        <li class="nav-item"><a href="causes.html" class="nav-link">Iniciativas</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Doações</a></li>
-        <li class="nav-item cta"><a href="volunteer.html" class="nav-link">Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = '/Front_office/login.html';
+    }
+  </script>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a href="index.html">
+        <img class="navbar-brand" src="images_1/cruzHumanitriaDeBragaSemFundo5-removebg-preview.png">
+      </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
+                <li class="nav-item"><a href="causes.html" class="nav-link">Iniciativas</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Doações</a></li>
+                <li class="nav-item cta"><a href="userpage.html" class="nav-link">Perfil</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 <!-- END nav -->
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images_1/section.jpeg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images_1/divSliderItem.jpeg');" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-end">
       <div class="col-md-9 ftco-animate pb-5">
-       <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Login <i class="ion-ios-arrow-forward"></i></span></p>
-       <h1 class="mb-0 bread">Login</h1>
-     </div>
+       <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span>
+        <span><a href="about.html">Perfil</a><i class="ion-ios-arrow-forward"></i></span></p>
+       <h1 class="mb-0 bread">Juntos por um mundo melhor</h1>
+      </div>
    </div>
  </div>
 </section>
 
+<section class="vazio">
+
+</section>
+
 <section>
-  <button class="gsi-material-button">
-    <div class="gsi-material-button-state"></div>
-    <div class="gsi-material-button-content-wrapper">
-      <div class="gsi-material-button-icon">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
-          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
-          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-          <path fill="none" d="M0 0h48v48H0z"></path>
-        </svg>
-      </div>
-      <span class="gsi-material-button-contents">Sign in with Google</span>
-      <span style="display: none;">Sign in with Google</span>
+  <div id="perfil-card" class="card">
+    <h2 class="user-p">Perfil de Usuário</h2>
+    <img class ="card-img" src="images_1/avatar.png">
+      <div class="card-body">
+        <p class="card-text username"> Username: </p>
+        <p class="card-text email"> E-mail:</p>
+        <p class="card-text"> Contacto: </p>
+        <p class="card-text"> Cargo: </p>
     </div>
-  </button>
-</section>
-
-<section class="ftco-hireme bg-secondary">
-  <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-md-8 col-lg-8 d-flex align-items-center">
-        <div class="w-100">
-          <h2>Queres conhecer as nossas iniciativas?</h2>
-        </div>
-      </div>
-      <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
-        <p class="mb-0"><a href="causes.html" class="btn btn-primary py-3 px-4">Saber Mais</a></p>
-      </div>
+    <div class="botao">
+        <a href="formsIniciativas.html" class="suggest-button" id="suggest-button">Sugerir Nova Iniciativa</a>
+        <a href="tabelaIniciativaProponente.html" class="suggest-button">Consultar Iniciativas</a>
+       <button class="botao logout" id="button-logout">LogOut </button>
     </div>
-  </div>
+  </div><br><br>
 </section>
-
 
 <footer class="footer">
   <div class="container">
@@ -121,7 +118,7 @@
         <h2 class="footer-heading">Tens alguma questão?</h2>
         <div class="block-23 mb-3">
           <ul>
-            <li><span class="icon fa fa-map"></span><span class="text"> R. Bernardo Sequeira nº247, 4715-017 Braga</span></li>
+            <li><span class="icon fa fa-map"></span><span class="text"></span> R. Bernardo Sequeira nº247, 4715-017 Braga</li>
             <li><span class="icon fa fa-phone"></span><span class="text">Telefone: +351 213 913 900</span></li>
             <li><span class="icon fa fa-paper-plane"></span><span class="text">E-mail: sede@ajudahumanitariabraga.org</span></li>
           </ul>
@@ -152,9 +149,11 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfk0LqhI_4F8HXPYfvhvwZBtLOhoDkNgI&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+<script type="module" defer src="js/login.js"></script>
+	
 
 </body>
 </html>

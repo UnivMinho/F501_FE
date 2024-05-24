@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Unicare - Free Bootstrap 4 Template by Colorlib</title>
+	<title>Home</title>
+	<title>Cruz Humanitária de Braga</title>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
@@ -23,6 +25,13 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+	<script>
+		if (!localStorage.getItem('loggedIn')) {
+		  window.location.href = '/Front_office/login.html';
+		}
+	  </script>
+
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a href="index.html">
@@ -38,7 +47,7 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
                 <li class="nav-item"><a href="causes.html" class="nav-link">Iniciativas</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Doações</a></li>
-                <li class="nav-item cta"><a href="login.html" class="nav-link">Login</a></li>
+				<li class="nav-item cta"><a href="userpage.html" class="nav-link">Perfil</a></li>
 				</ul>
 			</div>
 		</div>
@@ -137,7 +146,7 @@
 					</div>
 				</div>
 				<div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
-					<p class="mb-0"><a href="volunteer.html" class="btn btn-primary py-3 px-4">Inscreve-te</a></p>
+					<p class="mb-0"><a href="causes.html" class="btn btn-primary py-3 px-4">Inscreve-te</a></p>
 				</div>
 			</div>
 		</div>

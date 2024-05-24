@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os dados do localStorage
     var storedIniciativas = localStorage.getItem("iniciativas");
     var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
-    
 
     // Selecionar a tabela onde os dados serão inseridos
     var table = document.querySelector('.table-custom tbody');
@@ -21,73 +20,24 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         table.appendChild(novaLinha);
     });
+
+    // Adicionar event listener ao botão de envio do formulário
+    var submitButton = document.getElementById('submit-button');
+    if (submitButton) {
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Impedir o envio do formulário
+            ArmazenarIniciativa();
+        });
+    }
 });
 
-function ArmazenarIniciativa() {
-    // Obter valores dos campos do formulário
-    var drop = document.getElementById("drop").value;
-    var Desiniciativa = document.getElementById("Desiniciativa").value;
-    var local = document.getElementById("local").value;
-    var dataEvento = document.getElementById("dataEvento").value;
-    var emailResp = document.getElementById("emailResp").value;
-    var contactoResp = document.getElementById("contactoResp").value;
-    var imagemIniciativa = document.getElementById("imagemIniciativa").files[0];
 
-    // Função para converter uma imagem em Base64
-    function getBase64(file, callback) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-            callback(reader.result);
-        };
-        reader.onerror = function(error) {
-            console.log('Error: ', error);
-        };
-    }
+    
 
-    // Função para salvar os dados da iniciativa
-    function saveIniciativa(base64Image) {
-        var dadosIniciativa = {
-            drop: drop,
-            Desiniciativa: Desiniciativa,
-            local: local,
-            dataEvento: dataEvento,
-            emailResp: emailResp,
-            contactoResp: contactoResp,
-            imagemIniciativa: base64Image
-        };
-
-        // Recuperar iniciativas armazenadas no localStorage
-        var storedIniciativas = localStorage.getItem("iniciativas");
-        var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
-        iniciativasArray.push(dadosIniciativa);
-
-        // Salvar o array atualizado no localStorage
-        localStorage.setItem("iniciativas", JSON.stringify(iniciativasArray));
-
-        // Atualizar a tabela com os dados armazenados
-        atualizarTabela();
-
-        // Exibir mensagem de sucesso
-        alert("Formulário Enviado com Sucesso");
-    }
-
-    // Verificar se há uma imagem e processá-la em Base64
-    if (imagemIniciativa) {
-        getBase64(imagemIniciativa, function(base64Image) {
-            saveIniciativa(base64Image);
-        });
-    } else {
-        saveIniciativa(null);
-    }
-
-    // Impedir o envio do formulário para que a página não seja recarregada
-    return false;
-}
 
 function atualizarTabela() {
     // Recuperar os dados do localStorage
-    var storedIniciativas = localStorage.getItem("iniciativas");
+    var storedIniciativas = localStorage.getItem("Iniciativas");
     var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
 
     // Selecionar a tabela onde os dados serão inseridos
@@ -113,44 +63,43 @@ function atualizarTabela() {
 
 
 
-
-
-
-
 function ArmazenarDoacao() {
-    
-
-    var primeiroNome = document.getElementById("primeiroNome").value;
-    var Apelido = document.getElementById("Apelido").value;
+    var valor = document.getElementById("valor").value;
+    var NomeCartao = document.getElementById("NomeCartao").value;
+    var ApelidoCartao = document.getElementById("ApelidoCartao").value;
     var nrCartao = document.getElementById("nrCartao").value;
     var cvc = document.getElementById("cvc").value;
     var validade = document.getElementById("validade").value;
     var Nome = document.getElementById("Nome").value;
-    var Apelido2= document.getElementById("Apelido2").value;
-    var email= document.getElementById("email").value;
-    
+    var Apelido = document.getElementById("Apelido").value;
+    var email = document.getElementById("email").value;
 
-    
     var dadosDoacao = {
-        primeiroNome: primeiroNome,
-        Apelido: Apelido,
+        valor:valor,
+        NomeCartao: NomeCartao,
+        ApelidoCartao: ApelidoCartao,
         nrCartao: nrCartao,
         cvc: cvc,
         validade: validade,
         Nome: Nome,
-        Apelido2: Apelido2,
+        Apelido: Apelido,
         email: email
     };
 
-    
-    var dadosFormularioJSON = JSON.stringify(dadosDoacao);
+    // Recuperar as doações existentes do localStorage
+    var doacoesExistentes = localStorage.getItem("Doacoes");
+    var arrayDoacoes = doacoesExistentes ? JSON.parse(doacoesExistentes) : [];
 
-    
-    localStorage.setItem("Doacao", dadosFormularioJSON);
+    // Adicionar a nova doação ao array
+    arrayDoacoes.push(dadosDoacao);
 
-    
+    // Converter o array atualizado para JSON
+    var dadosFormularioJSON = JSON.stringify(arrayDoacoes);
+
+    // Armazenar o array atualizado no localStorage
+    localStorage.setItem("Doacoes", dadosFormularioJSON);
+
     alert("Formulário Enviado com Sucesso");
 
-    
     return false;
 }

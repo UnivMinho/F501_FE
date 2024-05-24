@@ -12,6 +12,7 @@
   background-color: $card-bg;
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
+
   @include border-radius($card-border-radius);
 
   > hr {
@@ -48,7 +49,7 @@
 
 .card-title {
   margin-bottom: $card-spacer-y;
-  font-weight: bold;
+  
 }
 
 .card-subtitle {
@@ -58,6 +59,7 @@
 
 .card-text:last-child {
   margin-bottom: 0;
+  
 }
 
 .card-link {

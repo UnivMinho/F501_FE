@@ -1,10 +1,10 @@
 function validateForm(){
-  var iniciativa = document.getElementById("iniciativa").value;
-  var local = document.getElementById("local").value;
-  var data = document.getElementById("data").value;
-  var vagas = document.getElementById("vagas").value;
-  var tipo = document.getElementById("tipo").value;
-  var lider = document.getElementById("lider").value;
+  let iniciativa = document.getElementById("iniciativa").value;
+  let local = document.getElementById("local").value;
+  let data = document.getElementById("data").value;
+  let vagas = document.getElementById("vagas").value;
+  let tipo = document.getElementById("tipo").value;
+  let lider = document.getElementById("lider").value;
 
   if(iniciativa == ""){
     alert("Nome iniciativa em falta!");
@@ -43,7 +43,7 @@ function validateForm(){
 }
 
 function showDataIniciativas(){
-  var iniciativas;
+  let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
   }
@@ -51,7 +51,7 @@ function showDataIniciativas(){
     iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
   }
 
-  var html = "";
+  let html = "";
 
   iniciativas.forEach(function(element, index) {
     html += "<tr>";
@@ -71,15 +71,15 @@ document.onload = showDataIniciativas();
 
 function AddData(){
   if(validateForm() == true){
-    var iniciativa = document.getElementById("iniciativa").value;
-    var local = document.getElementById("local").value;
-    var data = document.getElementById("data").value;
-    var vagas = document.getElementById("vagas").value;
-    var tipo = document.getElementById("tipo").value;
-    var lider = document.getElementById("lider").value;
+    let iniciativa = document.getElementById("iniciativa").value;
+    let local = document.getElementById("local").value;
+    let data = document.getElementById("data").value;
+    let vagas = document.getElementById("vagas").value;
+    let tipo = document.getElementById("tipo").value;
+    let lider = document.getElementById("lider").value;
 
 
-  var iniciativas;
+  let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
   }

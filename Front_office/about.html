@@ -25,6 +25,13 @@
 
 </head>
 <body>
+
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = '/Front_office/login.html';
+    }
+  </script>
+
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a href="index.html">
@@ -40,7 +47,7 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
                 <li class="nav-item"><a href="causes.html" class="nav-link">Iniciativas</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Doações</a></li>
-                <li class="nav-item cta"><a href="login.html" class="nav-link">Login</a></li>
+                <li class="nav-item cta"><a href="userpage.html" class="nav-link">Perfil</a></li>
 				</ul>
 			</div>
 		</div>
@@ -201,7 +208,6 @@
 </div>
 <div class="col-md-12">
   <div id="map" class="map"></div>
-  <script
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfk0LqhI_4F8HXPYfvhvwZBtLOhoDkNgI&callback=init" async defer></script>
 </div>
 </section>
