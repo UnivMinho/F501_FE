@@ -7,25 +7,24 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/fireba
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyADRTOzEQWpjRYFXlB7CEfGk3nHmwufryQ",
-  authDomain: "pwproject-73b77.firebaseapp.com",
-  projectId: "pwproject-73b77",
-  storageBucket: "pwproject-73b77.appspot.com",
-  messagingSenderId: "949138957763",
-  appId: "1:949138957763:web:fc4aae2b3deceed6ca8976"
+  apiKey: "AIzaSyBc33HYnvGVBzQJzDaMMiQr7KGn7nz_yp8",
+  authDomain: "pwprojeto-d5b00.firebaseapp.com",
+  projectId: "pwprojeto-d5b00",
+  storageBucket: "pwprojeto-d5b00.appspot.com",
+  messagingSenderId: "822825203574",
+  appId: "1:822825203574:web:e5fa2c1ba721b4bebb2c57"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Verifica se a página atual é a página de login
+
   if (document.getElementById("loginBtn")) {
     const submitLogin = document.getElementById("loginBtn");
     submitLogin.addEventListener("click", handleLogin);
   }
 
-  // Verifica se a página atual é a página de registro
   if (document.getElementById("registerBtn")) {
     const submitRegister = document.getElementById("registerBtn");
     submitRegister.addEventListener("click", handleRegister);
@@ -38,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+
         const user = userCredential.user;
         localStorage.setItem("loggedIn", true);
         window.location.href = "../index.html";
-        // ...
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -58,10 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
 // 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed up
+
         const user = userCredential.user;
         window.location.href = "../views/Login.html";
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;

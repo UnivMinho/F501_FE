@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os dados do localStorage
     const storedIniciativas = localStorage.getItem("iniciativas");
     const iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
+*/
     
 
 
