@@ -19,6 +19,13 @@ ver a sales graph que elementos precisa para estar operacional-->
 
 </head>
 <body class="hold-transition sidebar-mini">
+
+<script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = './views/Login.html';
+  }
+</script>
+
 <div class="wrapper">
 
   <!--Preloader-->

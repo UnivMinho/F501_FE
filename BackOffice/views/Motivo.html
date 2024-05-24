@@ -52,6 +52,13 @@
     </style>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
+
+<script>
+    if (!localStorage.getItem('loggedIn')) {
+        window.location.href = './views/Login.html';
+    }
+</script>
+
     <form id="2">
         <div class="login-card">
             <h1>Motivo</h1><br>

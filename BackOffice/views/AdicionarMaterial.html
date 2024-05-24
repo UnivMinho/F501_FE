@@ -17,6 +17,13 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
+
+<script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = './views/Login.html';
+  }
+</script>
+
 <div class="wrapper">
 
   <div class="preloader flex-column justify-content-center align-items-center">

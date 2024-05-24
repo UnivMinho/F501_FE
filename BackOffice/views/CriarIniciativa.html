@@ -19,6 +19,13 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
 
 </head>
 <body class="hold-transition sidebar-mini">
+
+<script>
+  if (!localStorage.getItem('loggedIn')) {
+    window.location.href = './views/Login.html';
+  }
+</script>
+
 <div class="wrapper">
 
   <!--Preloader-->
