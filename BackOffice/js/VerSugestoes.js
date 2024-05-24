@@ -38,6 +38,14 @@ function showDataSugestoes(){
 
   document.onload = showDataSugestoes();
 
+
+
+  
+
+
+
+
+
 function showDataSugestoesRec(){
   let sugestoesrec;
   if(localStorage.getItem("sugestoesrec")==null){

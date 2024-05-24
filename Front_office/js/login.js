@@ -24,6 +24,7 @@ function googleLogin(event) {
     .then((result) => {
       const user = result.user;
 
+    
       localStorage.setItem("loggedIn", true);
       localStorage.setItem("userName", user.displayName);
       localStorage.setItem("userEmail", user.email);
@@ -68,3 +69,4 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('email').innerText = `E-mail: ${localStorage.getItem("userEmail")}`;
   }
 });
+

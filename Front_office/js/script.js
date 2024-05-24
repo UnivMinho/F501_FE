@@ -37,18 +37,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*function atualizarTabela() {
     // Recuperar os dados do localStorage
-    var storedIniciativas = localStorage.getItem("Iniciativas");
-    var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
+    let storedIniciativas = localStorage.getItem("Iniciativas");
+    let iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
 
     // Selecionar a tabela onde os dados serão inseridos
-    var table = document.querySelector('.table-custom tbody');
+    let table = document.querySelector('.table-custom tbody');
 
     // Limpar qualquer conteúdo existente na tabela
     table.innerHTML = '';
 
     // Iterar sobre os dados e inseri-los na tabela
     iniciativasArray.forEach(function(iniciativa) {
-        var newRow = document.createElement('tr');
+        let newRow = document.createElement('tr');
         newRow.innerHTML = `
             <td>${iniciativa.drop}</td>
             <td>${iniciativa.local}</td>
