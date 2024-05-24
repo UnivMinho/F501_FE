@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Recuperar os dados do localStorage
-    var storedIniciativas = localStorage.getItem("iniciativas");
-    var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
+    const storedIniciativas = localStorage.getItem("iniciativas");
+    const iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
 
     // Selecionar a tabela onde os dados serão inseridos
-    var table = document.querySelector('.table-custom tbody');
+    const table = document.querySelector('.table-custom tbody');
 
     // Limpar qualquer conteúdo existente na tabela
     table.innerHTML = '';
 
     // Iterar sobre os dados e inseri-los na tabela
     iniciativasArray.forEach(function(iniciativa) {
-        var novaLinha = document.createElement('tr');
+        let novaLinha = document.createElement('tr');
         novaLinha.innerHTML = `
             <td>${iniciativa.drop}</td>
             <td>${iniciativa.local}</td>
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Adicionar event listener ao botão de envio do formulário
-    var submitButton = document.getElementById('submit-button');
+    const submitButton = document.getElementById('submit-button');
     if (submitButton) {
         submitButton.addEventListener('click', function(event) {
             event.preventDefault(); // Impedir o envio do formulário
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 
-function atualizarTabela() {
+/*function atualizarTabela() {
     // Recuperar os dados do localStorage
     var storedIniciativas = localStorage.getItem("Iniciativas");
     var iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
@@ -57,24 +57,24 @@ function atualizarTabela() {
         `;
         table.appendChild(newRow);
     });
-}
+}*/
 
 
 
 
 
 function ArmazenarDoacao() {
-    var valor = document.getElementById("valor").value;
-    var NomeCartao = document.getElementById("NomeCartao").value;
-    var ApelidoCartao = document.getElementById("ApelidoCartao").value;
-    var nrCartao = document.getElementById("nrCartao").value;
-    var cvc = document.getElementById("cvc").value;
-    var validade = document.getElementById("validade").value;
-    var Nome = document.getElementById("Nome").value;
-    var Apelido = document.getElementById("Apelido").value;
-    var email = document.getElementById("email").value;
+    let valor = document.getElementById("valor").value;
+    let NomeCartao = document.getElementById("NomeCartao").value;
+    let ApelidoCartao = document.getElementById("ApelidoCartao").value;
+    let nrCartao = document.getElementById("nrCartao").value;
+    let cvc = document.getElementById("cvc").value;
+    let validade = document.getElementById("validade").value;
+    let Nome = document.getElementById("Nome").value;
+    let Apelido = document.getElementById("Apelido").value;
+    let email = document.getElementById("email").value;
 
-    var dadosDoacao = {
+    let dadosDoacao = {
         valor:valor,
         NomeCartao: NomeCartao,
         ApelidoCartao: ApelidoCartao,
@@ -87,14 +87,14 @@ function ArmazenarDoacao() {
     };
 
     // Recuperar as doações existentes do localStorage
-    var doacoesExistentes = localStorage.getItem("Doacoes");
-    var arrayDoacoes = doacoesExistentes ? JSON.parse(doacoesExistentes) : [];
+    const doacoesExistentes = localStorage.getItem("Doacoes");
+    const arrayDoacoes = doacoesExistentes ? JSON.parse(doacoesExistentes) : [];
 
     // Adicionar a nova doação ao array
     arrayDoacoes.push(dadosDoacao);
 
     // Converter o array atualizado para JSON
-    var dadosFormularioJSON = JSON.stringify(arrayDoacoes);
+    const dadosFormularioJSON = JSON.stringify(arrayDoacoes);
 
     // Armazenar o array atualizado no localStorage
     localStorage.setItem("Doacoes", dadosFormularioJSON);
