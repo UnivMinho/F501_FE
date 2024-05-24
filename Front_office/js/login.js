@@ -24,11 +24,9 @@ function googleLogin(event) {
     .then((result) => {
       const user = result.user;
 
-    
       localStorage.setItem("loggedIn", true);
       localStorage.setItem("userName", user.displayName);
       localStorage.setItem("userEmail", user.email);
-      localStorage.setItem("cargo", user.cargo);
 
       window.location.href = "/Front_office/index.html";
     })
@@ -68,5 +66,41 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('displayName').innerText = `Username: ${localStorage.getItem("userName")}`;
     document.getElementById('email').innerText = `E-mail: ${localStorage.getItem("userEmail")}`;
   }
-});
+  });
 
+
+
+
+  // Guardar Dados sobre o Cargo
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const cargoSelect = document.getElementById('cargo');
+  
+    // Restaurar o valor do cargo selecionado do localStorage, se existir
+    const savedCargo = localStorage.getItem('cargo');
+    if (savedCargo) {
+      cargoSelect.value = savedCargo;
+    }
+  
+    // Adicionar evento de change para o dropdown
+    cargoSelect.addEventListener('change', function() {
+      const selectedCargo = cargoSelect.value;
+      localStorage.setItem('cargo', selectedCargo);
+      updatePermissions(selectedCargo);
+    });
+
+    updatePermissions(savedCargo);
+  });
+  
+  function updatePermissions(cargo) {
+    // Esconder ou mostrar os botões com base no cargo selecionado
+    if (cargo === 'voluntario') {
+      // Se o cargo for "Voluntário", ocultar os botões específicos
+      document.getElementById("sugerirIniciativa").style.display = 'none';
+      document.getElementById("consultarIniciativa").style.display = 'none';
+    } else {
+      // Se não for "Voluntário", mostrar os botões
+      document.getElementById("sugerirIniciativa").style.display = 'block';
+      document.getElementById("consultarIniciativa").style.display = 'block';
+    }
+  }
