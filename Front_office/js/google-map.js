@@ -34,12 +34,10 @@ function init() {
                 position: latlng,
                 map: map,
                 icon: {
-                    url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
                     scaledSize: new google.maps.Size(40, 40)
                 }
             });
 
-            // Defina o centro do mapa como a posição do marcador
             map.setCenter(latlng);
         });
     }

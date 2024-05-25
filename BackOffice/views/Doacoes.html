@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sugestões Recusadas</title>
+  <title>Doações</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -17,20 +17,12 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
-
-<script>
-  if (!localStorage.getItem('loggedIn')) {
-    window.location.href = './views/Login.html';
-  }
-</script>
-
 <div class="wrapper">
 
   <!--Preloader-->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img src="../assets/logo_PW.jpeg" alt="AdminLTELogo" >
   </div>
-
   
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light " >
@@ -43,7 +35,10 @@
         <a href="Iniciativas.html" class="nav-link">Iniciativas</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Colaboradores</a>
+        <a href="Colaboradores.html" class="nav-link">Colaboradores</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="Doacoes.html" class="nav-link">Doações</a>
       </li>
     </ul>
 
@@ -163,17 +158,18 @@
     <section class="content-header">
       <div class="container-fluid">
           <div class="row mb-2">
-              <div id="title_sugestoes_recusadas" class="col-sm-6">
-                  <h1>Sugestões Recusadas</h1>
+              <div id="title_sugestoes" class="col-sm-6">
+                  <h1>Gestão de Doações</h1>
               </div>
-              
+              <div class="col-sm-6">
+            
+              </div>
           </div>
       </div><!-- /.container-fluid -->
     </section>
   
-  
-  
 
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -181,19 +177,20 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Iniciativas Recusadas</h3>
+                <h3 class="card-title">Doações</h3>
               </div>
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="sugestoesrec-table">
+                <table class="table table-bordered table-hover" id="colaboradores-table">
                   <thead>
                     <tr>
-                      <th>Tipo</th>
-                      <th>Local</th>
-                      <th>Descrição</th>
-                      <th>Data</th>
-                      <th>Email</th>
-                      <th>Contacto</th>
-                      <th>Actions</th>
+
+                      <th>Valor</th>
+                      <th>Nome</th>
+                      <th>Apelido</th>
+                      <th>Número Cartão</th>
+                      <th>CVC</th>
+                      <th>Validade</th>
+                      <th>E-mail</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -206,9 +203,8 @@
         </div>
       </div>
     </section>
-  
-    <script src="../js/SugestoesRecusadas.js"></script>
 
+    
 
     <!-- /.content -->
   </div>
@@ -238,5 +234,10 @@
 <script src="../plugins/scripts/demo.js"></script>
 
 <script src="../js/VerSugestoes.js"></script>
+
+<script src="../js/Doacoes.js"></script>
+
+<script src="../../Front_office/js/login.js"></script>
+
 </body>
 </html>

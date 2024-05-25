@@ -11,22 +11,28 @@ const firebaseConfig = {
   appId: "1:822825203574:web:e5fa2c1ba721b4bebb2c57"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 auth.languageCode = 'pt';
 const provider = new GoogleAuthProvider();
 
-// Função de login com Google
+
 function googleLogin(event) {
   event.preventDefault();
   signInWithPopup(auth, provider)
     .then((result) => {
       const user = result.user;
 
-      localStorage.setItem("loggedIn", true);
-      localStorage.setItem("userName", user.displayName);
-      localStorage.setItem("userEmail", user.email);
+
+      const dadosUser = {
+        loggedIn: true,
+        userName: user.displayName,
+        userEmail: user.email,
+        cargo: user.cargo
+      };
+
+      localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
+
 
       window.location.href = "/Front_office/index.html";
     })
@@ -35,24 +41,10 @@ function googleLogin(event) {
     });
 }
 
-// Função de logout
-function googleLogout(event) {
-  event.preventDefault();
-  
-  auth.signOut().then(() => {
-    // Limpa os dados do usuário no localStorage
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    
-    // Redireciona para a página de login
-    window.location.href = "/Front_office/login.html";
-  }).catch((error) => {
-    console.error('Erro ao fazer logout', error);
-  });
-}
 
-// Adiciona eventos aos botões de login e logout
+
+//
+
 document.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("button-google")) {
     document.getElementById("button-google").addEventListener("click", googleLogin);
@@ -61,46 +53,64 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("button-logout").addEventListener("click", googleLogout);
   }
 
-  // Verifica se o usuário está logado e atualiza o perfil
-  if (localStorage.getItem("loggedIn")) {
-    document.getElementById('displayName').innerText = `Username: ${localStorage.getItem("userName")}`;
-    document.getElementById('email').innerText = `E-mail: ${localStorage.getItem("userEmail")}`;
+ 
+  const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
+  if (dadosUser && dadosUser.loggedIn) {
+
+    document.getElementById('displayName').innerText = `Username: ${dadosUser.userName}`;
+    document.getElementById('email').innerText = `E-mail: ${dadosUser.userEmail}`;
+    document.getElementById('cargo').innerText = `Cargo: ${dadosUser.cargo}`;
   }
-  });
+});
 
 
 
 
-  // Guardar Dados sobre o Cargo
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const cargoSelect = document.getElementById('cargo');
-  
-    // Restaurar o valor do cargo selecionado do localStorage, se existir
-    const savedCargo = localStorage.getItem('cargo');
-    if (savedCargo) {
-      cargoSelect.value = savedCargo;
-    }
-  
-    // Adicionar evento de change para o dropdown
-    cargoSelect.addEventListener('change', function() {
-      const selectedCargo = cargoSelect.value;
-      localStorage.setItem('cargo', selectedCargo);
-      updatePermissions(selectedCargo);
+function showDataColaboradores() {
+
+  const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
+
+
+  if (dadosUser && dadosUser.loggedIn && dadosUser.colaboradores) {
+    const colaboradores = dadosUser.colaboradores;
+
+    let html = "";
+
+
+    colaboradores.forEach(function(colaborador) {
+      html += "<tr>";
+      html += "<td>" + colaborador.displayName + "</td>"; 
+      html += "<td>" + colaborador.email + "</td>";
+      html += "<td>" + colaborador.cargo + "</td>"; 
+      html += "</tr>";
     });
 
-    updatePermissions(savedCargo);
-  });
-  
-  function updatePermissions(cargo) {
-    // Esconder ou mostrar os botões com base no cargo selecionado
-    if (cargo === 'voluntario') {
-      // Se o cargo for "Voluntário", ocultar os botões específicos
-      document.getElementById("sugerirIniciativa").style.display = 'none';
-      document.getElementById("consultarIniciativa").style.display = 'none';
-    } else {
-      // Se não for "Voluntário", mostrar os botões
-      document.getElementById("sugerirIniciativa").style.display = 'block';
-      document.getElementById("consultarIniciativa").style.display = 'block';
-    }
+
+    const tableBody = document.querySelector("#colaboradores-table tbody");
+    tableBody.innerHTML = html;
+  } else {
+    console.log("Não há dados de colaboradores disponíveis.");
   }
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  showDataColaboradores();
+});
+
+
+
+
+//Logout Function
+
+function googleLogout(event) {
+  event.preventDefault();
+  
+  auth.signOut().then(() => {
+
+    localStorage.removeItem("dadosUser");
+    window.location.href = "/Front_office/login.html";
+  }).catch((error) => {
+    console.error('Erro ao fazer logout', error);
+  });
+}

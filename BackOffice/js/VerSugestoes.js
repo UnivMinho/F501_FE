@@ -20,10 +20,8 @@ function showDataSugestoes(){
       html += 
       '<td><button onclick="acceptData(' +
       index + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="updateData(' +
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="deleteData(' +
       index +
-      ')"class="fa fa-pencil" style="margin-left:10px; background-color:yellow;"></button><button onclick="deleteData(' +
-      index + 
       ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
       html += "</tr>";
 
@@ -61,8 +59,8 @@ function showDataSugestoesRec(){
   sugestoesrec.forEach(function(element, index) {
     html += "<tr>";
     html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.descInic + "</td>";
     html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.descInic + "</td>";
     html += "<td>" + element.data + "</td>";
     html += "<td>" + element.email + "</td>";
     html += "<td>" + element.contacto + "</td>";
@@ -74,12 +72,13 @@ function showDataSugestoesRec(){
   });
   
   document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
+  
   }
   
     document.onload = showDataSugestoesRec();
 
 function AddDataSugestoes(){
-    
+
     let tipo = document.getElementById("drop").value;
     let descInic = document.getElementById("Desiniciativa").value;
     let local = document.getElementById("local").value;
@@ -116,12 +115,31 @@ function AddDataSugestoes(){
   
 }
 
-function acceptData(){
+function acceptData(index){
+  
+  let sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
 
+  let sugestaoSelecionada = sugestoes[index];
+
+  sugestoes.splice(index, 1);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+
+
+  // Armazene os dados no localStorage da página CriarIniciativa.html
+  localStorage.setItem("sugestaoSelecionada", JSON.stringify(sugestaoSelecionada));
+
+  // Redirecione para a página CriarIniciativa.html
+  window.location.href = "CriarIniciativa.html";
 }
 
 function updateData(){
-
+  
 }
 
 function deleteData(index){

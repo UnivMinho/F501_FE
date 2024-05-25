@@ -37,15 +37,26 @@ body {
     border: 1px solid #444; /* Opcional: borda cinza escuro */
 }
 
+.card.card-black {
+    background-color: #fff; /* Fundo preto */
+    color: #000; /* Texto branco para contraste */
+    border: 1px solid #444; /* Opcional: borda cinza escuro */
+}
+
 .card.card-black .card-header {
     background-color: #333; /* Cabeçalho um pouco mais claro para contraste */
     border-bottom: 1px solid #444; /* Opcional: borda inferior */
 }
 
-.container {
-    width: 100%;
+.charts-container {
     display: flex;
-    justify-content: flex-end; /* Alinha à direita */
+    justify-content: space-between; /* Espaço entre os gráficos */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.container1, .container2 {
+    flex: 1;
+    margin: 10px; /* Margem ao redor dos contêineres */
 }
 
 .card.card-black .card-title {
