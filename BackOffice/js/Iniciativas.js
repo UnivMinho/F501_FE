@@ -84,6 +84,7 @@ function showDataIniciativas(){
 
 document.onload = showDataIniciativas();
 
+
 function AddData(event){
   event.preventDefault();
   if(validateForm() == true){
@@ -124,6 +125,7 @@ function AddData(event){
   document.getElementById("lider").value = "";
   }
 }
+
 
 
 
