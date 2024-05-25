@@ -38,13 +38,6 @@ function showDataSugestoes(){
   document.onload = showDataSugestoes();
 
 
-
-
-
-
-
-
-
 function showDataSugestoesRec(){
   let sugestoesrec;
   if(localStorage.getItem("sugestoesrec")==null){
@@ -85,6 +78,7 @@ function AddDataSugestoes(){
     let data = document.getElementById("dataEvento").value;
     let email = document.getElementById("emailResp").value;
     let contacto = document.getElementById("contactoResp").value;
+    let estado = "Pendete";
 
 
     let sugestoes;
@@ -101,7 +95,7 @@ function AddDataSugestoes(){
       local : local,
       data : data,
       email : email,
-      contacto : contacto
+      contacto : contacto,
     });
 
     localStorage.setItem("sugestoes", JSON.stringify(sugestoes));

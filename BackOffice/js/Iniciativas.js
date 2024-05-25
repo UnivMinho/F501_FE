@@ -119,6 +119,7 @@ function showDataIniciativas(){
     html += "<td>" + element.vagas + "</td>";
     html += "<td>" + element.tipo + "</td>";
     html += "<td>" + element.lider + "</td>";
+    html += "<td>" + element.estado + "</td>";
   });
 
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
@@ -136,8 +137,9 @@ function AddData(event){
     let vagas = document.getElementById("vagas").value;
     let tipo = document.getElementById("tipo").value;
     let lider = document.getElementById("lider").value;
-
-
+    
+    
+    
   let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
@@ -152,7 +154,8 @@ function AddData(event){
     data : data,
     vagas : vagas,
     tipo : tipo,
-    lider : lider
+    lider : lider,
+    estado : "Aceite"
   });
 
   window.location.href = "Iniciativas.html";
