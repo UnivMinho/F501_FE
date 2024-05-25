@@ -20,7 +20,7 @@ function showDataSugestoes(){
       html += 
       '<td><button onclick="acceptData(' +
       index + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="acceptData(' +
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="deleteData(' +
       index +
       ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
       html += "</tr>";
@@ -65,6 +65,7 @@ function showDataSugestoesRec(){
   });
   
   document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
+  
   }
   
     document.onload = showDataSugestoesRec();
@@ -109,14 +110,24 @@ function AddDataSugestoes(){
 }
 
 function acceptData(index){
-  // Obtenha os dados da sugestão com base no índice
-  let sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+  
+  let sugestoes;
+    if(localStorage.getItem("sugestoes")==null){
+      sugestoes = [];
+    }
+    else{
+      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+    }
+
   let sugestaoSelecionada = sugestoes[index];
 
-  
+  sugestoes.splice(index, 1);
+  localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
+
+
   // Armazene os dados no localStorage da página CriarIniciativa.html
   localStorage.setItem("sugestaoSelecionada", JSON.stringify(sugestaoSelecionada));
-  
+
   // Redirecione para a página CriarIniciativa.html
   window.location.href = "CriarIniciativa.html";
 }
