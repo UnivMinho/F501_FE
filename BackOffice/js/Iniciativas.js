@@ -43,9 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function preencherTabela() {
   // Recupere os dados da sugestão selecionada do localStorage
   let sugestaoSelecionada = JSON.parse(localStorage.getItem("sugestaoSelecionada"));
+  let iniciativaSelecionada = JSON.parse(localStorage.getItem("iniciativaSelecionada"));
 
   // Se houver dados da sugestão selecionada, preencha os campos
   if (sugestaoSelecionada) {
+    
     document.getElementById("descricao").value = sugestaoSelecionada.descInic;
     document.getElementById("local").value = sugestaoSelecionada.local;
     document.getElementById("data").value = sugestaoSelecionada.data;
@@ -53,6 +55,19 @@ function preencherTabela() {
 
     // Limpe os dados da sugestão selecionada do localStorage
     localStorage.removeItem("sugestaoSelecionada");
+  }
+
+  // Se houver dados da iniciativa selecionada, preencha os campos
+  if (iniciativaSelecionada) {
+    document.getElementById("iniciativa").value = iniciativaSelecionada.iniciativa;
+    document.getElementById("descricao").value = iniciativaSelecionada.descricao;
+    document.getElementById("local").value = iniciativaSelecionada.local;
+    document.getElementById("data").value = iniciativaSelecionada.data;
+    document.getElementById("vagas").value = iniciativaSelecionada.vagas;
+    document.getElementById("tipo").value = iniciativaSelecionada.tipo;
+    document.getElementById("lider").value = iniciativaSelecionada.lider;
+
+    localStorage.removeItem("iniciativaSelecionada");
   }
 }
 
@@ -119,14 +134,41 @@ function showDataIniciativas(){
     html += "<td>" + element.vagas + "</td>";
     html += "<td>" + element.tipo + "</td>";
     html += "<td>" + element.lider + "</td>";
-   
-    
+    html += "<td>" + element.estado + "</td>";
+    html += 
+      '</button><button onclick="updateData(' +
+      index +
+      ')" class="fa fa-edit" style="margin-left:10px; background-color:yellow;"></button>';
+      html += "</tr>";
   });
 
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
 }
 
 document.onload = showDataIniciativas();
+
+function updateData(index){
+
+  let iniciativas;
+    if(localStorage.getItem("iniciativas")==null){
+      iniciativas = [];
+    }
+    else{
+      iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
+    }
+
+  let iniciativaSelecionada = iniciativas[index];
+
+  iniciativas.splice(index, 1);
+  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+
+
+  localStorage.setItem("iniciativaSelecionada", JSON.stringify(iniciativaSelecionada));
+
+  window.location.href = "CriarIniciativa.html";
+}
+
+
 
 
 function AddData(event){
@@ -138,7 +180,8 @@ function AddData(event){
     let vagas = document.getElementById("vagas").value;
     let tipo = document.getElementById("tipo").value;
     let lider = document.getElementById("lider").value;
-        
+    let descricao = document.getElementById("descricao").value;
+    
     
     
   let iniciativas;
@@ -151,6 +194,7 @@ function AddData(event){
 
   iniciativas.push({
     iniciativa : iniciativa,
+    descricao: descricao,
     local : local,
     data : data,
     vagas : vagas,
