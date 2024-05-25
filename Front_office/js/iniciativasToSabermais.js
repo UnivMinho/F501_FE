@@ -4,15 +4,15 @@ function obterParametroDaURL(nome) {
 }
 
 function showDataSaber(tipo) {
-    let sugestoes;
-    if (localStorage.getItem("sugestoes") == null) {
-        sugestoes = [];
+    let iniciativas;
+    if (localStorage.getItem("iniciativas") == null) {
+        iniciativas = [];
     } else {
-        sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
+        iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
     }
 
     // Filtrar as sugestões com base no tipo
-    const sugestoesFiltradas = sugestoes.filter(sugestao => sugestao.tipo === tipo);
+    const iniciativasFiltradas = iniciativas.filter(iniciativas => iniciativas.tipo === tipo);
 
     // Atualizar o título da iniciativa
     document.getElementById('titulo-iniciativa').textContent = tipo;
@@ -20,12 +20,12 @@ function showDataSaber(tipo) {
     // Cria a tabela HTML com as sugestões filtradas
     let html = "";
 
-    sugestoesFiltradas.forEach(function(element, index) {
+    iniciativasFiltradas.forEach(function(element) {
         html += "<tr>";
         html += "<td>" + element.tipo + "</td>";
-        html += "<td>" + element.descInic + "</td>";
         html += "<td>" + element.local + "</td>";
         html += "<td>" + element.data + "</td>";
+        html += "<td>" + element.vagas + "</td>";
     });
 
     const tables = document.querySelectorAll("#sugestoes-table3 tbody");
