@@ -103,3 +103,4 @@ function ArmazenarDoacao() {
 
     return false;
 }
+

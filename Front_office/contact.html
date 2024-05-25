@@ -25,7 +25,8 @@
 <body class="Doacoes">
 
 	<script>
-		if (!localStorage.getItem('loggedIn')) {
+		const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
+		if (!dadosUser || !dadosUser.loggedIn) {
 		  window.location.href = '/Front_office/login.html';
 		}
 	  </script>

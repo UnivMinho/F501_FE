@@ -11,7 +11,6 @@ const firebaseConfig = {
   appId: "1:822825203574:web:e5fa2c1ba721b4bebb2c57"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 auth.languageCode = 'pt';
@@ -24,10 +23,17 @@ function googleLogin(event) {
     .then((result) => {
       const user = result.user;
 
-      localStorage.setItem("loggedIn", true);
-      localStorage.setItem("userName", user.displayName);
-      localStorage.setItem("userEmail", user.email);
+      // Criar objeto com os dados do usuário
+      const dadosUser = {
+        loggedIn: true,
+        userName: user.displayName,
+        userEmail: user.email
+      };
 
+      // Armazenar dados do usuário no localStorage
+      localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
+
+      // Redirecionar para a página inicial
       window.location.href = "/Front_office/index.html";
     })
     .catch((error) => {
@@ -40,19 +46,16 @@ function googleLogout(event) {
   event.preventDefault();
   
   auth.signOut().then(() => {
-    // Limpa os dados do usuário no localStorage
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
-    
-    // Redireciona para a página de login
+    // Limpar dados do usuário no localStorage ao fazer logout
+    localStorage.removeItem("dadosUser");
+
+    // Redirecionar para a página de login
     window.location.href = "/Front_office/login.html";
   }).catch((error) => {
     console.error('Erro ao fazer logout', error);
   });
 }
 
-// Adiciona eventos aos botões de login e logout
 document.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("button-google")) {
     document.getElementById("button-google").addEventListener("click", googleLogin);
@@ -61,46 +64,50 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("button-logout").addEventListener("click", googleLogout);
   }
 
-  // Verifica se o usuário está logado e atualiza o perfil
-  if (localStorage.getItem("loggedIn")) {
-    document.getElementById('displayName').innerText = `Username: ${localStorage.getItem("userName")}`;
-    document.getElementById('email').innerText = `E-mail: ${localStorage.getItem("userEmail")}`;
+  // Exibir os dados do usuário se estiver logado
+  const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
+  if (dadosUser && dadosUser.loggedIn) {
+    // Atualizar os elementos da card com os dados do usuário
+    document.getElementById('displayName').innerText = `Username: ${dadosUser.userName}`;
+    document.getElementById('email').innerText = `E-mail: ${dadosUser.userEmail}`;
   }
-  });
+});
 
+function showColaboradores() {
+  let colaboradores = [];
 
+  // Verifica se há dados no localStorage para nome e email
+  if (localStorage.getItem("userName") !== null && localStorage.getItem("userEmail") !== null) {
+    // Parse dos dados do localStorage
+    const displayName = JSON.parse(localStorage.getItem("userName"));
+    const email = JSON.parse(localStorage.getItem("userEmail"));
 
-
-  // Guardar Dados sobre o Cargo
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const cargoSelect = document.getElementById('cargo');
-  
-    // Restaurar o valor do cargo selecionado do localStorage, se existir
-    const savedCargo = localStorage.getItem('cargo');
-    if (savedCargo) {
-      cargoSelect.value = savedCargo;
-    }
-  
-    // Adicionar evento de change para o dropdown
-    cargoSelect.addEventListener('change', function() {
-      const selectedCargo = cargoSelect.value;
-      localStorage.setItem('cargo', selectedCargo);
-      updatePermissions(selectedCargo);
-    });
-
-    updatePermissions(savedCargo);
-  });
-  
-  function updatePermissions(cargo) {
-    // Esconder ou mostrar os botões com base no cargo selecionado
-    if (cargo === 'voluntario') {
-      // Se o cargo for "Voluntário", ocultar os botões específicos
-      document.getElementById("sugerirIniciativa").style.display = 'none';
-      document.getElementById("consultarIniciativa").style.display = 'none';
-    } else {
-      // Se não for "Voluntário", mostrar os botões
-      document.getElementById("sugerirIniciativa").style.display = 'block';
-      document.getElementById("consultarIniciativa").style.display = 'block';
+    // Verifica se os arrays têm o mesmo comprimento
+    if (displayName.length === email.length) {
+      // Constrói a matriz de colaboradores
+      for (let i = 0; i < displayName.length; i++) {
+        colaboradores.push({ displayName: displayName[i], email: email[i] });
+      }
     }
   }
+
+  // Gera a tabela HTML
+  let html = "";
+  colaboradores.forEach(function(element) {
+    html += "<tr>";
+    html += "<td>" + element.displayName + "</td>";
+    html += "<td>" + element.email + "</td>";
+    html += "</tr>";
+  });
+
+  // Atualiza o conteúdo da tabela com os dados gerados
+  const table = document.querySelector("#colaboradores-table tbody");
+  table.innerHTML = html;
+}
+
+// Chama a função para exibir os colaboradores quando o DOM estiver carregado
+document.addEventListener("DOMContentLoaded", function() {
+  showColaboradores();
+});
+
+  

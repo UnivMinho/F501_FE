@@ -27,7 +27,8 @@
 <body>
 
   <script>
-    if (!localStorage.getItem('loggedIn')) {
+    const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
+    if (!dadosUser || !dadosUser.loggedIn) {
       window.location.href = '/Front_office/login.html';
     }
   </script>
@@ -78,9 +79,7 @@
     <div class="card-body">
       <p class="card-text username" id="displayName"></p>
       <p class="card-text email" id="email"></p>
-      <select class="card-text cargo" id="cargo">
-        <option value="proponente">Proponente</option>
-        <option value="voluntario">Voluntário</option>
+      <P class="card-text cargo" id="cargo"></P>
       </select>
 
 
