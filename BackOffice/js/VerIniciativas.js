@@ -31,3 +31,5 @@ function mostrarEstadoSugestao(){
   }
 
   document.onload = mostrarEstadoSugestao();
+
+  
