@@ -62,6 +62,25 @@ body {
 
 
 
+  /*Botao Inscrever Voluntarios */
+  .voluntarios-botao {
+    background:#c69500;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px; /
+  }
+
+  .inscrito-text {
+    background: #117a8b;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px; /
+  }
+
+
+
   /*Google Botão Login */
   .login-with-google-btn {
     transition: background-color .3s, box-shadow .3s;
