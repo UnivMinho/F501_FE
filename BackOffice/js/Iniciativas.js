@@ -119,7 +119,8 @@ function showDataIniciativas(){
     html += "<td>" + element.vagas + "</td>";
     html += "<td>" + element.tipo + "</td>";
     html += "<td>" + element.lider + "</td>";
-    html += "<td>" + element.estado + "</td>";
+   
+    
   });
 
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
@@ -137,7 +138,7 @@ function AddData(event){
     let vagas = document.getElementById("vagas").value;
     let tipo = document.getElementById("tipo").value;
     let lider = document.getElementById("lider").value;
-    
+        
     
     
   let iniciativas;
@@ -154,8 +155,7 @@ function AddData(event){
     data : data,
     vagas : vagas,
     tipo : tipo,
-    lider : lider,
-    estado : "Aceite"
+    lider : lider
   });
 
   window.location.href = "Iniciativas.html";
