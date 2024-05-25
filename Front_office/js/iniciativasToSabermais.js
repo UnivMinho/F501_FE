@@ -20,7 +20,7 @@ function showDataSaber(tipo) {
     // Cria a tabela HTML com as sugestões filtradas
     let html = "";
 
-    sugestoesFiltradas.forEach(function(element, index) {
+    sugestoesFiltradas.forEach(function(element) {
         html += "<tr>";
         html += "<td>" + element.tipo + "</td>";
         html += "<td>" + element.descInic + "</td>";
