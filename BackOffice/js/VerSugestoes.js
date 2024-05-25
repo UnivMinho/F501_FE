@@ -132,9 +132,6 @@ function acceptData(index){
   window.location.href = "CriarIniciativa.html";
 }
 
-function updateData(){
-  
-}
 
 function deleteData(index){
   let sugestoes;
