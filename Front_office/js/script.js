@@ -87,7 +87,7 @@ function ArmazenarDoacao() {
     };
 
     // Recuperar as doações existentes do localStorage
-    const doacoesExistentes = localStorage.getItem("Doacoes");
+    const doacoesExistentes = localStorage.getItem("doacoes");
     const arrayDoacoes = doacoesExistentes ? JSON.parse(doacoesExistentes) : [];
 
     // Adicionar a nova doação ao array
@@ -97,7 +97,7 @@ function ArmazenarDoacao() {
     const dadosFormularioJSON = JSON.stringify(arrayDoacoes);
 
     // Armazenar o array atualizado no localStorage
-    localStorage.setItem("Doacoes", dadosFormularioJSON);
+    localStorage.setItem("doacoes", dadosFormularioJSON);
 
     alert("Formulário Enviado com Sucesso");
 
