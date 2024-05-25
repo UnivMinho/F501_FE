@@ -218,36 +218,16 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
                         </select>
                     </div>
 
-                    <div class="form-check">
-                      <label for="lista_materiais">Lista de Materiais:</label><br>
-                      <input class="form-check-input" type="checkbox" value="" id="material1">
-                      <label class="form-check-label" for="material1">
-                          Material 1
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="material2">
-                      <label class="form-check-label" for="material2">
-                          Material 2
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="material3">
-                      <label class="form-check-label" for="material3">
-                          Material 3
-                      </label>
-                  </div>
-                  <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="material4">
-                      <label class="form-check-label" for="material4">
-                          Material 4
-                      </label>
-                  </div>
-                    <!-- Fim dos elementos do segundo formulário -->
+                    <label for="lista_materiais">Lista de Materiais:</label><br>
+                    <div id="material-list">
+                        <!-- Os materiais serão inseridos aqui -->
+                    </div>
+                    <br>
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button id="botao_submeter_material" type="submit" class="btn btn-primary">Submit</button>
+                    <button id="botao_submeter_material" type="submit" class="btn btn-primary" onclick="UsarMateriais()">Submit</button>
                 </div>
             </form>
         </div>
@@ -315,7 +295,7 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script src="../js/AdicionarMaterial.js"></script>
 <script src="../js/Iniciativas.js"></script>
 <!-- jQuery -->
 <script src="../plugins/scripts/jquery.min.js"></script>
