@@ -1,3 +1,19 @@
+function preencherTabela() {
+  // Recupere os dados da sugestão selecionada do localStorage
+  let sugestaoSelecionada = JSON.parse(localStorage.getItem("sugestaoSelecionada"));
+
+  // Se houver dados da sugestão selecionada, preencha os campos
+  if (sugestaoSelecionada) {
+    document.getElementById("descricao").value = sugestaoSelecionada.descInic;
+    document.getElementById("local").value = sugestaoSelecionada.local;
+    document.getElementById("data").value = sugestaoSelecionada.data;
+    document.getElementById("tipo").value = sugestaoSelecionada.tipo;
+
+    // Limpe os dados da sugestão selecionada do localStorage
+    localStorage.removeItem("sugestaoSelecionada");
+  }
+}
+
 function validateForm(){
   let iniciativa = document.getElementById("iniciativa").value;
   let local = document.getElementById("local").value;
@@ -64,12 +80,12 @@ function showDataIniciativas(){
   });
 
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
-
 }
 
 document.onload = showDataIniciativas();
 
-function AddData(){
+function AddData(event){
+  event.preventDefault();
   if(validateForm() == true){
     let iniciativa = document.getElementById("iniciativa").value;
     let local = document.getElementById("local").value;
@@ -95,6 +111,8 @@ function AddData(){
     tipo : tipo,
     lider : lider
   });
+
+  window.location.href = "Iniciativas.html";
 
   localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
   showDataIniciativas();
