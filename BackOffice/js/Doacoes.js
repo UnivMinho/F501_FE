@@ -32,6 +32,8 @@ function ArmazenarDoacao() {
     localStorage.setItem("doacoes", JSON.stringify(arrayDoacoes));
 
     alert("Doação armazenada com sucesso!");
+
+    return false;
 }
 
 function showDataDoacoes() {
