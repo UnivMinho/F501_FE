@@ -1351,10 +1351,9 @@ pre {
     flex: 0 0 41.66667%;
     max-width: 41.66667%; }
   .col-md-6 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%;
-    max-width: 50%; }
+    flex: 0 0 calc(33.333% - 20px); 
+    max-width: calc(33.333% - 20px);
+    margin: 10px; }
   .col-md-7 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58.33333%;
@@ -1526,10 +1525,10 @@ pre {
     flex: 0 0 16.66667%;
     max-width: 16.66667%; }
   .col-lg-3 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%; }
+    flex: 0 0 calc(33.333% - 20px); /* Ajusta a largura das colunas */
+    max-width: calc(33.333% - 20px);
+    margin: 10px;
+ }
   .col-lg-4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
