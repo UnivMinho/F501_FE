@@ -63,5 +63,4 @@ function showDataDoacoes() {
 
 document.addEventListener("DOMContentLoaded", function() {
     showDataDoacoes();
-    fundoManeio();
 });
