@@ -199,7 +199,8 @@ function AddData(event){
     data : data,
     vagas : vagas,
     tipo : tipo,
-    lider : lider
+    lider : lider,
+    estado : "Aceite"
   });
 
   window.location.href = "Iniciativas.html";

@@ -248,6 +248,22 @@
           </div>
         
           </div>
+
+          <!--Fundo Maneio-->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box" style="background-color: #ffc107;">
+              <div class="inner" style="color: white;">
+                <h3 id="fundototal">{{ fundoManeio }}</h3>
+  
+                  <p>Fundo Maneio</p>
+              </div>
+              
+            </div>
+            
+        </div>
+
+
           <div class="charts-container">
             <div class="container1">
                 <div class="card card-black">
@@ -269,6 +285,9 @@
           </div>
           <!-- ./col -->
         </div>
+
+       
+        
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
@@ -328,6 +347,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+<script src="js/Doacoes.js"></script>
+
 <script>
   var app = new Vue({
     el: '#app',
@@ -335,11 +356,13 @@
       sugestoes: 0,
       iniciativas: 0,
       sugestoesrec: 0,
-      material: 0
+      material: 0,
+      fundoManeio: '0€'
     },
     mounted() {
       console.log('Vue instance mounted');
       this.loadData();
+      this.loadFundoManeio();
     },
     methods: {
       loadData() {
@@ -358,9 +381,17 @@
         console.log(localStorage.getItem('iniciativas'));
         console.log(localStorage.getItem('sugestoesrec'));
         console.log(localStorage.getItem('material'));
+      },
+
+      loadFundoManeio(){
+        const totalDoacoes = localStorage.getItem('fundoManeio') || '0';
+        this.fundoManeio = `${totalDoacoes}€`;
+
       }
     }
   });
+
+
 </script>
 
 
