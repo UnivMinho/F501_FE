@@ -276,6 +276,22 @@
               }
           </style>
           </div>
+
+          <!--Fundo Maneio-->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box" style="background-color: #ffc107;">
+              <div class="inner" style="color: white;">
+                <h3 id="fundototal">{{ fundoManeio }}</h3>
+  
+                  <p>Fundo Maneio</p>
+              </div>
+              
+            </div>
+            
+        </div>
+
+
           <div class="charts-container">
             <div class="container1">
                 <div class="card card-black">
@@ -297,6 +313,9 @@
           </div>
           <!-- ./col -->
         </div>
+
+       
+        
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
@@ -353,5 +372,56 @@
 <script src="plugins/exp/scripts/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="plugins/exp/scripts/dashboard.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="js/Doacoes.js"></script>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      sugestoes: 0,
+      iniciativas: 0,
+      sugestoesrec: 0,
+      material: 0,
+      fundoManeio: '0€'
+    },
+    mounted() {
+      console.log('Vue instance mounted');
+      this.loadData();
+      this.loadFundoManeio();
+    },
+    methods: {
+      loadData() {
+        console.log('Loading data from localStorage');
+        const sugestoesArray = JSON.parse(localStorage.getItem('sugestoes') || '[]');
+        const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
+        const sugestoesrecArray = JSON.parse(localStorage.getItem('sugestoesrec') || '[]');
+        const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
+        
+        this.sugestoes = sugestoesArray.length;
+        this.iniciativas = iniciativasArray.length;
+        this.sugestoesrec = sugestoesrecArray.length;
+        this.material = materialArray.length;
+
+        console.log(localStorage.getItem('sugestoes'));
+        console.log(localStorage.getItem('iniciativas'));
+        console.log(localStorage.getItem('sugestoesrec'));
+        console.log(localStorage.getItem('material'));
+      },
+
+      loadFundoManeio(){
+        const totalDoacoes = localStorage.getItem('fundoManeio') || '0';
+        this.fundoManeio = `${totalDoacoes}€`;
+
+      }
+    }
+  });
+
+
+</script>
+
+
 </body>
 </html>

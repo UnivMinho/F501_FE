@@ -61,7 +61,6 @@
 
 
 
-/*
 
 function ArmazenarDoacao() {
     let valor = document.getElementById("valor").value;
@@ -100,8 +99,7 @@ function ArmazenarDoacao() {
     localStorage.setItem("doacoes", dadosFormularioJSON);
 
     alert("Formulário Enviado com Sucesso");
+    window.location.href = "../index.html";
 
     return false;
 }
-
-*/

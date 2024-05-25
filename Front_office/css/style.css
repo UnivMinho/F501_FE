@@ -1350,10 +1350,15 @@ pre {
     -ms-flex: 0 0 41.66667%;
     flex: 0 0 41.66667%;
     max-width: 41.66667%; }
+    .col-iniciativas {
+      flex: 0 0 calc(33.333% - 20px); 
+      max-width: calc(33.333% - 20px);
+      margin: 10px; }
   .col-md-6 {
-    flex: 0 0 calc(33.333% - 20px); 
-    max-width: calc(33.333% - 20px);
-    margin: 10px; }
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%; }
   .col-md-7 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58.33333%;

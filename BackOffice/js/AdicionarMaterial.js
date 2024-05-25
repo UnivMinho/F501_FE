@@ -31,7 +31,7 @@ function ArmazenarMaterial(event) {
     let nome = document.getElementById("nome_material_adicionar").value;
     let tipo = document.getElementById("tipo_material").value;
     let descricao = document.getElementById("descricao").value;
-    let quantidade = document.getElementById("quantidade_material_adicionar").value;
+    let quantidade = parseInt(document.getElementById("quantidade_material_adicionar").value, 10);
 
     let dadosMaterial = {
         nome: nome,
@@ -42,7 +42,15 @@ function ArmazenarMaterial(event) {
 
     let storedMateriais = localStorage.getItem("material");
     let materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
-    materiaisArray.push(dadosMaterial);
+
+    let materialExistente = materiaisArray.find(material => material.nome === nome);
+    if (materialExistente) {
+        // Atualiza a quantidade do material existente
+        materialExistente.quantidade += quantidade;
+    } else {
+        // Adiciona o novo material ao array
+        materiaisArray.push(dadosMaterial);
+    }
 
     localStorage.setItem("material", JSON.stringify(materiaisArray));
 
@@ -54,6 +62,35 @@ function ArmazenarMaterial(event) {
     atualizarTabela();
 
     return false;
+}
+
+function UsarMateriais() {
+    // Seleciona todos os checkboxes marcados
+    let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
+
+    // Recupera os materiais da localStorage
+    let storedMateriais = localStorage.getItem("material");
+    let materiaisArray = storedMateriais ? JSON.parse(storedMateriais) : [];
+
+    checkboxes.forEach(function(checkbox) {
+        let nome = checkbox.value;
+        let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+
+        let materialExistente = materiaisArray.find(material => material.nome === nome);
+        if (materialExistente) {
+            // Subtrai a quantidade usada do material existente
+            materialExistente.quantidade -= quantidadeUsada;
+
+            // Garante que a quantidade não seja negativa
+            if (materialExistente.quantidade < 0) {
+                materialExistente.quantidade = 0;
+            }
+        }
+    });
+
+    localStorage.setItem("material", JSON.stringify(materiaisArray));
+
+    atualizarTabela();
 }
 
 function atualizarTabela() {

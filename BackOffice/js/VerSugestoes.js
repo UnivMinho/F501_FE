@@ -38,13 +38,6 @@ function showDataSugestoes(){
   document.onload = showDataSugestoes();
 
 
-
-
-
-
-
-
-
 function showDataSugestoesRec(){
   let sugestoesrec;
   if(localStorage.getItem("sugestoesrec")==null){
@@ -77,6 +70,8 @@ function showDataSugestoesRec(){
   
     document.onload = showDataSugestoesRec();
 
+
+    
 function AddDataSugestoes(){
 
     let tipo = document.getElementById("drop").value;
@@ -85,6 +80,7 @@ function AddDataSugestoes(){
     let data = document.getElementById("dataEvento").value;
     let email = document.getElementById("emailResp").value;
     let contacto = document.getElementById("contactoResp").value;
+    let estado = "Pendete";
 
 
     let sugestoes;
@@ -101,7 +97,8 @@ function AddDataSugestoes(){
       local : local,
       data : data,
       email : email,
-      contacto : contacto
+      contacto : contacto,
+      estado : estado
     });
 
     localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
@@ -130,6 +127,9 @@ function acceptData(index){
   sugestoes.splice(index, 1);
   localStorage.setItem("sugestoes", JSON.stringify(sugestoes));
 
+  // Recuperar a variável do localStorage
+ // let estado = localStorage.getItem('estado');
+  //  estado = "Aceite";
 
   // Armazene os dados no localStorage da página CriarIniciativa.html
   localStorage.setItem("sugestaoSelecionada", JSON.stringify(sugestaoSelecionada));
@@ -138,9 +138,6 @@ function acceptData(index){
   window.location.href = "CriarIniciativa.html";
 }
 
-function updateData(){
-  
-}
 
 function deleteData(index){
   let sugestoes;
