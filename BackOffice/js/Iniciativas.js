@@ -1,3 +1,45 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // Recupera os materiais da localStorage
+  let materiais = JSON.parse(localStorage.getItem('material')) || [];
+  
+  // Seleciona o div onde os materiais serão inseridos
+  let materialListDiv = document.getElementById('material-list');
+
+  // Itera sobre os materiais e cria os elementos HTML
+  materiais.forEach(function(material) {
+      // Cria um container para cada material
+      let materialContainer = document.createElement('div');
+      materialContainer.classList.add('material-item');
+      
+      // Cria a checkbox para o material
+      let checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `material-${material.nome}`;
+      checkbox.name = 'materiais';
+      checkbox.value = material.nome;
+
+      let label = document.createElement('label');
+      label.htmlFor = `material-${material.nome}`;
+      label.textContent = `${material.nome} (Disponível: ${material.quantidade})`;
+      
+      // Cria o input para a quantidade
+      let quantityInput = document.createElement('input');
+      quantityInput.type = 'number';
+      quantityInput.id = `quantidade-${material.nome}`;
+      quantityInput.name = `quantidade-${material.nome}`;
+      quantityInput.min = '0';
+      quantityInput.placeholder = 'Quantidade';
+      
+      // Adiciona a checkbox, o label e o input ao container do material
+      materialContainer.appendChild(checkbox);
+      materialContainer.appendChild(label);
+      materialContainer.appendChild(quantityInput);
+      
+      // Adiciona o container do material ao div principal
+      materialListDiv.appendChild(materialContainer);
+  });
+});
+
 function preencherTabela() {
   // Recupere os dados da sugestão selecionada do localStorage
   let sugestaoSelecionada = JSON.parse(localStorage.getItem("sugestaoSelecionada"));
@@ -77,6 +119,7 @@ function showDataIniciativas(){
     html += "<td>" + element.vagas + "</td>";
     html += "<td>" + element.tipo + "</td>";
     html += "<td>" + element.lider + "</td>";
+    html += "<td>" + element.estado + "</td>";
   });
 
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
@@ -94,8 +137,9 @@ function AddData(event){
     let vagas = document.getElementById("vagas").value;
     let tipo = document.getElementById("tipo").value;
     let lider = document.getElementById("lider").value;
-
-
+    
+    
+    
   let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
@@ -110,7 +154,8 @@ function AddData(event){
     data : data,
     vagas : vagas,
     tipo : tipo,
-    lider : lider
+    lider : lider,
+    estado : "Aceite"
   });
 
   window.location.href = "Iniciativas.html";

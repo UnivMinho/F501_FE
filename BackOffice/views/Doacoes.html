@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Simple Tables</title>
+  <title>Doações</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -35,7 +35,10 @@
         <a href="Iniciativas.html" class="nav-link">Iniciativas</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Colaboradores</a>
+        <a href="Colaboradores.html" class="nav-link">Colaboradores</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="Doacoes.html" class="nav-link">Doações</a>
       </li>
     </ul>
 
@@ -156,21 +159,17 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div id="title_sugestoes" class="col-sm-6">
-                  <h1>Sugestão de Iniciativas</h1>
+                  <h1>Gestão de Doações</h1>
               </div>
               <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                      <!-- Botões -->
-                      <a href="SugestoesRecusadas.html"><button class="btn btn-secondary float-right mr-2">Sugestões Recusadas</button></a>
-                  </ol>
+            
               </div>
           </div>
       </div><!-- /.container-fluid -->
     </section>
   
-  
-  
 
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -178,19 +177,20 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Sugestão de Iniciativas</h3>
+                <h3 class="card-title">Doações</h3>
               </div>
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="sugestoes-table">
+                <table class="table table-bordered table-hover" id="colaboradores-table">
                   <thead>
                     <tr>
-                      <th>Tipo</th>
-                      <th>Descrição</th>
-                      <th>Local</th>
-                      <th>Data</th>
-                      <th>Email</th>
-                      <th>Contacto</th>
-                      <th>Actions</th>
+
+                      <th>Valor</th>
+                      <th>Nome</th>
+                      <th>Apelido</th>
+                      <th>Número Cartão</th>
+                      <th>CVC</th>
+                      <th>Validade</th>
+                      <th>E-mail</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -234,5 +234,10 @@
 <script src="../plugins/scripts/demo.js"></script>
 
 <script src="../js/VerSugestoes.js"></script>
+
+<script src="../js/Doacoes.js"></script>
+
+<script src="../../Front_office/js/login.js"></script>
+
 </body>
 </html>
