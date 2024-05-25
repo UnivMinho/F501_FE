@@ -61,7 +61,7 @@
 
 
 
-
+/*
 
 function ArmazenarDoacao() {
     let valor = document.getElementById("valor").value;
@@ -104,3 +104,4 @@ function ArmazenarDoacao() {
     return false;
 }
 
+*/
