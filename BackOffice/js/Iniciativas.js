@@ -1,3 +1,45 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // Recupera os materiais da localStorage
+  let materiais = JSON.parse(localStorage.getItem('material')) || [];
+  
+  // Seleciona o div onde os materiais serão inseridos
+  let materialListDiv = document.getElementById('material-list');
+
+  // Itera sobre os materiais e cria os elementos HTML
+  materiais.forEach(function(material) {
+      // Cria um container para cada material
+      let materialContainer = document.createElement('div');
+      materialContainer.classList.add('material-item');
+      
+      // Cria a checkbox para o material
+      let checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `material-${material.nome}`;
+      checkbox.name = 'materiais';
+      checkbox.value = material.nome;
+
+      let label = document.createElement('label');
+      label.htmlFor = `material-${material.nome}`;
+      label.textContent = `${material.nome} (Disponível: ${material.quantidade})`;
+      
+      // Cria o input para a quantidade
+      let quantityInput = document.createElement('input');
+      quantityInput.type = 'number';
+      quantityInput.id = `quantidade-${material.nome}`;
+      quantityInput.name = `quantidade-${material.nome}`;
+      quantityInput.min = '0';
+      quantityInput.placeholder = 'Quantidade';
+      
+      // Adiciona a checkbox, o label e o input ao container do material
+      materialContainer.appendChild(checkbox);
+      materialContainer.appendChild(label);
+      materialContainer.appendChild(quantityInput);
+      
+      // Adiciona o container do material ao div principal
+      materialListDiv.appendChild(materialContainer);
+  });
+});
+
 function preencherTabela() {
   // Recupere os dados da sugestão selecionada do localStorage
   let sugestaoSelecionada = JSON.parse(localStorage.getItem("sugestaoSelecionada"));
