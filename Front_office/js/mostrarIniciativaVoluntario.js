@@ -18,12 +18,13 @@ function inscreverVoluntario(){
       if (element.inscrito) {
           html += '<span id="inscritoText' + index + '" class="inscrito-text">Inscrito</span>';
       } else {
-          html += '<button id="inscreverBotao' + index + '" onclick="inscrever(' + index + ')" class="voluntarios-botao";>Inscrever</button>';
+          html += '<button id="inscreverBotao' + index + '" onclick="inscrever(' + index + ')" class="voluntarios-botao">Inscrever</button>';
           html += '<span id="inscritoIniciativa' + index + '" style="display: none;">Inscrito</span>';
       }
       html += '</td>';
       html += '</tr>';
   });
+  
   
   
     const tables = document.querySelectorAll('#sugestoes-table-vol tbody');

@@ -64,20 +64,26 @@ body {
 
   /*Botao Inscrever Voluntarios */
   .voluntarios-botao {
-    background:#c69500;
+    background: #c69500;
     color: #fff;
     font-size: 12px;
     padding: 5px 10px;
-    border-radius: 20px; /
-  }
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-weight: bold;
+}
 
-  .inscrito-text {
+.inscrito-text {
     background: #117a8b;
     color: #fff;
     font-size: 12px;
     padding: 5px 10px;
-    border-radius: 20px; /
-  }
+    border: none; 
+    border-radius: 20px; 
+    font-weight: bold;
+}
+
 
 
 
