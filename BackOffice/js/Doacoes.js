@@ -1,5 +1,6 @@
 function ArmazenarDoacao() {
-    let valor = document.getElementById("valor").value;
+    // Obter o valor da doação do campo de entrada
+    let valor = parseFloat(document.getElementById("valor").value);
     let NomeCartao = document.getElementById("NomeCartao").value;
     let ApelidoCartao = document.getElementById("ApelidoCartao").value;
     let nrCartao = document.getElementById("nrCartao").value;
@@ -9,8 +10,11 @@ function ArmazenarDoacao() {
     let Apelido = document.getElementById("Apelido").value;
     let email = document.getElementById("email").value;
 
+    // Obter doações existentes do localStorage ou inicializar um array vazio
+    let doacoes = JSON.parse(localStorage.getItem("doacoes") || '[]');
 
-    let dadosDoacao = {
+    // Adicionar a nova doação ao array
+    doacoes.push({ 
         valor: valor,
         NomeCartao: NomeCartao,
         ApelidoCartao: ApelidoCartao,
@@ -19,19 +23,20 @@ function ArmazenarDoacao() {
         validade: validade,
         Nome: Nome,
         Apelido: Apelido,
-        email: email
-    };
+        email: email 
+    });
 
-    let doacoes = localStorage.getItem("dadosDoacao");
-    let arrayDoacoes = doacoes ? JSON.parse(doacoes) : [];
+    // Calcular o total das doações
+    let fundoManeio = doacoes.reduce((acc, doacao) => acc + doacao.valor, 0);
 
-    // Adicionar a nova doação ao array
-    arrayDoacoes.push(dadosDoacao);
+    // Armazenar o total das doações no localStorage
+    localStorage.setItem("fundoManeio", fundoManeio);
 
-    // Armazenar o array atualizado no localStorage
-    localStorage.setItem("doacoes", JSON.stringify(arrayDoacoes));
+    // Armazenar o array atualizado de doações no localStorage
+    localStorage.setItem("doacoes", JSON.stringify(doacoes));
 
-    alert("Doação armazenada com sucesso!");
+    // Retornar false para impedir o envio do formulário
+    return false;
 }
 
 function showDataDoacoes() {
@@ -56,7 +61,7 @@ function showDataDoacoes() {
     document.querySelector("#doacoes-table tbody").innerHTML = html;
 }
 
-// Chamar a função para exibir as doações quando o DOM estiver carregado
 document.addEventListener("DOMContentLoaded", function() {
     showDataDoacoes();
+    fundoManeio();
 });
