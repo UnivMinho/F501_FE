@@ -62,9 +62,9 @@ body {
 
 
   /*Popup */
-  /* Estilos para o popup */
+  
 .popup {
-  display: none; /* Ocultar o popup por padrão */
+  display: none; 
   position: fixed;
   z-index: 1;
   left: 0;
@@ -72,7 +72,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4); /* Cor de fundo com opacidade */
+  background-color: rgba(0,0,0,0.4); 
 }
 
 .popup-content {
@@ -117,6 +117,8 @@ body {
 .popup-button:hover {
   background-color: #000000;
 }
+
+
 
 
 
