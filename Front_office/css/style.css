@@ -124,21 +124,35 @@ body {
 
   /*Botao Inscrever Voluntarios */
   .voluntarios-botao {
-    background: #eec857;
+    background: rgb(253, 209, 78);
     color: #fff;
-    font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 20px; //* Adiciona bordas curvas */
-  }
+    font-size: 14px; /* Ajustado para uma melhor visibilidade */
+    padding: 10px 20px; /* Ajustado para um tamanho de botão maior */
+    border-radius: 20px; 
+    border: none; /* Remove a borda preta */
+    cursor: pointer; /* Muda o cursor para pointer */
+    transition: background-color 0.3s, transform 0.3s; /* Adiciona uma transição suave */
+    font-weight: bold; /* Torna o texto em negrito */
+}
 
-  .inscrito-text {
-    background: #57ee5f;
+.voluntarios-botao:hover {
+    background: rgb(255, 190, 50); /* Adiciona um efeito hover */
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+}
+
+.voluntarios-botao:active {
+    background: rgb(253, 209, 78);
+    transform: scale(1); /* Remove o efeito de escala ao clicar */
+}
+
+.inscrito-text {
+    background: rgb(17, 122, 139);
     color: #fff;
-    font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 20px; /
-  }
-
+    font-size: 14px; /* Ajustado para uma melhor visibilidade */
+    padding: 10px 20px; /* Ajustado para um tamanho de texto maior */
+    border-radius: 20px; 
+    display: inline-block;
+}
 
 
   /*Google Botão Login */
