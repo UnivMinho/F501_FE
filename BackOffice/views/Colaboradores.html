@@ -166,7 +166,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <!-- Botões -->
-                  <button onclick="addDataColaboradores()" class="btn btn-secondary float-right mr-2">Criar Colaborador</button>
+                  <button id="criarColaborador" class="btn btn-secondary float-right mr-2">Criar Colaborador</button>
                 </ol>
               </div>
           </div>
@@ -206,14 +206,14 @@
 
       <div id="popup-background-editar">
         <div id="popup-container-editar">
-          <span id="close-popup-editar" onclick="return hidePopupEditar()">&times;</span>
+          <span id="close-popup-editar">&times;</span>
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">Editar Info Colaborador</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="form-popup">
+            <form id="form-popup-editar">
               <div class="card-body">
                 <div class="form-group">
                   <label for="nome">Nome</label>
@@ -244,28 +244,28 @@
         </div>
       </div>
 
-      <div id="popup-background-criar">
+      <div id="popup-background-criar" class="popup-background">
         <div id="popup-container-criar">
-          <span id="close-popup-criar" onclick="return hidePopupCriar()">&times;</span>
+          <span id="close-popup-criar">&times;</span>
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">Criar Colaborador</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="form-popup">
+            <form id="form-popup-criar">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="nome">Nome</label>
-                  <input type="text" class="form-control" id="nome" name="nome">
+                  <label for="nome-criar">Nome</label>
+                  <input type="text" class="form-control" id="nome-criar" name="nome" required>
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" name="email">
+                  <label for="email-criar">Email</label>
+                  <input type="email" class="form-control" id="email-criar" name="email" required>
                 </div>
                 <div class="form-group">
-                  <label for="role">Role</label>
-                  <select id="role" class="form-control" name="role">
+                  <label for="role-criar">Role</label>
+                  <select id="role-criar" class="form-control" name="role">
                     <option value="Juridico">Jurídico</option>
                     <option value="Clinico">Clínico</option>
                     <option value="Higiene_trabalho">Higiene no Trabalho</option>

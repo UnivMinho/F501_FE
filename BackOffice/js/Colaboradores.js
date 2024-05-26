@@ -1,33 +1,28 @@
-function addDataColaboradores(event){
+function addDataColaboradores(event) {
   event.preventDefault();
+  
+  alert("Entrei na função addDataColaboradores");
 
-  let nome = document.getElementById("nome").value;
-  let email = document.getElementById("email").value;
-  let role = document.getElementById("role").value;
+  let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
+
+  let nome = document.getElementById("nome-criar").value;
+  let email = document.getElementById("email-criar").value;
+  let role = document.getElementById("role-criar").value;
   let id = darIDColab();
 
-  let colaboradores;
-  if(localStorage.getItem("colaboradores")==null){
-    colaboradores = [];
-  }
-  else{
-    colaboradores = JSON.parse(localStorage.getItem("colaboradores"));
-  }
-
   colaboradores.push({
-    id : id,
-    nome : nome,
+    id: id,
+    nome: nome,
     email: email,
-    role : role
+    role: role
   });
 
-  window.location.href = "../views/Colaboradores.html";
+  console.log(colaboradores);
 
   localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
   showDataColaboradores();
-  document.getElementById("nome").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("role").value = "";
+  document.getElementById("form-popup-criar").reset();
+  closePopup();
 }
 
 function showPopupCriar(){
@@ -118,3 +113,7 @@ function darIDColab() {
     localStorage.setItem("idcolab", JSON.stringify(id));
     return id;
 }
+
+document.getElementById("criarColaborador").addEventListener("click", showPopupCriar);
+document.getElementById("close-popup-criar").addEventListener("click", hidePopupCriar);
+document.getElementById("form-popup-criar").addEventListener("submit", addDataColaboradores);
