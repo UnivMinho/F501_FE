@@ -56,9 +56,9 @@ function showDataIniciativas(){
     html += "<td>" + element.tipo + "</td>";
     html += "<td>" + element.estado + "</td>";
     html += 
-      '</button><button onclick="updateData(' +
+      '<td></button><button onclick="updateData(' +
       index +
-      ')" class="fa fa-edit" style="margin-left:10px; background-color:yellow;"></button>';
+      ')" class="fa fa-edit" style="margin-left:10px; background-color:yellow;"></button></td>';
       html += "</tr>";
   });
 
@@ -128,6 +128,17 @@ function AddDataBackOffice(event){
   let budget = document.getElementById("budget").value;
   let estado = "Aceite";
   let id = darID();
+
+  let fundoManeio = parseFloat(localStorage.getItem("fundoManeio")) || 0;
+
+  if(budget <= 0 || budget > fundoManeio){
+    alert("Orçamento selecionado inválido");
+    return;
+  }
+
+  fundoManeio = fundoManeio - budget;
+
+  localStorage.setItem("fundoManeio", fundoManeio);
 
   let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
@@ -257,11 +268,11 @@ function aceitarSugestao(id) {
   
     iniciativas.forEach(function(element) {
       html += "<tr>";
-      html += "<td>" + element.iniciativa + "</td>";
+      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.descricao + "</td>";
       html += "<td>" + element.local + "</td>";
       html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.vagas + "</td>";
-      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.emailResp + "</td>";
       html += "<td>" + element.contactoResp + "</td>";
       html += "<td>" + element.estado + "</td>";
       html += 
@@ -269,7 +280,7 @@ function aceitarSugestao(id) {
       element.id + 
       ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="recusarSugestao(' +
       element.id +
-      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
+      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button></td>';
       html += "</tr>";
     });
   

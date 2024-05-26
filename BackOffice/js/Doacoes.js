@@ -37,8 +37,6 @@ function ArmazenarDoacao() {
 
     // Retornar false para impedir o envio do formulário
     return false;
-
-    return false;
 }
 
 function showDataDoacoes() {
