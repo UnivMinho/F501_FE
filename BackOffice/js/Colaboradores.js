@@ -1,5 +1,5 @@
 function addDataColaboradores(event){
-    event.preventDefault();
+  event.preventDefault();
 
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("email").value;
@@ -30,8 +30,26 @@ function addDataColaboradores(event){
   document.getElementById("role").value = "";
 }
 
+function showPopupCriar(){
+  document.getElementById('popup-background-editar').style.display = 'flex';
+}
+
+function showPopupEditar(){
+  document.getElementById('popup-background-editar').style.display = 'flex';
+}
+
+function hidePopupCriar(){
+  document.getElementById('popup-background-criar').style.display = 'none';
+}
+
+function hidePopupEditar(){
+  document.getElementById('popup-background-editar').style.display = 'none';
+}
+
 function showDataColaboradores(){
   
+  let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
+
   let html = "";
 
   colaboradores.forEach(function(element) {
@@ -82,8 +100,8 @@ function updateColaborador(id){
           // Atualiza o localStorage com as colaboradores atualizadas
           localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
 
-          showDataColaboradores();
-          hidePopupColaboradores();
+          showDataColaboradoresEditar();
+          hidePopupColaboradoresEditar();
           window.location.reload();
 
       }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
@@ -94,19 +112,9 @@ function deleteColaboradores(id){
     
 }
 
-
-function showPopupColaboradores(){
-    document.getElementById('popup-background-colaboradores-editar').style.display = 'flex';
-}
-
-function hidePopupColaboradores(){
-    document.getElementById('popup-background-colaboradores-editar').style.display = 'none';
-}
-
-
 function darIDColab() {
     let id = localStorage.getItem("idcolab") ? JSON.parse(localStorage.getItem("idcolab")) : 0;
     id += 1;
     localStorage.setItem("idcolab", JSON.stringify(id));
     return id;
-  }
+}
