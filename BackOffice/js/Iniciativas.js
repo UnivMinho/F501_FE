@@ -66,25 +66,50 @@ function showDataIniciativas(){
 }
 
 
-function updateData(index){
+function updateData(id){
 
-  let iniciativas;
-    if(localStorage.getItem("iniciativas")==null){
-      iniciativas = [];
-    }
-    else{
-      iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
-    }
+    // Recupera as iniciativas do localStorage
+    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
-  let iniciativaSelecionada = iniciativas[index];
+    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+ 
+    let form = document.getElementById("form-popup");
 
-  iniciativas.splice(index, 1);
-  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+    if(index !== -1){
+    let iniciativaSelecionada = iniciativas[index];
 
+    // Preenche o formulário com os detalhes da iniciativa
+    form.elements["iniciativa"].value = iniciativaSelecionada.iniciativa;
+    form.elements["descricao"].value = iniciativaSelecionada.iniciativa;
+    form.elements["local"].value = iniciativaSelecionada.iniciativa;
+    form.elements["data"].value = iniciativaSelecionada.iniciativa;
+    form.elements["vagas"].value = iniciativaSelecionada.iniciativa;
+    form.elements["budget"].value = iniciativaSelecionada.iniciativa;
+    form.elements["tipo"].value = iniciativaSelecionada.iniciativa;
 
-  localStorage.setItem("iniciativaSelecionada", JSON.stringify(iniciativaSelecionada));
+        // Obtém os novos detalhes da iniciativa a partir do formulário
+        let novosDetalhes = {
+            iniciativa: document.getElementById("iniciativa").value,
+            descricao: document.getElementById("descricao").value,
+            local: document.getElementById("local").value,
+            data: document.getElementById("data").value,
+            vagas: document.getElementById("vagas").value,
+            budget: document.getElementById("budget").value,
+            tipo: document.getElementById("tipo").value
+        };
 
-  window.location.href = "../views/CriarIniciativa.html";
+       
+        // Atualiza o localStorage com as iniciativas atualizadas
+        localStorage.setItem("iniciativas", JSON.stringify(novosDetalhes));
+
+        // Faça qualquer outra coisa que você precise após a atualização
+
+        // Redireciona para onde deseja
+        window.location.href = "../views/Iniciativas.html";
+      
+   
+  }
+
 }
 
 function filterIniciativas(estado){
