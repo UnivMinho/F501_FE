@@ -143,7 +143,7 @@ function updateData(id){
               local: form.elements["local"].value,
               data: form.elements["data"].value,
               vagas: form.elements["vagas"].value,
-              budget: form.elements["budget"].value,
+              budget: iniciativaSelecionada.budget,
               tipo: form.elements["tipo"].value,
               estado: iniciativaSelecionada.estado,
               contactoResp: iniciativaSelecionada.contactoResp,
@@ -344,7 +344,6 @@ function AddDataSugestoes(){
 }
 
 function aceitarSugestao(id) {
-
   // Recupera as iniciativas do localStorage
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
@@ -352,66 +351,73 @@ function aceitarSugestao(id) {
 
   let form = document.getElementById("form-popup-sugestoes");
 
-  if(index !== -1){
-      let iniciativaSelecionada = iniciativas[index];
+  if (index !== -1) {
+    let iniciativaSelecionada = iniciativas[index];
 
-      // Preenche o formulário com os detalhes da iniciativa
-      form.elements["descricao"].value = iniciativaSelecionada.descricao;
-      form.elements["local"].value = iniciativaSelecionada.local;
-      form.elements["data"].value = iniciativaSelecionada.data;
-      form.elements["tipo"].value = iniciativaSelecionada.tipo;
+    // Preenche o formulário com os detalhes da iniciativa
+    form.elements["descricao"].value = iniciativaSelecionada.descricao;
+    form.elements["local"].value = iniciativaSelecionada.local;
+    form.elements["data"].value = iniciativaSelecionada.data;
+    form.elements["tipo"].value = iniciativaSelecionada.tipo;
 
-      showPopupSugestoes();
+    showPopupSugestoes();
 
-      form.addEventListener("submit", function(event) {
-          event.preventDefault();
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
 
-          // Obtém os novos detalhes da iniciativa a partir do formulário
-          let novosDetalhes = {
-              id: id,
-              iniciativa: form.elements["iniciativa"].value,
-              descricao: form.elements["descricao"].value,
-              local: form.elements["local"].value,
-              data: form.elements["data"].value,
-              vagas: form.elements["vagas"].value,
-              budget: form.elements["budget"].value,
-              tipo: form.elements["tipo"].value,
-              estado: "Aceite",
-              contactoResp: iniciativaSelecionada.contactoResp,
-              emailResp: iniciativaSelecionada.emailResp,
-              materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
-          };
+      let budget = NaN;
+      let fundoManeio = parseFloat(localStorage.getItem("fundoManeio")) || 0;
 
-          let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
-            checkboxes.forEach(function(checkbox) {
-                let nome = checkbox.value;
-                let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+      // Enquanto o orçamento for inválido, continue solicitando um novo orçamento
+      while (isNaN(budget) || budget < 0 || budget > fundoManeio) {
+        // Solicita um novo orçamento
+        budget = parseFloat(prompt("Insira um orçamento válido:"));
 
-                // Verifica se o material já existe nos materiais da iniciativa
-                let materialExistente = novosDetalhes.materiais.find(material => material.nome === nome);
+        // Se o usuário clicar em "Cancelar" ou não inserir um valor, saia do loop
+        if (budget === null || isNaN(budget)) {
+          alert("Operação cancelada.");
+          return;
+        }
 
-                if (materialExistente) {
-                    // Adiciona a quantidade à existente
-                    materialExistente.quantidade += quantidadeUsada;
-                } else {
-                    // Adiciona o novo material à lista
-                    novosDetalhes.materiais.push({ nome: nome, quantidade: quantidadeUsada });
-                }
-            });
+        // Se o orçamento for inválido, emite um alerta
+        if (budget < 0 || budget > fundoManeio) {
+          alert("Orçamento selecionado inválido. Por favor, insira um valor válido.");
+        }
+      }
 
-          // Atualiza a iniciativa no localStorage
-          iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
+      // Atualiza o fundoManeio
+      fundoManeio -= budget;
+      localStorage.setItem("fundoManeio", fundoManeio);
 
-          // Atualiza o localStorage com as iniciativas atualizadas
-          localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+      // Atualize os detalhes da iniciativa com o novo orçamento
+      let novosDetalhes = {
+        id: id,
+        iniciativa: form.elements["iniciativa"].value,
+        descricao: form.elements["descricao"].value,
+        local: form.elements["local"].value,
+        data: form.elements["data"].value,
+        vagas: form.elements["vagas"].value,
+        budget: budget,
+        tipo: form.elements["tipo"].value,
+        estado: "Aceite",
+        contactoResp: iniciativaSelecionada.contactoResp,
+        emailResp: iniciativaSelecionada.emailResp,
+        materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
+      };
 
-          showDataSugestoes();
-          hidePopupSugestoes();
-          window.location.reload();
+      // Atualiza a iniciativa no localStorage
+      iniciativas = iniciativas.map(item => (item.id === id ? novosDetalhes : item));
 
-      }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
+      // Atualiza o localStorage com as iniciativas atualizadas
+      localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+
+      showDataSugestoes();
+      hidePopupSugestoes();
+      window.location.reload();
+    }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
   }
 }
+
 
 function showPopupSugestoes(){
   document.getElementById('popup-background-sugestoes').style.display = 'flex';
