@@ -1,3 +1,5 @@
+
+
 function ArmazenarDoacao() {
     // Obter o valor da doação do campo de entrada
     let valor = parseFloat(document.getElementById("valor").value);
@@ -36,8 +38,8 @@ function ArmazenarDoacao() {
     window.location.reload();
     alert("Doação realizada com sucesso");
 
-    // Retornar false para impedir o envio do formulário
     return false;
+
 }
 
 function showDataDoacoes() {
@@ -64,4 +66,5 @@ function showDataDoacoes() {
 
 document.addEventListener("DOMContentLoaded", function() {
     showDataDoacoes();
+
 });

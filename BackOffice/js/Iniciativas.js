@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
 function showDataIniciativas(){
 
   const iniciativas = filterIniciativas("Aceite");
@@ -154,6 +156,10 @@ function darID() {
   localStorage.setItem("id", JSON.stringify(id));
   return id;
 }
+
+
+
+
 
 function AddDataBackOffice(event){
   event.preventDefault();
