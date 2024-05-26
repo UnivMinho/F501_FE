@@ -17,6 +17,11 @@
 
 </head>
 <body onload="showDataColaboradores()" class="hold-transition sidebar-mini">
+  <script>
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = './views/Login.html';
+    }
+  </script>
 <div class="wrapper">
 
   <!--Preloader-->
@@ -161,9 +166,8 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <!-- Botões -->
-                  <button class="btn btn-secondary float-right mr-2">Criar Colaborador</button>
-                  
-              </ol>
+                  <button id="criarColaborador" class="btn btn-secondary float-right mr-2">Criar Colaborador</button>
+                </ol>
               </div>
           </div>
       </div><!-- /.container-fluid -->
@@ -200,17 +204,16 @@
         </div>
       </div>
 
-
-      <div id="popup-background-colaboradores-editar">
-        <div id="popup-container">
-          <span id="close-popup" onclick="return hidePopupColaboradores()">&times;</span>
+      <div id="popup-background-editar">
+        <div id="popup-container-editar">
+          <span id="close-popup-editar">&times;</span>
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title">Editar Info Colaborador</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="form-popup">
+            <form id="form-popup-editar">
               <div class="card-body">
                 <div class="form-group">
                   <label for="nome">Nome</label>
@@ -234,7 +237,47 @@
               <!-- /.card-body -->
               <div class="card-footer">
                 <button id="Update" type="submit" class="btn btn-primary">Update</button>
-                <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopupColaboradores();">Voltar</button>
+                <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopupEditar();">Voltar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="popup-background-criar" class="popup-background">
+        <div id="popup-container-criar">
+          <span id="close-popup-criar">&times;</span>
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Criar Colaborador</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form id="form-popup-criar">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="nome-criar">Nome</label>
+                  <input type="text" class="form-control" id="nome-criar" name="nome" required>
+                </div>
+                <div class="form-group">
+                  <label for="email-criar">Email</label>
+                  <input type="email" class="form-control" id="email-criar" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="role-criar">Role</label>
+                  <select id="role-criar" class="form-control" name="role">
+                    <option value="Juridico">Jurídico</option>
+                    <option value="Clinico">Clínico</option>
+                    <option value="Higiene_trabalho">Higiene no Trabalho</option>
+                    <option value="Segurança">Segurança</option>
+                  </select>
+                </div>
+                
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button id="Criar" type="submit" class="btn btn-primary">Criar</button>
+                <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopupCriar();">Voltar</button>
               </div>
             </form>
           </div>
@@ -242,12 +285,24 @@
       </div>
 
 
-
-
       <style>
 
-        #popup-background-colaboradores-editar,
-        #popup-background-colaboradores-criar {
+          #popup-background-editar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: auto;
+            padding: 20px;
+          }
+
+        #popup-background-criar {
           display: none;
           position: fixed;
           top: 0;
@@ -262,7 +317,18 @@
           padding: 20px;
         }
         
-        #popup-container {
+        #popup-container-editar {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+          overflow: auto;
+        }
+
+        #popup-container-criar {
           background-color: white;
           padding: 20px;
           border-radius: 10px;
@@ -273,7 +339,7 @@
           overflow: auto;
         }
         
-        #close-popup {
+        #close-popup-criar {
           position: absolute;
           top: 10px;
           right: 10px;
@@ -281,6 +347,16 @@
           font-size: 20px;
           font-weight: bold;
         }
+
+        #close-popup-editar {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
             </style>
 
     </section>

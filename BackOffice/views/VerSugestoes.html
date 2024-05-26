@@ -257,10 +257,15 @@
                     <option value="Recolha de bens">Recolha de Bens</option>
                   </select>
                 </div>
+                <label for="lista_materiais">Lista de Materiais:</label><br>
+                    <div id="material-list">
+                        <!-- Os materiais serão inseridos aqui -->
+                    </div>
+                    <br>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button id="Aceitar" type="submit" class="btn btn-primary">Aceitar</button>
+                <button id="Aceitar" type="submit" class="btn btn-primary" onclick="UsarMateriais()">Aceitar</button>
                 <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopupSugestoes();">Voltar</button>
               </div>
             </form>
@@ -334,7 +339,7 @@
 <script src="../plugins/scripts/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../plugins/scripts/demo.js"></script>
-
+<script src="../js/AdicionarMaterial.js"></script>
 <script src="../js/Iniciativas.js"></script>
 
 <script>

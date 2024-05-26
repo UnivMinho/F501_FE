@@ -1,37 +1,50 @@
-function addDataColaboradores(event){
-    event.preventDefault();
+function addDataColaboradores(event) {
+  event.preventDefault();
+  
+  alert("Entrei na função addDataColaboradores");
 
-  let nome = document.getElementById("nome").value;
-  let email = document.getElementById("email").value;
-  let role = document.getElementById("role").value;
+  let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
+
+  let nome = document.getElementById("nome-criar").value;
+  let email = document.getElementById("email-criar").value;
+  let role = document.getElementById("role-criar").value;
   let id = darIDColab();
 
-  let colaboradores;
-  if(localStorage.getItem("colaboradores")==null){
-    colaboradores = [];
-  }
-  else{
-    colaboradores = JSON.parse(localStorage.getItem("colaboradores"));
-  }
-
   colaboradores.push({
-    id : id,
-    nome : nome,
+    id: id,
+    nome: nome,
     email: email,
-    role : role
+    role: role
   });
 
-  window.location.href = "../views/Colaboradores.html";
+  console.log(colaboradores);
 
   localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
   showDataColaboradores();
-  document.getElementById("nome").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("role").value = "";
+  document.getElementById("form-popup-criar").reset();
+  closePopup();
+}
+
+function showPopupCriar(){
+  document.getElementById('popup-background-editar').style.display = 'flex';
+}
+
+function showPopupEditar(){
+  document.getElementById('popup-background-editar').style.display = 'flex';
+}
+
+function hidePopupCriar(){
+  document.getElementById('popup-background-criar').style.display = 'none';
+}
+
+function hidePopupEditar(){
+  document.getElementById('popup-background-editar').style.display = 'none';
 }
 
 function showDataColaboradores(){
   
+  let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
+
   let html = "";
 
   colaboradores.forEach(function(element) {
@@ -82,8 +95,8 @@ function updateColaborador(id){
           // Atualiza o localStorage com as colaboradores atualizadas
           localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
 
-          showDataColaboradores();
-          hidePopupColaboradores();
+          showDataColaboradoresEditar();
+          hidePopupColaboradoresEditar();
           window.location.reload();
 
       }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
@@ -94,19 +107,13 @@ function deleteColaboradores(id){
     
 }
 
-
-function showPopupColaboradores(){
-    document.getElementById('popup-background-colaboradores-editar').style.display = 'flex';
-}
-
-function hidePopupColaboradores(){
-    document.getElementById('popup-background-colaboradores-editar').style.display = 'none';
-}
-
-
 function darIDColab() {
     let id = localStorage.getItem("idcolab") ? JSON.parse(localStorage.getItem("idcolab")) : 0;
     id += 1;
     localStorage.setItem("idcolab", JSON.stringify(id));
     return id;
-  }
+}
+
+document.getElementById("criarColaborador").addEventListener("click", showPopupCriar);
+document.getElementById("close-popup-criar").addEventListener("click", hidePopupCriar);
+document.getElementById("form-popup-criar").addEventListener("submit", addDataColaboradores);
