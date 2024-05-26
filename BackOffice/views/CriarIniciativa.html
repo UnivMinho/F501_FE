@@ -174,79 +174,79 @@ ver o botao submit do form criar iniciativa ver se da para tirar-->
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-6">
-                  <div class="card card-secondary">
-                      <div class="card-header">
-                          <h3 class="card-title">Criar Iniciativa</h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <!-- form start -->
-                      <form id="form_criarIniciativa" onsubmit="AddDataBackOffice(event)">
-                          <div class="card-body">
-                              <div class="form-group">
-                                  <label for="iniciativa">Iniciativa</label>
-                                  <input type="text" class="form-control" id="iniciativa">
-                              </div>
-                              <div class="form-group">
-                                  <label for="descricao">Descrição da Iniciativa</label>
-                                  <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
-                              </div>
-                              <div class="form-group">
-                                  <label for="local">Local</label>
-                                  <input type="text" class="form-control" id="local">
-                              </div>
-                              <div class="form-group">
-                                  <label for="data">Data Inicio</label>
-                                  <input type="date" class="form-control" id="data">
-                              </div>
-                              <div class="form-group">
-                                  <label for="vagas">Vagas</label>
-                                  <input type="number" class="form-control" id="vagas">
-                              </div>
-                              <div class="form-group">
-                                  <label for="budget">Orçamento</label>
-                                  <input type="number" class="form-control" id="budget">
-                              </div>
-                              <div class="form-group">
-                                  <label for="tipo">Tipo</label>
-                                  <select id="tipo" class="form-control">
-                                      <option value="Ajuda Social">Ajuda Social</option>
-                                      <option value="Educação">Educação</option>
-                                      <option value="Saúde">Saúde</option>
-                                      <option value="Ambiental">Ambiental</option>
-                                      <option value="Inclusão Social">Inclusão Social</option>
-                                      <option value="Recolha de bens">Recolha de Bens</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <!-- /.card-body -->
-                          <div class="card-footer">
-                              <button id="botao_submeter_material" type="submit" class="btn btn-primary" onclick="UsarMateriais()">Submit</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-              <div class="col-md-6">
-                  <div class="card card-secondary">
-                      <div class="card-header">
-                          <h3 class="card-title">Lista de Materiais</h3>
-                      </div>
-                      <div class="card-body">
-                          <!-- Os materiais serão inseridos aqui -->
-                          <div id="material-list">
-                              <!-- Conteúdo da lista de materiais -->
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div><!-- /.container-fluid -->
-  </section>
-  
+        <section class="content">
+            <div class="container-fluid">
+               
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Criar Iniciativa</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form id="form_criarIniciativa" onsubmit="AddDataBackOffice(event)">
+                <div class="card-body">
 
+                    <div class="form-group">
+                        <label for="iniciativa">Iniciativa</label>
+                        <input type="text" class="form-control" id="iniciativa">
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição da Iniciativa</label>
+                        <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="local">Local</label>
+                        <input type="text" class="form-control" id="local">
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Data Inicio</label>
+                        <input type="date" class="form-control" id="data">
+                    </div>
+                    <div class="form-group">
+                        <label for="vagas">Vagas</label>
+                        <input type="number" class="form-control" id="vagas">
+                    </div>
+                    <div class="form-group">
+                      <label for="budget">Orçamento</label>
+                      <input type="number" class="form-control" id="budget">
+                  </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo</label>
+                        <select id="tipo" class="form-control">
+                            <option value="Ajuda Social">Ajuda Social</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Ambiental">Ambiental</option>
+                            <option value="Inclusão Social">Inclusão Social</option>
+                            <option value="Recolha de bens">Recolha de Bens</option>
+                        </select>
+                    </div>
 
+                    <label for="lista_materiais">Lista de Materiais:</label><br>
+                    <div id="material-list">
+                        <!-- Os materiais serão inseridos aqui -->
+                    </div>
+                    <br>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button id="botao_submeter_material" type="submit" class="btn btn-primary" onclick="UsarMateriais()">Submit</button>
+                </div>
+            </form>
+        </div>
+        </div>
+        </div>
+              
+              
+             
+            
+            </div><!-- /.container-fluid -->
+          </section>
+
+    </section>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         preencherTabela();

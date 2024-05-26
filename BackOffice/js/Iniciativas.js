@@ -38,7 +38,42 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adiciona o container do material ao div principal
       materialListDiv.appendChild(materialContainer);
   });
+  
+ /* let colaboradores = JSON.parse(localStorage.getItem('colaboradores')) || [];
+
+  let colaboradoresListDiv = document.getElementById('colaboradores-list');
+
+
+  colaboradores.forEach(function(colab) {
+
+      let colaboradoresContainer = document.createElement('div');
+      colaboradoresContainer.classList.add('colaboradores-item');
+      
+      let checkboxcolab = document.createElement('input');
+      checkboxcolab.type = 'checkbox';
+      checkboxcolab.id = `colaboradores-${colab.nome}`;
+      checkboxcolab.name = 'colaboradores';
+      checkboxcolab.value = colab.nome;
+
+      let labelcolab = document.createElement('label');
+      labelcolab.htmlFor = `colaboradores-${colab.nome}`;
+      labelcolab.textContent = colab.nome;
+
+      let labelrole = document.createElement('label');
+      labelrole.htmlFor = `colaboradores-${colab.role}`;
+      labelrole.textContent = colab.role;
+      
+      colaboradoresContainer.appendChild(checkboxcolab);
+      colaboradoresContainer.appendChild(document.createTextNode(' '));
+      colaboradoresContainer.appendChild(labelcolab);
+      colaboradoresContainer.appendChild(document.createTextNode(' - '));
+      colaboradoresContainer.appendChild(labelrole);
+      
+      colaboradoresListDiv.appendChild(colaboradoresContainer);
+  });*/
+
 });
+
 
 
 
@@ -214,6 +249,15 @@ function AddDataBackOffice(event){
         materiaisUsados.push({ nome: nome, quantidade: quantidadeUsada });
     });
 
+    /*let colaboradoresUsados = [];
+    let checkboxescolab = document.querySelectorAll('input[name="colaboradores"]:checked');
+    checkboxescolab.forEach(function(checkbox) {
+      let nome = checkbox.value;
+      // Aqui você usa o ID exclusivo definido para cada papel
+      let roleUsado = parseInt(document.getElementById(`role-${nome}`).value); 
+      colaboradoresUsados.push({ nome: nome, role: roleUsado });
+  });*/
+
   iniciativas.push({
     id : id,
     iniciativa : iniciativa,
@@ -226,7 +270,8 @@ function AddDataBackOffice(event){
     emailResp : emailResp,
     estado : estado,
     budget : budget,
-    materiais: materiaisUsados
+    materiais: materiaisUsados/*,
+    colaboradores: colaboradoresUsados*/
   });
 
   window.location.href = "../views/Iniciativas.html";
