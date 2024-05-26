@@ -113,7 +113,7 @@ function updateData(id){
               estado: iniciativaSelecionada.estado,
               contactoResp: iniciativaSelecionada.contactoResp,
               emailResp: iniciativaSelecionada.emailResp,
-              materiais: [...iniciativaSelecionada.materiais]
+              materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
           };
 
           let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
@@ -333,8 +333,26 @@ function aceitarSugestao(id) {
               tipo: form.elements["tipo"].value,
               estado: "Aceite",
               contactoResp: iniciativaSelecionada.contactoResp,
-              emailResp: iniciativaSelecionada.emailResp
+              emailResp: iniciativaSelecionada.emailResp,
+              materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
           };
+
+          let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
+            checkboxes.forEach(function(checkbox) {
+                let nome = checkbox.value;
+                let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+
+                // Verifica se o material já existe nos materiais da iniciativa
+                let materialExistente = novosDetalhes.materiais.find(material => material.nome === nome);
+
+                if (materialExistente) {
+                    // Adiciona a quantidade à existente
+                    materialExistente.quantidade += quantidadeUsada;
+                } else {
+                    // Adiciona o novo material à lista
+                    novosDetalhes.materiais.push({ nome: nome, quantidade: quantidadeUsada });
+                }
+            });
 
           // Atualiza a iniciativa no localStorage
           iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
@@ -344,6 +362,7 @@ function aceitarSugestao(id) {
 
           showDataSugestoes();
           hidePopupSugestoes();
+          window.location.reload();
 
       }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
   }
