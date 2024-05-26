@@ -70,11 +70,13 @@ function showDataColaboradores(){
 
 function updateColaborador(id){
 
+  showPopupEditar();
+
   let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
 
-  let index = colaboradores.findIndex(colaboradores => colaboradores.id === id);
+  let index = colaboradores.findIndex(colaborador => colaborador.id === id);
 
-  let form = document.getElementById("form-popup");
+  let form = document.getElementById("form-popup-editar");
 
   if(index !== -1){
       let colaboradorSelecionado = colaboradores[index];
@@ -83,7 +85,7 @@ function updateColaborador(id){
       form.elements["email"].value = colaboradorSelecionado.email;
       form.elements["role"].value = colaboradorSelecionado.role;
 
-      showPopupEditar();
+      
 
       form.addEventListener("submit", function(event) {
           event.preventDefault();
