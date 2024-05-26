@@ -1,3 +1,15 @@
+
+
+
+
+
+
+
+
+
+
+
+/*
 function inscreverVoluntario(){
     let iniciativaTab;
     if(localStorage.getItem("sugestoes") == null){
@@ -52,3 +64,4 @@ function inscrever(index) {
 
 document.onload = inscreverVoluntario();
 
+*/
