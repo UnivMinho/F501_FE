@@ -36,7 +36,7 @@ function googleLogin(event) {
       showPopup();  
 
       document.getElementById("voluntarioBtn").onclick = function() {
-        dadosUser.cargo = "voluntario";
+        dadosUser.cargo = "Voluntario";
         localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
         window.location.href = "/Front_office/index.html";
         closePopup();
@@ -44,7 +44,7 @@ function googleLogin(event) {
     }
   
     document.getElementById("proponenteBtn").onclick = function() {
-        dadosUser.cargo = "proponente";
+        dadosUser.cargo = "Proponente";
         localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
         window.location.href = "/Front_office/index.html";
         closePopup();

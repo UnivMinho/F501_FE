@@ -26,10 +26,6 @@ function showDataIniciativas(){
   }
   
 
-
-
-
-
   function showDataIniciativasVoluntarios(){ 
 
     let iniciativas = filterIniciativas("Aceite");
@@ -74,9 +70,6 @@ function showDataIniciativas(){
   
     return iniciativasFiltradas;
   }
-
-
-
 
 
    /* DEIXAR ISTO PARA O FIM

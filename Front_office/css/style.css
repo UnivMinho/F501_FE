@@ -1398,6 +1398,15 @@ pre {
     -ms-flex: 0 0 16.66667%;
     flex: 0 0 16.66667%;
     max-width: 16.66667%; }
+  .row-dados > * {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+    box-sizing: border-box; /* Adiciona o padding e border na largura total */
+    margin: 0; /* Ajustar conforme necessário */
+  }
   .col-md-auto {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
