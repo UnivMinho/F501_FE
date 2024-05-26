@@ -206,11 +206,14 @@ body {
   }
   
   /*Adicionado */
+
+
   .botao {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px; 
+    color: #fff;
 }
 
 .botao a {
@@ -226,9 +229,12 @@ body {
 }
 /*Adicionado ate aqui*/
 
+
+
 .botao a:hover {
     background-color: #d4ac0d; /* Cor de fundo ao passar o mouse */
 }
+
 
 
   .botao.logout {
