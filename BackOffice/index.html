@@ -261,7 +261,18 @@
             
         </div>
 
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box" style="background-color: #3442c7;">
+            <div class="inner" style="color: white;">
+              <h3>{{ mediaBudget }}</h3>
 
+                <p>Média Orçamento Iniciativas</p>
+            </div>
+            
+          </div>
+          
+      </div>
           
           <!-- ./col -->
         </div>
@@ -363,12 +374,14 @@
       iniciativas: 0,
       sugestoesrec: 0,
       material: 0,
-      fundoManeio: '0€'
+      fundoManeio: '0€',
+      mediaBudget: '0€'
     },
     mounted() {
       console.log('Vue instance mounted');
       this.loadData();
       this.loadFundoManeio();
+      this.calcularMediaBudget()
     },
     methods: {
       loadData() {
@@ -381,6 +394,8 @@
         this.iniciativas = this.filtrarEstado(iniciativasArray, 'Aceite');
         this.sugestoesrec = this.filtrarEstado(iniciativasArray, 'Recusado');
         this.material = materialArray.length;
+
+        this.calcularMediaBudget();
         
       },
 
@@ -393,6 +408,17 @@
         const totalDoacoes = localStorage.getItem('fundoManeio') || '0';
         this.fundoManeio = `${totalDoacoes}€`;
 
+      },
+
+      calcularMediaBudget(){
+        if (this.iniciativas > 0) {
+        const iniciativasAceitas = JSON.parse(localStorage.getItem('iniciativas') || '[]').filter(item => item.estado === 'Aceite');
+        const totalBudget = iniciativasAceitas.reduce((sum, iniciativa) => sum + parseFloat(iniciativa.budget), 0);
+        const media = totalBudget / iniciativasAceitas.length;
+        this.mediaBudget = `${media.toFixed(2)}€`;
+      } else {
+        this.mediaBudget = '0€';
+      }
       }
 
       

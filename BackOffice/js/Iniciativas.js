@@ -47,7 +47,7 @@ function showDataIniciativas(){
   
   let html = "";
 
-  iniciativas.forEach(function(element, index) {
+  iniciativas.forEach(function(element) {
     html += "<tr>";
     html += "<td>" + element.iniciativa + "</td>";
     html += "<td>" + element.local + "</td>";
@@ -57,7 +57,7 @@ function showDataIniciativas(){
     html += "<td>" + element.estado + "</td>";
     html += 
       '<td></button><button onclick="updateData(' +
-      index +
+      element.id +
       ')" class="fa fa-edit" style="margin-left:10px; background-color:yellow;"></button></td>';
       html += "</tr>";
   });
@@ -65,51 +65,67 @@ function showDataIniciativas(){
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
 }
 
+function showPopup(){
+  document.getElementById('popup-background').style.display = 'flex';
+}
+
+function hidePopup(){
+  document.getElementById('popup-background').style.display = 'none';
+}
+
+document.getElementById('close-popup').addEventListener('click', hidePopup);
 
 function updateData(id){
+  // Recupera as iniciativas do localStorage
+  let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
-    // Recupera as iniciativas do localStorage
-    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+  let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
 
-    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
- 
-    let form = document.getElementById("form-popup");
+  let form = document.getElementById("form-popup");
 
-    if(index !== -1){
-    let iniciativaSelecionada = iniciativas[index];
-      
-    // Preenche o formulário com os detalhes da iniciativa
-    form.elements["iniciativa"].value = iniciativaSelecionada.iniciativa;
-    form.elements["descricao"].value = iniciativaSelecionada.descricao;
-    form.elements["local"].value = iniciativaSelecionada.local;
-    form.elements["data"].value = iniciativaSelecionada.data;
-    form.elements["vagas"].value = iniciativaSelecionada.vagas;
-    form.elements["budget"].value = iniciativaSelecionada.budget;
-    form.elements["tipo"].value = iniciativaSelecionada.tipo;
+  if(index !== -1){
+      let iniciativaSelecionada = iniciativas[index];
 
-        // Obtém os novos detalhes da iniciativa a partir do formulário
-        let novosDetalhes = {
-            iniciativa: document.getElementById("iniciativa").value,
-            descricao: document.getElementById("descricao").value,
-            local: document.getElementById("local").value,
-            data: document.getElementById("data").value,
-            vagas: document.getElementById("vagas").value,
-            budget: document.getElementById("budget").value,
-            tipo: document.getElementById("tipo").value
-        };
+      // Preenche o formulário com os detalhes da iniciativa
+      form.elements["iniciativa"].value = iniciativaSelecionada.iniciativa;
+      form.elements["descricao"].value = iniciativaSelecionada.descricao;
+      form.elements["local"].value = iniciativaSelecionada.local;
+      form.elements["data"].value = iniciativaSelecionada.data;
+      form.elements["vagas"].value = iniciativaSelecionada.vagas;
+      form.elements["budget"].value = iniciativaSelecionada.budget;
+      form.elements["tipo"].value = iniciativaSelecionada.tipo;
 
-       
-        // Atualiza o localStorage com as iniciativas atualizadas
-        localStorage.setItem("iniciativas", JSON.stringify(novosDetalhes));
+      showPopup();
 
-        // Faça qualquer outra coisa que você precise após a atualização
+      form.addEventListener("submit", function(event) {
+          event.preventDefault();
 
-        // Redireciona para onde deseja
-        window.location.href = "../views/Iniciativas.html";
-      
-   
+          // Obtém os novos detalhes da iniciativa a partir do formulário
+          let novosDetalhes = {
+              id: id,
+              iniciativa: form.elements["iniciativa"].value,
+              descricao: form.elements["descricao"].value,
+              local: form.elements["local"].value,
+              data: form.elements["data"].value,
+              vagas: form.elements["vagas"].value,
+              budget: form.elements["budget"].value,
+              tipo: form.elements["tipo"].value,
+              estado: iniciativaSelecionada.estado,
+              contactoResp: iniciativaSelecionada.contactoResp,
+              emailResp: iniciativaSelecionada.emailResp
+          };
+
+          // Atualiza a iniciativa no localStorage
+          iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
+
+          // Atualiza o localStorage com as iniciativas atualizadas
+          localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+
+          showDataIniciativas();
+          hidePopup();
+
+      }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
   }
-
 }
 
 function filterIniciativas(estado){
