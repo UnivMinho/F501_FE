@@ -113,7 +113,7 @@ function updateData(id){
               estado: iniciativaSelecionada.estado,
               contactoResp: iniciativaSelecionada.contactoResp,
               emailResp: iniciativaSelecionada.emailResp,
-              materiais: [...iniciativaSelecionada.materiais]
+              materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
           };
 
           let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
@@ -333,8 +333,26 @@ function aceitarSugestao(id) {
               tipo: form.elements["tipo"].value,
               estado: "Aceite",
               contactoResp: iniciativaSelecionada.contactoResp,
-              emailResp: iniciativaSelecionada.emailResp
+              emailResp: iniciativaSelecionada.emailResp,
+              materiais: iniciativaSelecionada.materiais ? [...iniciativaSelecionada.materiais] : []
           };
+
+          let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
+            checkboxes.forEach(function(checkbox) {
+                let nome = checkbox.value;
+                let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+
+                // Verifica se o material já existe nos materiais da iniciativa
+                let materialExistente = novosDetalhes.materiais.find(material => material.nome === nome);
+
+                if (materialExistente) {
+                    // Adiciona a quantidade à existente
+                    materialExistente.quantidade += quantidadeUsada;
+                } else {
+                    // Adiciona o novo material à lista
+                    novosDetalhes.materiais.push({ nome: nome, quantidade: quantidadeUsada });
+                }
+            });
 
           // Atualiza a iniciativa no localStorage
           iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
@@ -344,6 +362,7 @@ function aceitarSugestao(id) {
 
           showDataSugestoes();
           hidePopupSugestoes();
+          window.location.reload();
 
       }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
   }
@@ -371,61 +390,101 @@ function recusarSugestao(id) {
   }
 }
 
-function showDataSugestoes(){
+function showDataSugestoes() {
+  const iniciativas = filterIniciativas("Pendente");
 
-  const iniciativas = filterIniciativas("Pendente");~
-  console.log(iniciativas);
-    
-  let html = "";
-  
-    iniciativas.forEach(function(element) {
-      html += "<tr>";
-      html += "<td>" + element.tipo + "</td>";
-      html += "<td>" + element.descricao + "</td>";
-      html += "<td>" + element.local + "</td>";
-      html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.emailResp + "</td>";
-      html += "<td>" + element.contactoResp + "</td>";
-      html += "<td>" + element.estado + "</td>";
-      html += 
-      '<td><button onclick="aceitarSugestao(' +
-      element.id + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="recusarSugestao(' +
-      element.id +
-      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button></td>';
-      html += "</tr>";
-    });
-  
   const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
 
-  tables.forEach(table =>{
-    table.innerHTML = html;
+  // Limpa o conteúdo das tabelas antes de adicionar novas linhas
+  tables.forEach(table => {
+    table.innerHTML = "";
   });
-}
 
-function showDataSugestoesRec(){
-
-  const iniciativas = filterIniciativas("Recusado");
-    
-  let html = "";
-  
   iniciativas.forEach(function(element) {
-    html += "<tr>";
-    html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.local + "</td>";
-    html += "<td>" + element.data + "</td>";
-    html += "<td>" + element.descricao + "</td>";
-    html += "<td>" + element.emailResp + "</td>";
-    html += "<td>" + element.contactoResp + "</td>";
-    html += 
-      '<td><button onclick="recuperarSugestao(' +
-      element.id + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button></td>';
-      html += "</tr>";
+    // Cria uma nova linha para a iniciativa
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${element.tipo}</td>
+      <td>${element.local}</td>
+      <td>${element.data}</td>
+      <td>${element.emailResp}</td>
+      <td>${element.contactoResp}</td>
+      <td>${element.estado}</td>
+      <td>
+        <button onclick="aceitarSugestao(${element.id})" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button>
+        <button onclick="recusarSugestao(${element.id})" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>
+      </td>
+    `;
+
+    // Adiciona uma classe para identificar a linha expandível
+    row.classList.add('expandable-row');
+
+    // Adiciona a linha à tabela
+    tables.forEach(table => {
+      table.appendChild(row);
+    });
+
+    // Cria a linha expansível
+    let expandableRow = document.createElement("tr");
+    expandableRow.classList.add('expandable-body');
+    expandableRow.style.display = 'none';
+    expandableRow.innerHTML = `
+      <td colspan="7">
+        <p><strong>Descrição:</strong> ${element.descricao}</p>
+      </td>
+    `;
+
+    // Adiciona a linha expansível à tabela
+    tables.forEach(table => {
+      table.appendChild(expandableRow);
+    });
   });
-  
-  document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
 }
+
+
+function showDataSugestoesRec() {
+  const iniciativas = filterIniciativas("Recusado");
+  
+  const table = document.querySelector("#sugestoesrec-table tbody");
+
+  // Limpa o conteúdo da tabela antes de adicionar novas linhas
+  table.innerHTML = "";
+
+  iniciativas.forEach(function(element) {
+    // Cria uma nova linha para a iniciativa
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${element.tipo}</td>
+      <td>${element.local}</td>
+      <td>${element.data}</td>
+      <td>${element.emailResp}</td>
+      <td>${element.contactoResp}</td>
+      <td>
+        <button onclick="recuperarSugestao(${element.id})" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button>
+      </td>
+    `;
+
+    // Adiciona uma classe para identificar a linha expandível
+    row.classList.add('expandable-row');
+
+    // Adiciona a linha à tabela
+    table.appendChild(row);
+
+    // Cria a linha expansível
+    let expandableRow = document.createElement("tr");
+    expandableRow.classList.add('expandable-body');
+    expandableRow.style.display = 'none';
+    expandableRow.innerHTML = `
+      <td colspan="6">
+        <p><strong>Descrição:</strong> ${element.descricao}</p>
+      </td>
+    `;
+
+    // Adiciona a linha expansível à tabela
+    table.appendChild(expandableRow);
+  });
+}
+
 
 function recuperarSugestao(id) {
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
@@ -440,5 +499,3 @@ function recuperarSugestao(id) {
   showDataIniciativas();
   }
 }
-
-

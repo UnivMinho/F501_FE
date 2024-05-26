@@ -192,7 +192,6 @@
                   <thead>
                     <tr>
                       <th>Tipo</th>
-                      <th>Descrição</th>
                       <th>Local</th>
                       <th>Data</th>
                       <th>Email</th>
@@ -209,6 +208,8 @@
             </div>
           </div>
         </div>
+
+        
       </div>
       <div id="popup-background-sugestoes">
         <div id="popup-container">
@@ -335,5 +336,24 @@
 <script src="../plugins/scripts/demo.js"></script>
 
 <script src="../js/Iniciativas.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
+
+  // Adiciona o evento de clique para expandir a linha a todas as linhas da tabela
+  tables.forEach(table => {
+    table.addEventListener('click', function(event) {
+      const target = event.target;
+      if (target.tagName.toLowerCase() === 'td' && target.parentElement.classList.contains('expandable-row')) {
+        const expandableBody = target.parentElement.nextElementSibling;
+        if (expandableBody && expandableBody.classList.contains('expandable-body')) {
+          expandableBody.style.display = (expandableBody.style.display === 'none') ? 'table-row' : 'none';
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
