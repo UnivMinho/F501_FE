@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../styles/style.css">
 
 </head>
-<body class="hold-transition sidebar-mini">
+<body onload="showDataColaboradores()" class="hold-transition sidebar-mini">
 <div class="wrapper">
 
   <!--Preloader-->
@@ -159,7 +159,11 @@
                   <h1>Gestão de Colaboradores</h1>
               </div>
               <div class="col-sm-6">
-            
+                <ol class="breadcrumb float-sm-right">
+                  <!-- Botões -->
+                  <button class="btn btn-secondary float-right mr-2">Criar Colaborador</button>
+                  
+              </ol>
               </div>
           </div>
       </div><!-- /.container-fluid -->
@@ -183,6 +187,7 @@
                       <th>Nome</th>
                       <th>Email</th>
                       <th>Role</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -225,7 +230,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../plugins/scripts/demo.js"></script>
 
-<script src="../js/VerSugestoes.js"></script>
+<script src="../js/Colaboradores.js"></script>
 
 <script src="../../Front_office/js/login.js"></script>
 
