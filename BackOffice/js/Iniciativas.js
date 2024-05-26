@@ -77,15 +77,15 @@ function updateData(id){
 
     if(index !== -1){
     let iniciativaSelecionada = iniciativas[index];
-
+      
     // Preenche o formulário com os detalhes da iniciativa
     form.elements["iniciativa"].value = iniciativaSelecionada.iniciativa;
-    form.elements["descricao"].value = iniciativaSelecionada.iniciativa;
-    form.elements["local"].value = iniciativaSelecionada.iniciativa;
-    form.elements["data"].value = iniciativaSelecionada.iniciativa;
-    form.elements["vagas"].value = iniciativaSelecionada.iniciativa;
-    form.elements["budget"].value = iniciativaSelecionada.iniciativa;
-    form.elements["tipo"].value = iniciativaSelecionada.iniciativa;
+    form.elements["descricao"].value = iniciativaSelecionada.descricao;
+    form.elements["local"].value = iniciativaSelecionada.local;
+    form.elements["data"].value = iniciativaSelecionada.data;
+    form.elements["vagas"].value = iniciativaSelecionada.vagas;
+    form.elements["budget"].value = iniciativaSelecionada.budget;
+    form.elements["tipo"].value = iniciativaSelecionada.tipo;
 
         // Obtém os novos detalhes da iniciativa a partir do formulário
         let novosDetalhes = {
@@ -156,7 +156,7 @@ function AddDataBackOffice(event){
 
   let fundoManeio = parseFloat(localStorage.getItem("fundoManeio")) || 0;
 
-  if(budget <= 0 || budget > fundoManeio){
+  if(budget < 0 || budget > fundoManeio){
     alert("Orçamento selecionado inválido");
     return;
   }
