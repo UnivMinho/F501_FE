@@ -273,6 +273,32 @@
           </div>
           
       </div>
+
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box" style="background-color: #28A745;">
+          <div class="inner" style="color: white;">
+            <h3>{{ doacoes }}</h3>
+
+              <p>Número Total Doações</p>
+          </div>
+          
+        </div>
+        
+    </div>
+
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box" style="background-color: #3442c7;">
+        <div class="inner" style="color: white;">
+          <h3>{{ percentagemAceites }}</h3>
+
+            <p>Percentagem Iniciativas Aceites</p>
+        </div>
+        
+      </div>
+      
+  </div>
           
           <!-- ./col -->
         </div>
@@ -375,7 +401,9 @@
       sugestoesrec: 0,
       material: 0,
       fundoManeio: '0€',
-      mediaBudget: '0€'
+      mediaBudget: '0€',
+      doacoes: 0,
+      percentagemAceites: '0%'
     },
     mounted() {
       console.log('Vue instance mounted');
@@ -389,13 +417,16 @@
         
         const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
         const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
+        const doacoesArray = JSON.parse(localStorage.getItem('doacoes') || '[]');
 
         this.sugestoes = this.filtrarEstado(iniciativasArray, 'Pendente');
         this.iniciativas = this.filtrarEstado(iniciativasArray, 'Aceite');
         this.sugestoesrec = this.filtrarEstado(iniciativasArray, 'Recusado');
         this.material = materialArray.length;
+        this.doacoes = doacoesArray.length;
 
         this.calcularMediaBudget();
+        this.calcularPercentagemAceites(iniciativasArray);
         
       },
 
@@ -412,13 +443,24 @@
 
       calcularMediaBudget(){
         if (this.iniciativas > 0) {
-        const iniciativasAceitas = JSON.parse(localStorage.getItem('iniciativas') || '[]').filter(item => item.estado === 'Aceite');
-        const totalBudget = iniciativasAceitas.reduce((sum, iniciativa) => sum + parseFloat(iniciativa.budget), 0);
-        const media = totalBudget / iniciativasAceitas.length;
+        const iniciativasAceites = JSON.parse(localStorage.getItem('iniciativas') || '[]').filter(item => item.estado === 'Aceite');
+        const totalBudget = iniciativasAceites.reduce((sum, iniciativa) => sum + parseFloat(iniciativa.budget), 0);
+        const media = totalBudget / iniciativasAceites.length;
         this.mediaBudget = `${media.toFixed(2)}€`;
       } else {
         this.mediaBudget = '0€';
       }
+      },
+
+      calcularPercentagemAceites(iniciativasArray){
+        const totalIniciativas = iniciativasArray.length;
+        const iniciativasAceites = this.iniciativas; // Já filtrado para incluir apenas iniciativas "Aceite"
+        if (totalIniciativas > 0) {
+          const percentagem = (iniciativasAceites / totalIniciativas) * 100;
+          this.percentagemAceites = `${Math.round(percentagem)}%`;
+        } else {
+          this.percentagemAceites = '0%';
+        }
       }
 
       
