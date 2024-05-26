@@ -259,10 +259,15 @@
                     <option value="Recolha de bens">Recolha de Bens</option>
                   </select>
                 </div>
+                <label for="lista_materiais">Lista de Materiais:</label><br>
+                    <div id="material-list">
+                        <!-- Os materiais serão inseridos aqui -->
+                    </div>
+                    <br>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                <button id="Update" type="submit" class="btn btn-primary">Update</button>
+                <button id="Update" type="submit" class="btn btn-primary" onclick="UsarMateriais()">Update</button>
                 <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopup();">Voltar</button>
               </div>
             </form>
@@ -330,7 +335,7 @@
 </div>
 <!-- ./wrapper -->
 
-
+<script src="../js/AdicionarMaterial.js"></script>
 <!-- jQuery -->
 <script src="../plugins/scripts/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
