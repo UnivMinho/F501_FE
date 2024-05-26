@@ -179,102 +179,72 @@
 
     <!-- Main content -->
     <section class="content ">
+      
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
+        <div id="app" class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-28A745">
+            <div class="small-box" style="background-color: #28A745;">
               <div class="inner" style="color: white;">
-                <h3>53%</h3>
+                <h3>{{ iniciativas }}</h3>
 
-                <p>Pedidos Aceites</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                  <p>Iniciativas em Curso</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
             <a href="views/Iniciativas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-28A745 {
-                  background-color: #28A745;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-DC3545">
+            <div class="small-box" style="background-color: #DC3545;">
               <div class="inner" style="color: white;">
-                <h3>65</h3>
+                <h3>{{ sugestoes }}</h3>
 
-                <p>Iniciativas em curso</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                  <p>Pedidos Pendentes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
             <a href="views/VerSugestoes.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-DC3545 {
-                  background-color: #DC3545;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-FFC107">
+            <div class="small-box" style="background-color: #e6af0d;">
               <div class="inner" style="color: white;">
-                <h3>44</h3>
+                <h3>{{ sugestoesrec }}</h3>
 
-                <p>Profissionais Registados</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
+                  <p>Sugestões Recusadas</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
             <a href="views/SugestoesRecusadas.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <style>
-              .custom-bg-FFC107 {
-                  background-color: #e6af0d;
-              }
-            </style>
+            
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box custom-bg-3F474E">
-              <div class="inner">
-                  <h3 class="text-white">150</h3>
-                  <p class="text-white">Pedidos Pendentes</p>
-              </div>
-              <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
+            <div class="small-box" style="background-color: #3F474E;">
+              <div class="inner" style="color: white;">
+                <h3>{{ material }}</h3>
+
+                <p>Material</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
             <a href="views/GestaoInventario.html" class="small-box-footer">Mais Info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          
-          <style>
-              .custom-bg-3F474E {
-                  background-color: #3F474E;
-              }
-              .custom-bg-3F474E .text-white {
-                  color: white;
-              }
-          </style>
+        
           </div>
 
           <!--Fundo Maneio-->
@@ -282,7 +252,7 @@
             <!-- small box -->
             <div class="small-box" style="background-color: #ffc107;">
               <div class="inner" style="color: white;">
-                <h3 id="fundototal">{{ fundoManeio }}</h3>
+                <h3>{{ fundoManeio }}</h3>
   
                   <p>Fundo Maneio</p>
               </div>
@@ -291,6 +261,12 @@
             
         </div>
 
+
+          
+          <!-- ./col -->
+        </div>
+
+        <div class="row">
 
           <div class="charts-container">
             <div class="container1">
@@ -311,13 +287,15 @@
                 </div>
             </div>
           </div>
-          <!-- ./col -->
-        </div>
 
+        </div>
        
         
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
+      
+
+
     </section>
     <!-- /.content -->
   </div>
@@ -395,27 +373,29 @@
     methods: {
       loadData() {
         console.log('Loading data from localStorage');
-        const sugestoesArray = JSON.parse(localStorage.getItem('sugestoes') || '[]');
-        const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
-        const sugestoesrecArray = JSON.parse(localStorage.getItem('sugestoesrec') || '[]');
-        const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
         
-        this.sugestoes = sugestoesArray.length;
-        this.iniciativas = iniciativasArray.length;
-        this.sugestoesrec = sugestoesrecArray.length;
-        this.material = materialArray.length;
+        const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
+        const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
 
-        console.log(localStorage.getItem('sugestoes'));
-        console.log(localStorage.getItem('iniciativas'));
-        console.log(localStorage.getItem('sugestoesrec'));
-        console.log(localStorage.getItem('material'));
+        this.sugestoes = this.filtrarEstado(iniciativasArray, 'Pendente');
+        this.iniciativas = this.filtrarEstado(iniciativasArray, 'Aceite');
+        this.sugestoesrec = this.filtrarEstado(iniciativasArray, 'Recusado');
+        this.material = materialArray.length;
+        
+      },
+
+      filtrarEstado(array, state){
+        return array.filter(item => item.estado === state).length;
       },
 
       loadFundoManeio(){
+        
         const totalDoacoes = localStorage.getItem('fundoManeio') || '0';
         this.fundoManeio = `${totalDoacoes}€`;
 
       }
+
+      
     }
   });
 
