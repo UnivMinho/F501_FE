@@ -62,7 +62,7 @@
 
 
 
-function ArmazenarDoacao() {
+/*function ArmazenarDoacao() {
     let valor = document.getElementById("valor").value;
     let NomeCartao = document.getElementById("NomeCartao").value;
     let ApelidoCartao = document.getElementById("ApelidoCartao").value;
@@ -103,3 +103,4 @@ function ArmazenarDoacao() {
 
     return false;
 }
+*/
