@@ -189,6 +189,14 @@ function AddDataBackOffice(event){
     iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
   }
 
+  let materiaisUsados = [];
+    let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
+    checkboxes.forEach(function(checkbox) {
+        let nome = checkbox.value;
+        let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+        materiaisUsados.push({ nome: nome, quantidade: quantidadeUsada });
+    });
+
   iniciativas.push({
     id : id,
     iniciativa : iniciativa,
@@ -200,7 +208,8 @@ function AddDataBackOffice(event){
     contactoResp : contactoResp,
     emailResp : emailResp,
     estado : estado,
-    budget : budget
+    budget : budget,
+    materiais: materiaisUsados
   });
 
   window.location.href = "../views/Iniciativas.html";
