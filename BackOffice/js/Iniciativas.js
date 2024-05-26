@@ -280,6 +280,45 @@ function aceitarSugestao(id) {
     });
   }
 
+  function showDataSugestoesRec(){
+
+    const iniciativas = filterIniciativas("Recusado");
+    
+    let html = "";
+  
+    iniciativas.forEach(function(element) {
+      html += "<tr>";
+      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.local + "</td>";
+      html += "<td>" + element.data + "</td>";
+      html += "<td>" + element.descricao + "</td>";
+      html += "<td>" + element.emailResp + "</td>";
+      html += "<td>" + element.contactoResp + "</td>";
+      html += 
+      '<td><button onclick="recuperarSugestao(' +
+      element.id + 
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button></td>';
+      html += "</tr>";
+    });
+  
+    document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
+  }
+
+
+  function recuperarSugestao(id) {
+    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+
+    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+    if (index !== -1) {
+      iniciativas[index].estado = "Pendente";
+  
+    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  
+    window.location.href = "../views/Iniciativas.html";
+    showDataIniciativas();
+    }
+  }
+
 
 
 
