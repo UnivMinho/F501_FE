@@ -1,5 +1,5 @@
 function ArmazenarDoacao() {
-    // Obter o valor da doação do campo de entrada
+
     let valor = parseFloat(document.getElementById("valor").value);
     let NomeCartao = document.getElementById("NomeCartao").value;
     let ApelidoCartao = document.getElementById("ApelidoCartao").value;
