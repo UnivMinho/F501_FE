@@ -61,29 +61,83 @@ body {
   background-color: #fff; }
 
 
+  /*Popup */
+  
+.popup {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close-popup {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+  color: black;
+}
+
+.popup-button {
+  background-color: #eb5757;
+  color: white;
+  border: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: bold;
+  
+}
+
+.popup-button:hover {
+  background-color: #000000;
+}
+
+
+
+
 
   /*Botao Inscrever Voluntarios */
   .voluntarios-botao {
-    background: #c69500;
+    background: #eec857;
     color: #fff;
     font-size: 12px;
     padding: 5px 10px;
-    border: none; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    font-weight: bold;
-}
+    border-radius: 20px; //* Adiciona bordas curvas */
+  }
 
-.inscrito-text {
-    background: #117a8b;
+  .inscrito-text {
+    background: #57ee5f;
     color: #fff;
     font-size: 12px;
     padding: 5px 10px;
-    border: none; 
-    border-radius: 20px; 
-    font-weight: bold;
-}
-
+    border-radius: 20px; /
+  }
 
 
 

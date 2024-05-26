@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Tabela Proponente</title>
+    <title>Tabela Voluntários</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/style.css">
   
   </head>
-  <body>
+  <body onload="showDataIniciativasVoluntarios()">
     
     <script>
       const dadosUser = JSON.parse(localStorage.getItem("dadosUser"));
@@ -179,6 +179,7 @@
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
 <script src="js/mostrarIniciativaVoluntario.js"></script>
+<script src="js/Iniciativas.js"></script>
 
 
 </body>
