@@ -75,8 +75,6 @@ function hidePopup(){
   document.getElementById('popup-background').style.display = 'none';
 }
 
-document.getElementById('close-popup').addEventListener('click', hidePopup);
-
 function updateData(id){
   // Recupera as iniciativas do localStorage
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
@@ -134,8 +132,7 @@ function filterIniciativas(estado){
   let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
-  }
-  else{
+  }else{
     iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
   }
 
@@ -156,10 +153,6 @@ function darID() {
   localStorage.setItem("id", JSON.stringify(id));
   return id;
 }
-
-
-
-
 
 function AddDataBackOffice(event){
   event.preventDefault();
@@ -288,17 +281,61 @@ function AddDataSugestoes(){
 
 function aceitarSugestao(id) {
 
-    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+  // Recupera as iniciativas do localStorage
+  let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
-    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
-    if (index !== -1) {
-      iniciativas[index].estado = "Aceite";
-  
-    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
-  
-    window.location.href = "../views/Iniciativas.html";
-    showDataIniciativas();
-    }
+  let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+
+  let form = document.getElementById("form-popup-sugestoes");
+
+  if(index !== -1){
+      let iniciativaSelecionada = iniciativas[index];
+
+      // Preenche o formulário com os detalhes da iniciativa
+      form.elements["descricao"].value = iniciativaSelecionada.descricao;
+      form.elements["local"].value = iniciativaSelecionada.local;
+      form.elements["data"].value = iniciativaSelecionada.data;
+      form.elements["tipo"].value = iniciativaSelecionada.tipo;
+
+      showPopupSugestoes();
+
+      form.addEventListener("submit", function(event) {
+          event.preventDefault();
+
+          // Obtém os novos detalhes da iniciativa a partir do formulário
+          let novosDetalhes = {
+              id: id,
+              iniciativa: form.elements["iniciativa"].value,
+              descricao: form.elements["descricao"].value,
+              local: form.elements["local"].value,
+              data: form.elements["data"].value,
+              vagas: form.elements["vagas"].value,
+              budget: form.elements["budget"].value,
+              tipo: form.elements["tipo"].value,
+              estado: "Aceite",
+              contactoResp: iniciativaSelecionada.contactoResp,
+              emailResp: iniciativaSelecionada.emailResp
+          };
+
+          // Atualiza a iniciativa no localStorage
+          iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
+
+          // Atualiza o localStorage com as iniciativas atualizadas
+          localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+
+          showDataSugestoes();
+          hidePopupSugestoes();
+
+      }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
+  }
+}
+
+function showPopupSugestoes(){
+  document.getElementById('popup-background-sugestoes').style.display = 'flex';
+}
+
+function hidePopupSugestoes(){
+  document.getElementById('popup-background-sugestoes').style.display = 'none';
 }
 
 function recusarSugestao(id) {
