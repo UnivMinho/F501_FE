@@ -1,7 +1,7 @@
 function addDataColaboradores(event) {
   event.preventDefault();
   
-  alert("Entrei na função addDataColaboradores");
+  showPopupCriar();
 
   let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
 
@@ -21,12 +21,15 @@ function addDataColaboradores(event) {
 
   localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
   showDataColaboradores();
-  document.getElementById("form-popup-criar").reset();
-  closePopup();
+  hidePopupCriar();
+  
 }
 
+
+
+
 function showPopupCriar(){
-  document.getElementById('popup-background-editar').style.display = 'flex';
+  document.getElementById('popup-background-criar').style.display = 'flex';
 }
 
 function showPopupEditar(){
@@ -40,6 +43,9 @@ function hidePopupCriar(){
 function hidePopupEditar(){
   document.getElementById('popup-background-editar').style.display = 'none';
 }
+
+
+
 
 function showDataColaboradores(){
   
@@ -63,10 +69,10 @@ function showDataColaboradores(){
 }
 
 function updateColaborador(id){
-    // Recupera as colaboradores do localStorage
+
   let colaboradores = JSON.parse(localStorage.getItem("colaboradores")) || [];
 
-  let index = colaboradores.findIndex(iniciativa => iniciativa.id === id);
+  let index = colaboradores.findIndex(colaboradores => colaboradores.id === id);
 
   let form = document.getElementById("form-popup");
 
@@ -77,7 +83,7 @@ function updateColaborador(id){
       form.elements["email"].value = colaboradorSelecionado.email;
       form.elements["role"].value = colaboradorSelecionado.role;
 
-      showPopupColaboradores();
+      showPopupEditar();
 
       form.addEventListener("submit", function(event) {
           event.preventDefault();
@@ -95,8 +101,7 @@ function updateColaborador(id){
           // Atualiza o localStorage com as colaboradores atualizadas
           localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
 
-          showDataColaboradoresEditar();
-          hidePopupColaboradoresEditar();
+          hidePopupEditar();
           window.location.reload();
 
       }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
