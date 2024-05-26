@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../styles/style.css">
 
 </head>
-<body class="hold-transition sidebar-mini">
+<body onload="showDataSugestoes()" class="hold-transition sidebar-mini">
 
 <script>
   if (!localStorage.getItem('loggedIn')) {
@@ -197,6 +197,7 @@
                       <th>Data</th>
                       <th>Email</th>
                       <th>Contacto</th>
+                      <th>Estado</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -240,6 +241,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../plugins/scripts/demo.js"></script>
 
-<script src="../js/VerSugestoes.js"></script>
+<script src="../js/Iniciativas.js"></script>
 </body>
 </html>

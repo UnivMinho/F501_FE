@@ -42,14 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function showDataIniciativas(){
-  let iniciativas;
-  if(localStorage.getItem("iniciativas")==null){
-    iniciativas = [];
-  }
-  else{
-    iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
-  }
 
+  const iniciativas = filterIniciativas("Aceite");
+  
   let html = "";
 
   iniciativas.forEach(function(element, index) {
@@ -59,7 +54,6 @@ function showDataIniciativas(){
     html += "<td>" + element.data + "</td>";
     html += "<td>" + element.vagas + "</td>";
     html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.lider + "</td>";
     html += "<td>" + element.estado + "</td>";
     html += 
       '</button><button onclick="updateData(' +
@@ -71,7 +65,6 @@ function showDataIniciativas(){
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
 }
 
-document.onload = showDataIniciativas();
 
 function updateData(index){
 
@@ -94,8 +87,32 @@ function updateData(index){
   window.location.href = "../views/CriarIniciativa.html";
 }
 
+function filterIniciativas(estado){
+  let iniciativas;
+  if(localStorage.getItem("iniciativas")==null){
+    iniciativas = [];
+  }
+  else{
+    iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
+  }
 
+  let iniciativasFiltradas = [];
 
+  for(let i = 0; i < iniciativas.length; i++){
+    if(iniciativas[i].estado == estado){
+      iniciativasFiltradas.push(iniciativas[i]);
+    }
+  }
+
+  return iniciativasFiltradas;
+}
+
+function darID() {
+  let id = localStorage.getItem("id") ? JSON.parse(localStorage.getItem("id")) : 0;
+  id += 1;
+  localStorage.setItem("id", JSON.stringify(id));
+  return id;
+}
 
 function AddDataBackOffice(event){
   event.preventDefault();
@@ -105,15 +122,13 @@ function AddDataBackOffice(event){
   let data = document.getElementById("data").value;
   let vagas = document.getElementById("vagas").value;
   let tipo = document.getElementById("tipo").value;
-  let lider = document.getElementById("lider").value;
   let descricao = document.getElementById("descricao").value;
   let contactoResp = "";
   let emailResp = "";
   let budget = document.getElementById("budget").value;
   let estado = "Aceite";
-    
-    
-    
+  let id = darID();
+
   let iniciativas;
   if(localStorage.getItem("iniciativas")==null){
     iniciativas = [];
@@ -123,13 +138,13 @@ function AddDataBackOffice(event){
   }
 
   iniciativas.push({
+    id : id,
     iniciativa : iniciativa,
     descricao: descricao,
     local : local,
     data : data,
     vagas : vagas,
     tipo : tipo,
-    lider : lider,
     contactoResp : contactoResp,
     emailResp : emailResp,
     estado : estado,
@@ -151,7 +166,121 @@ function AddDataBackOffice(event){
   document.getElementById("contactoResp").value = "";
   document.getElementById("emailResp").value = "";
   document.getElementById("budget").value = "";
+}
+
+function AddDataSugestoes(){
+
+  let tipo = document.getElementById("tipo").value;
+  let descricao = document.getElementById("descricao").value;
+  let local = document.getElementById("local").value;
+  let data = document.getElementById("dataEvento").value;
+  let email = document.getElementById("emailResp").value;
+  let contacto = document.getElementById("contactoResp").value;
+  let iniciativa = "";
+  let vagas = "";
+  let budget = "";
+  let estado = "Pendente";
+  let id = darID();
+
+
+  let sugestoes;
+  if(localStorage.getItem("iniciativas")==null){
+    sugestoes = [];
   }
+  else{
+    sugestoes = JSON.parse(localStorage.getItem("iniciativas"));
+  }
+
+  sugestoes.push({
+    id : id,
+    iniciativa : iniciativa,
+    descricao: descricao,
+    local : local,
+    data : data,
+    vagas : vagas,
+    tipo : tipo,
+    contactoResp : contacto,
+    emailResp : email,
+    estado : estado,
+    budget : budget
+  });
+
+  localStorage.setItem("iniciativas", JSON.stringify(sugestoes));
+  showDataSugestoes();
+  document.getElementById("tipo").value = "";
+  document.getElementById("descricao").value = "";
+  document.getElementById("local").value = "";
+  document.getElementById("dataEvento").value = "";
+  document.getElementById("emailResp").value = "";
+  document.getElementById("contactoResp").value = "";
+  document.getElementById("estado").value = "";
+  document.getElementById("budget").value = "";
+  document.getElementById("iniciativa").value = "";
+  document.getElementById("vagas").value = "";
+}
+
+function aceitarSugestao(id) {
+
+    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+
+    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+    if (index !== -1) {
+      iniciativas[index].estado = "Aceite";
+  
+    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  
+    window.location.href = "../views/Iniciativas.html";
+    showDataIniciativas();
+    }
+}
+
+  function recusarSugestao(id) {
+    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+
+    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+    if (index !== -1) {
+      iniciativas[index].estado = "Recusado";
+  
+    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  
+    window.location.href = "../views/Iniciativas.html";
+    showDataIniciativas();
+    }
+  }
+
+  function showDataSugestoes(){
+
+    const iniciativas = filterIniciativas("Pendente");~
+    console.log(iniciativas);
+    
+    let html = "";
+  
+    iniciativas.forEach(function(element) {
+      html += "<tr>";
+      html += "<td>" + element.iniciativa + "</td>";
+      html += "<td>" + element.local + "</td>";
+      html += "<td>" + element.data + "</td>";
+      html += "<td>" + element.vagas + "</td>";
+      html += "<td>" + element.tipo + "</td>";
+      html += "<td>" + element.contactoResp + "</td>";
+      html += "<td>" + element.estado + "</td>";
+      html += 
+      '<td><button onclick="aceitarSugestao(' +
+      element.id + 
+      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="recusarSugestao(' +
+      element.id +
+      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
+      html += "</tr>";
+    });
+  
+    const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
+
+    tables.forEach(table =>{
+      table.innerHTML = html;
+    });
+  }
+
+
 
 
 
