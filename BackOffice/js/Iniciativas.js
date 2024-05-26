@@ -234,94 +234,88 @@ function aceitarSugestao(id) {
     }
 }
 
-  function recusarSugestao(id) {
-    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+function recusarSugestao(id) {
+  let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
-    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
-    if (index !== -1) {
-      iniciativas[index].estado = "Recusado";
+  let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+  if (index !== -1) {
+    iniciativas[index].estado = "Recusado";
   
-    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
   
-    window.location.href = "../views/Iniciativas.html";
-    showDataIniciativas();
-    }
+  window.location.href = "../views/Iniciativas.html";
+  showDataIniciativas();
   }
+}
 
-  function showDataSugestoes(){
+function showDataSugestoes(){
 
-    const iniciativas = filterIniciativas("Pendente");~
-    console.log(iniciativas);
+  const iniciativas = filterIniciativas("Pendente");~
+  console.log(iniciativas);
     
-    let html = "";
+  let html = "";
   
-    iniciativas.forEach(function(element) {
-      html += "<tr>";
-      html += "<td>" + element.iniciativa + "</td>";
-      html += "<td>" + element.local + "</td>";
-      html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.vagas + "</td>";
-      html += "<td>" + element.tipo + "</td>";
-      html += "<td>" + element.contactoResp + "</td>";
-      html += "<td>" + element.estado + "</td>";
-      html += 
+  iniciativas.forEach(function(element) {
+    html += "<tr>";
+    html += "<td>" + element.iniciativa + "</td>";
+    html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.data + "</td>";
+    html += "<td>" + element.vagas + "</td>";
+    html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.contactoResp + "</td>";
+    html += "<td>" + element.estado + "</td>";
+    html += 
       '<td><button onclick="aceitarSugestao(' +
       element.id + 
       ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="recusarSugestao(' +
       element.id +
-      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>';
+      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button></td>';
       html += "</tr>";
     });
   
-    const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
+  const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
 
-    tables.forEach(table =>{
-      table.innerHTML = html;
-    });
-  }
+  tables.forEach(table =>{
+    table.innerHTML = html;
+  });
+}
 
-  function showDataSugestoesRec(){
+function showDataSugestoesRec(){
 
-    const iniciativas = filterIniciativas("Recusado");
+  const iniciativas = filterIniciativas("Recusado");
     
-    let html = "";
+  let html = "";
   
-    iniciativas.forEach(function(element) {
-      html += "<tr>";
-      html += "<td>" + element.tipo + "</td>";
-      html += "<td>" + element.local + "</td>";
-      html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.descricao + "</td>";
-      html += "<td>" + element.emailResp + "</td>";
-      html += "<td>" + element.contactoResp + "</td>";
-      html += 
+  iniciativas.forEach(function(element) {
+    html += "<tr>";
+    html += "<td>" + element.tipo + "</td>";
+    html += "<td>" + element.local + "</td>";
+    html += "<td>" + element.data + "</td>";
+    html += "<td>" + element.descricao + "</td>";
+    html += "<td>" + element.emailResp + "</td>";
+    html += "<td>" + element.contactoResp + "</td>";
+    html += 
       '<td><button onclick="recuperarSugestao(' +
       element.id + 
       ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button></td>';
       html += "</tr>";
-    });
+  });
   
-    document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
+  document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
+}
+
+function recuperarSugestao(id) {
+  let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
+
+  let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
+  if (index !== -1) {
+    iniciativas[index].estado = "Pendente";
+  
+  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  
+  window.location.href = "../views/Iniciativas.html";
+  showDataIniciativas();
   }
-
-
-  function recuperarSugestao(id) {
-    let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
-
-    let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
-    if (index !== -1) {
-      iniciativas[index].estado = "Pendente";
-  
-    localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
-  
-    window.location.href = "../views/Iniciativas.html";
-    showDataIniciativas();
-    }
-  }
-
-
-
-
-
+}
 
 
