@@ -22,29 +22,41 @@ function googleLogin(event) {
   event.preventDefault();
   signInWithPopup(auth, provider)
     .then((result) => {
-      const user = result.user;
 
+      const user = result.user;
 
       const dadosUser = {
         loggedIn: true,
         userName: user.displayName,
         userEmail: user.email,
-        cargo: user.cargo
+        cargo: ""
       };
 
       localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
+      showPopup();  
 
-
-      window.location.href = "/Front_office/index.html";
+      document.getElementById("voluntarioBtn").onclick = function() {
+        dadosUser.cargo = "voluntario";
+        localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
+        window.location.href = "/Front_office/index.html";
+        closePopup();
+        
+    }
+  
+    document.getElementById("proponenteBtn").onclick = function() {
+        dadosUser.cargo = "proponente";
+        localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
+        window.location.href = "/Front_office/index.html";
+        closePopup();
+        
+  
+    }
     })
     .catch((error) => {
       console.error('Erro no login:', error);
     });
 }
 
-
-
-//
 
 document.addEventListener("DOMContentLoaded", function () {
   if (document.getElementById("button-google")) {
@@ -115,3 +127,22 @@ function googleLogout(event) {
     console.error('Erro ao fazer logout', error);
   });
 }
+
+
+
+  function showPopup() {
+      let popup = document.getElementById("rolePopup");
+      popup.style.display = "block";
+  }
+
+
+
+  window.onclick = function(event) {
+      let popup = document.getElementById("rolePopup");
+      if (event.target == popup) {
+          closePopup();
+      }
+  }
+
+
+  

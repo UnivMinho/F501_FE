@@ -11,13 +11,11 @@ function showDataSaber(tipo) {
         iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
     }
 
-    // Filtrar as sugestões com base no tipo
-    const iniciativasFiltradas = iniciativas.filter(iniciativas => iniciativas.tipo === tipo);
+    const iniciativasFiltradas = iniciativas.filter(iniciativa => iniciativa.tipo === tipo && iniciativa.estado === "Aceite");
 
-    // Atualizar o título da iniciativa
     document.getElementById('titulo-iniciativa').textContent = tipo;
 
-    // Cria a tabela HTML com as sugestões filtradas
+
     let html = "";
 
     iniciativasFiltradas.forEach(function(element) {
@@ -26,6 +24,7 @@ function showDataSaber(tipo) {
         html += "<td>" + element.local + "</td>";
         html += "<td>" + element.data + "</td>";
         html += "<td>" + element.vagas + "</td>";
+        html += "</tr>";
     });
 
     const tables = document.querySelectorAll("#sugestoes-table3 tbody");
