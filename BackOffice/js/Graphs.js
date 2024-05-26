@@ -66,48 +66,33 @@ function pieGraph() {
 
 function barGraph() {
     let storedIniciativas = localStorage.getItem("iniciativas");
-    let storedSugestoesRec = localStorage.getItem("sugestoesrec");
     let iniciativasArray = storedIniciativas ? JSON.parse(storedIniciativas) : [];
-    let sugestoesRecArray = storedSugestoesRec ? JSON.parse(storedSugestoesRec) : [];
     
-    // Função para contar iniciativas por mês
-    function contarPorMes(array) {
-        let contagem = {};
-        array.forEach(function(item) {
-            let mes = new Date(item.data).getMonth(); // Assume que a data está no formato correto
-            if (!contagem[mes]) {
-                contagem[mes] = 0;
-            }
-            contagem[mes]++;
-        });
-        return contagem;
+    // Função para contar iniciativas por estado
+    function contarPorEstado(array, estado) {
+        return array.filter(item => item.estado === estado).length;
     }
 
-    let iniciativasPorMes = contarPorMes(iniciativasArray);
-    let sugestoesRecPorMes = contarPorMes(sugestoesRecArray);
-
-    let labels = [...new Set([...Object.keys(iniciativasPorMes), ...Object.keys(sugestoesRecPorMes)])];
-    labels.sort((a, b) => a - b);
-
-    let dataAgendadas = labels.map(label => iniciativasPorMes[label] || 0);
-    let dataRecusadas = labels.map(label => sugestoesRecPorMes[label] || 0);
+    let iniciativasAceites = contarPorEstado(iniciativasArray, "Aceite");
+    let iniciativasRecusadas = contarPorEstado(iniciativasArray, "Recusado");
 
     let ctx = document.getElementById('barGraph').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels.map(mes => new Date(0, mes).toLocaleString('default', { month: 'long' })),
+            labels: ['Iniciativas Aceites', 'Iniciativas Recusadas'],
+            labels: ['Iniciativas'], // Apenas um rótulo principal
             datasets: [
                 {
-                    label: 'Iniciativas Agendadas',
-                    data: dataAgendadas,
+                    label: 'Iniciativas Aceites',
+                    data: [iniciativasAceites],
                     backgroundColor: 'rgb(54, 162, 235)',
                     borderColor: 'rgb(54, 162, 235)',
                     borderWidth: 1
                 },
                 {
                     label: 'Iniciativas Recusadas',
-                    data: dataRecusadas,
+                    data: [iniciativasRecusadas],
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     borderWidth: 1
@@ -128,3 +113,4 @@ function barGraph() {
         }
     });
 }
+

@@ -26,10 +26,6 @@ function showDataIniciativas(){
   }
   
 
-
-
-
-
   function showDataIniciativasVoluntarios(){ 
 
     let iniciativas = filterIniciativas("Aceite");
@@ -77,8 +73,7 @@ function showDataIniciativas(){
 
 
 
-
-
+  
    /* DEIXAR ISTO PARA O FIM
   function inscrever(index) {
     let iniciativas = JSON.parse(localStorage.getItem("iniciativas"));

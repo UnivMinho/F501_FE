@@ -115,7 +115,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item menu-open">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" style="color:white">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard Center
@@ -124,7 +124,7 @@
                 </a>
             </li>            
           <li class="nav-item">
-            <a href="views/GestaoInventario.html" class="nav-link">
+            <a href="views/GestaoInventario.html" class="nav-link" style="color:white">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Inventário
@@ -132,7 +132,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color:white">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Perfil
@@ -140,7 +140,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" style="color:white">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Sair
@@ -261,7 +261,44 @@
             
         </div>
 
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box" style="background-color: #3442c7;">
+            <div class="inner" style="color: white;">
+              <h3>{{ mediaBudget }}</h3>
 
+                <p>Média Orçamento Iniciativas</p>
+            </div>
+            
+          </div>
+          
+      </div>
+
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box" style="background-color: #28A745;">
+          <div class="inner" style="color: white;">
+            <h3>{{ doacoes }}</h3>
+
+              <p>Número Total Doações</p>
+          </div>
+          
+        </div>
+        
+    </div>
+
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box" style="background-color: #3442c7;">
+        <div class="inner" style="color: white;">
+          <h3>{{ percentagemAceites }}</h3>
+
+            <p>Percentagem Iniciativas Aceites</p>
+        </div>
+        
+      </div>
+      
+  </div>
           
           <!-- ./col -->
         </div>
@@ -363,12 +400,16 @@
       iniciativas: 0,
       sugestoesrec: 0,
       material: 0,
-      fundoManeio: '0€'
+      fundoManeio: '0€',
+      mediaBudget: '0€',
+      doacoes: 0,
+      percentagemAceites: '0%'
     },
     mounted() {
       console.log('Vue instance mounted');
       this.loadData();
       this.loadFundoManeio();
+      this.calcularMediaBudget()
     },
     methods: {
       loadData() {
@@ -376,11 +417,16 @@
         
         const iniciativasArray = JSON.parse(localStorage.getItem('iniciativas') || '[]');
         const materialArray = JSON.parse(localStorage.getItem('material') || '[]');
+        const doacoesArray = JSON.parse(localStorage.getItem('doacoes') || '[]');
 
         this.sugestoes = this.filtrarEstado(iniciativasArray, 'Pendente');
         this.iniciativas = this.filtrarEstado(iniciativasArray, 'Aceite');
         this.sugestoesrec = this.filtrarEstado(iniciativasArray, 'Recusado');
         this.material = materialArray.length;
+        this.doacoes = doacoesArray.length;
+
+        this.calcularMediaBudget();
+        this.calcularPercentagemAceites(iniciativasArray);
         
       },
 
@@ -393,6 +439,28 @@
         const totalDoacoes = localStorage.getItem('fundoManeio') || '0';
         this.fundoManeio = `${totalDoacoes}€`;
 
+      },
+
+      calcularMediaBudget(){
+        if (this.iniciativas > 0) {
+        const iniciativasAceites = JSON.parse(localStorage.getItem('iniciativas') || '[]').filter(item => item.estado === 'Aceite');
+        const totalBudget = iniciativasAceites.reduce((sum, iniciativa) => sum + parseFloat(iniciativa.budget), 0);
+        const media = totalBudget / iniciativasAceites.length;
+        this.mediaBudget = `${media.toFixed(2)}€`;
+      } else {
+        this.mediaBudget = '0€';
+      }
+      },
+
+      calcularPercentagemAceites(iniciativasArray){
+        const totalIniciativas = iniciativasArray.length;
+        const iniciativasAceites = this.iniciativas; // Já filtrado para incluir apenas iniciativas "Aceite"
+        if (totalIniciativas > 0) {
+          const percentagem = (iniciativasAceites / totalIniciativas) * 100;
+          this.percentagemAceites = `${Math.round(percentagem)}%`;
+        } else {
+          this.percentagemAceites = '0%';
+        }
       }
 
       

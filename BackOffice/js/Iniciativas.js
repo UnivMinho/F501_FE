@@ -41,13 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
 function showDataIniciativas(){
 
   const iniciativas = filterIniciativas("Aceite");
   
   let html = "";
 
-  iniciativas.forEach(function(element, index) {
+  iniciativas.forEach(function(element) {
     html += "<tr>";
     html += "<td>" + element.iniciativa + "</td>";
     html += "<td>" + element.local + "</td>";
@@ -57,7 +59,7 @@ function showDataIniciativas(){
     html += "<td>" + element.estado + "</td>";
     html += 
       '<td></button><button onclick="updateData(' +
-      index +
+      element.id +
       ')" class="fa fa-edit" style="margin-left:10px; background-color:yellow;"></button></td>';
       html += "</tr>";
   });
@@ -65,26 +67,67 @@ function showDataIniciativas(){
   document.querySelector("#iniciativas-table tbody").innerHTML = html;
 }
 
+function showPopup(){
+  document.getElementById('popup-background').style.display = 'flex';
+}
 
-function updateData(index){
+function hidePopup(){
+  document.getElementById('popup-background').style.display = 'none';
+}
 
-  let iniciativas;
-    if(localStorage.getItem("iniciativas")==null){
-      iniciativas = [];
-    }
-    else{
-      iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
-    }
+document.getElementById('close-popup').addEventListener('click', hidePopup);
 
-  let iniciativaSelecionada = iniciativas[index];
+function updateData(id){
+  // Recupera as iniciativas do localStorage
+  let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
 
-  iniciativas.splice(index, 1);
-  localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+  let index = iniciativas.findIndex(iniciativa => iniciativa.id === id);
 
+  let form = document.getElementById("form-popup");
 
-  localStorage.setItem("iniciativaSelecionada", JSON.stringify(iniciativaSelecionada));
+  if(index !== -1){
+      let iniciativaSelecionada = iniciativas[index];
 
-  window.location.href = "../views/CriarIniciativa.html";
+      // Preenche o formulário com os detalhes da iniciativa
+      form.elements["iniciativa"].value = iniciativaSelecionada.iniciativa;
+      form.elements["descricao"].value = iniciativaSelecionada.descricao;
+      form.elements["local"].value = iniciativaSelecionada.local;
+      form.elements["data"].value = iniciativaSelecionada.data;
+      form.elements["vagas"].value = iniciativaSelecionada.vagas;
+      form.elements["budget"].value = iniciativaSelecionada.budget;
+      form.elements["tipo"].value = iniciativaSelecionada.tipo;
+
+      showPopup();
+
+      form.addEventListener("submit", function(event) {
+          event.preventDefault();
+
+          // Obtém os novos detalhes da iniciativa a partir do formulário
+          let novosDetalhes = {
+              id: id,
+              iniciativa: form.elements["iniciativa"].value,
+              descricao: form.elements["descricao"].value,
+              local: form.elements["local"].value,
+              data: form.elements["data"].value,
+              vagas: form.elements["vagas"].value,
+              budget: form.elements["budget"].value,
+              tipo: form.elements["tipo"].value,
+              estado: iniciativaSelecionada.estado,
+              contactoResp: iniciativaSelecionada.contactoResp,
+              emailResp: iniciativaSelecionada.emailResp
+          };
+
+          // Atualiza a iniciativa no localStorage
+          iniciativas = iniciativas.map(item => item.id === id ? novosDetalhes : item);
+
+          // Atualiza o localStorage com as iniciativas atualizadas
+          localStorage.setItem("iniciativas", JSON.stringify(iniciativas));
+
+          showDataIniciativas();
+          hidePopup();
+
+      }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
+  }
 }
 
 function filterIniciativas(estado){
@@ -114,6 +157,10 @@ function darID() {
   return id;
 }
 
+
+
+
+
 function AddDataBackOffice(event){
   event.preventDefault();
 
@@ -131,7 +178,7 @@ function AddDataBackOffice(event){
 
   let fundoManeio = parseFloat(localStorage.getItem("fundoManeio")) || 0;
 
-  if(budget <= 0 || budget > fundoManeio){
+  if(budget < 0 || budget > fundoManeio){
     alert("Orçamento selecionado inválido");
     return;
   }
@@ -148,6 +195,14 @@ function AddDataBackOffice(event){
     iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
   }
 
+  let materiaisUsados = [];
+    let checkboxes = document.querySelectorAll('input[name="materiais"]:checked');
+    checkboxes.forEach(function(checkbox) {
+        let nome = checkbox.value;
+        let quantidadeUsada = parseInt(document.getElementById(`quantidade-${nome}`).value, 10);
+        materiaisUsados.push({ nome: nome, quantidade: quantidadeUsada });
+    });
+
   iniciativas.push({
     id : id,
     iniciativa : iniciativa,
@@ -159,7 +214,8 @@ function AddDataBackOffice(event){
     contactoResp : contactoResp,
     emailResp : emailResp,
     estado : estado,
-    budget : budget
+    budget : budget,
+    materiais: materiaisUsados
   });
 
   window.location.href = "../views/Iniciativas.html";
