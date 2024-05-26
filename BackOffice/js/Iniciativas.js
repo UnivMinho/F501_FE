@@ -38,7 +38,42 @@ document.addEventListener('DOMContentLoaded', function() {
       // Adiciona o container do material ao div principal
       materialListDiv.appendChild(materialContainer);
   });
+  
+ /* let colaboradores = JSON.parse(localStorage.getItem('colaboradores')) || [];
+
+  let colaboradoresListDiv = document.getElementById('colaboradores-list');
+
+
+  colaboradores.forEach(function(colab) {
+
+      let colaboradoresContainer = document.createElement('div');
+      colaboradoresContainer.classList.add('colaboradores-item');
+      
+      let checkboxcolab = document.createElement('input');
+      checkboxcolab.type = 'checkbox';
+      checkboxcolab.id = `colaboradores-${colab.nome}`;
+      checkboxcolab.name = 'colaboradores';
+      checkboxcolab.value = colab.nome;
+
+      let labelcolab = document.createElement('label');
+      labelcolab.htmlFor = `colaboradores-${colab.nome}`;
+      labelcolab.textContent = colab.nome;
+
+      let labelrole = document.createElement('label');
+      labelrole.htmlFor = `colaboradores-${colab.role}`;
+      labelrole.textContent = colab.role;
+      
+      colaboradoresContainer.appendChild(checkboxcolab);
+      colaboradoresContainer.appendChild(document.createTextNode(' '));
+      colaboradoresContainer.appendChild(labelcolab);
+      colaboradoresContainer.appendChild(document.createTextNode(' - '));
+      colaboradoresContainer.appendChild(labelrole);
+      
+      colaboradoresListDiv.appendChild(colaboradoresContainer);
+  });*/
+
 });
+
 
 
 
@@ -214,6 +249,15 @@ function AddDataBackOffice(event){
         materiaisUsados.push({ nome: nome, quantidade: quantidadeUsada });
     });
 
+    /*let colaboradoresUsados = [];
+    let checkboxescolab = document.querySelectorAll('input[name="colaboradores"]:checked');
+    checkboxescolab.forEach(function(checkbox) {
+      let nome = checkbox.value;
+      // Aqui você usa o ID exclusivo definido para cada papel
+      let roleUsado = parseInt(document.getElementById(`role-${nome}`).value); 
+      colaboradoresUsados.push({ nome: nome, role: roleUsado });
+  });*/
+
   iniciativas.push({
     id : id,
     iniciativa : iniciativa,
@@ -226,7 +270,8 @@ function AddDataBackOffice(event){
     emailResp : emailResp,
     estado : estado,
     budget : budget,
-    materiais: materiaisUsados
+    materiais: materiaisUsados/*,
+    colaboradores: colaboradoresUsados*/
   });
 
   window.location.href = "../views/Iniciativas.html";
@@ -390,61 +435,101 @@ function recusarSugestao(id) {
   }
 }
 
-function showDataSugestoes(){
+function showDataSugestoes() {
+  const iniciativas = filterIniciativas("Pendente");
 
-  const iniciativas = filterIniciativas("Pendente");~
-  console.log(iniciativas);
-    
-  let html = "";
-  
-    iniciativas.forEach(function(element) {
-      html += "<tr>";
-      html += "<td>" + element.tipo + "</td>";
-      html += "<td>" + element.descricao + "</td>";
-      html += "<td>" + element.local + "</td>";
-      html += "<td>" + element.data + "</td>";
-      html += "<td>" + element.emailResp + "</td>";
-      html += "<td>" + element.contactoResp + "</td>";
-      html += "<td>" + element.estado + "</td>";
-      html += 
-      '<td><button onclick="aceitarSugestao(' +
-      element.id + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button><button onclick="recusarSugestao(' +
-      element.id +
-      ')" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button></td>';
-      html += "</tr>";
-    });
-  
   const tables = document.querySelectorAll("#sugestoes-table tbody, #sugestoes-table2 tbody");
 
-  tables.forEach(table =>{
-    table.innerHTML = html;
+  // Limpa o conteúdo das tabelas antes de adicionar novas linhas
+  tables.forEach(table => {
+    table.innerHTML = "";
   });
-}
 
-function showDataSugestoesRec(){
-
-  const iniciativas = filterIniciativas("Recusado");
-    
-  let html = "";
-  
   iniciativas.forEach(function(element) {
-    html += "<tr>";
-    html += "<td>" + element.tipo + "</td>";
-    html += "<td>" + element.local + "</td>";
-    html += "<td>" + element.data + "</td>";
-    html += "<td>" + element.descricao + "</td>";
-    html += "<td>" + element.emailResp + "</td>";
-    html += "<td>" + element.contactoResp + "</td>";
-    html += 
-      '<td><button onclick="recuperarSugestao(' +
-      element.id + 
-      ')" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button></td>';
-      html += "</tr>";
+    // Cria uma nova linha para a iniciativa
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${element.tipo}</td>
+      <td>${element.local}</td>
+      <td>${element.data}</td>
+      <td>${element.emailResp}</td>
+      <td>${element.contactoResp}</td>
+      <td>${element.estado}</td>
+      <td>
+        <button onclick="aceitarSugestao(${element.id})" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button>
+        <button onclick="recusarSugestao(${element.id})" class="fa fa-trash" style="margin-left:10px; background-color:#FF9999;"></button>
+      </td>
+    `;
+
+    // Adiciona uma classe para identificar a linha expandível
+    row.classList.add('expandable-row');
+
+    // Adiciona a linha à tabela
+    tables.forEach(table => {
+      table.appendChild(row);
+    });
+
+    // Cria a linha expansível
+    let expandableRow = document.createElement("tr");
+    expandableRow.classList.add('expandable-body');
+    expandableRow.style.display = 'none';
+    expandableRow.innerHTML = `
+      <td colspan="7">
+        <p><strong>Descrição:</strong> ${element.descricao}</p>
+      </td>
+    `;
+
+    // Adiciona a linha expansível à tabela
+    tables.forEach(table => {
+      table.appendChild(expandableRow);
+    });
   });
-  
-  document.querySelector("#sugestoesrec-table tbody").innerHTML = html;
 }
+
+
+function showDataSugestoesRec() {
+  const iniciativas = filterIniciativas("Recusado");
+  
+  const table = document.querySelector("#sugestoesrec-table tbody");
+
+  // Limpa o conteúdo da tabela antes de adicionar novas linhas
+  table.innerHTML = "";
+
+  iniciativas.forEach(function(element) {
+    // Cria uma nova linha para a iniciativa
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${element.tipo}</td>
+      <td>${element.local}</td>
+      <td>${element.data}</td>
+      <td>${element.emailResp}</td>
+      <td>${element.contactoResp}</td>
+      <td>
+        <button onclick="recuperarSugestao(${element.id})" class="fa fa-check" style="margin-left:10px; background-color:lightgreen;"></button>
+      </td>
+    `;
+
+    // Adiciona uma classe para identificar a linha expandível
+    row.classList.add('expandable-row');
+
+    // Adiciona a linha à tabela
+    table.appendChild(row);
+
+    // Cria a linha expansível
+    let expandableRow = document.createElement("tr");
+    expandableRow.classList.add('expandable-body');
+    expandableRow.style.display = 'none';
+    expandableRow.innerHTML = `
+      <td colspan="6">
+        <p><strong>Descrição:</strong> ${element.descricao}</p>
+      </td>
+    `;
+
+    // Adiciona a linha expansível à tabela
+    table.appendChild(expandableRow);
+  });
+}
+
 
 function recuperarSugestao(id) {
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
@@ -459,5 +544,3 @@ function recuperarSugestao(id) {
   showDataIniciativas();
   }
 }
-
-

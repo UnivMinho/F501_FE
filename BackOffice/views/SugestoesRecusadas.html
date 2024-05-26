@@ -190,7 +190,6 @@
                       <th>Tipo</th>
                       <th>Local</th>
                       <th>Data</th>
-                      <th>Descrição</th>
                       <th>Email</th>
                       <th>Contacto</th>
                       <th>Actions</th>
@@ -232,5 +231,23 @@
 <script src="../plugins/scripts/demo.js"></script>
 
 <script src="../js/Iniciativas.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const table = document.querySelector("#sugestoesrec-table tbody");
+
+    // Adiciona o evento de clique para expandir a linha a todas as linhas da tabela
+    table.addEventListener('click', function(event) {
+      const target = event.target;
+      if (target.tagName.toLowerCase() === 'td' && target.parentElement.classList.contains('expandable-row')) {
+        const expandableBody = target.parentElement.nextElementSibling;
+        if (expandableBody && expandableBody.classList.contains('expandable-body')) {
+          expandableBody.style.display = (expandableBody.style.display === 'none') ? 'table-row' : 'none';
+        }
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
