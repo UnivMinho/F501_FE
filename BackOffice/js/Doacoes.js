@@ -1,3 +1,5 @@
+
+
 function ArmazenarDoacao() {
     // Obter o valor da doação do campo de entrada
     let valor = parseFloat(document.getElementById("valor").value);
@@ -35,8 +37,8 @@ function ArmazenarDoacao() {
     // Armazenar o array atualizado de doações no localStorage
     localStorage.setItem("doacoes", JSON.stringify(doacoes));
 
-    // Retornar false para impedir o envio do formulário
     return false;
+
 }
 
 function showDataDoacoes() {
@@ -63,4 +65,5 @@ function showDataDoacoes() {
 
 document.addEventListener("DOMContentLoaded", function() {
     showDataDoacoes();
+
 });
