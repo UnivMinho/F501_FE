@@ -1,7 +1,5 @@
-
-
 function ArmazenarDoacao() {
-    // Obter o valor da doação do campo de entrada
+
     let valor = parseFloat(document.getElementById("valor").value);
     let NomeCartao = document.getElementById("NomeCartao").value;
     let ApelidoCartao = document.getElementById("ApelidoCartao").value;
@@ -28,17 +26,18 @@ function ArmazenarDoacao() {
         email: email 
     });
 
-    // Calcular o total das doações
-    let fundoManeio = doacoes.reduce((acc, doacao) => acc + doacao.valor, 0);
-
-    // Armazenar o total das doações no localStorage
+    let fundoManeio = parseFloat(localStorage.getItem("fundoManeio") || 0);
+    fundoManeio += valor;
     localStorage.setItem("fundoManeio", fundoManeio);
 
     // Armazenar o array atualizado de doações no localStorage
     localStorage.setItem("doacoes", JSON.stringify(doacoes));
 
+    alert("Doação realizada com sucesso");
+    window.location.reload();
+    
+    // Retornar false para impedir o envio do formulário
     return false;
-
 }
 
 function showDataDoacoes() {
@@ -65,5 +64,4 @@ function showDataDoacoes() {
 
 document.addEventListener("DOMContentLoaded", function() {
     showDataDoacoes();
-
 });

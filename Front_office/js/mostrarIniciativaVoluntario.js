@@ -1,39 +1,55 @@
+
+
+
+
+
+
+
+
+
+
+
+/*
 function inscreverVoluntario(){
-    let iniciativaTab;
-    if(localStorage.getItem("sugestoes") == null){
-      sugestoes = [];
-    }
-    else{
-      sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
-    }
-  
-    let html = "";
-  
-    sugestoes.forEach(function(element, index) {
+  let iniciativas;
+  let inscricoes;
+  if(localStorage.getItem("inscricoes") == null){
+    inscricoes = [];
+} else {
+  inscricoes = JSON.parse(localStorage.getItem("inscricoes"));
+}
+
+  if(localStorage.getItem("iniciativas") == null){
+      iniciativas = [];
+  } else {
+      iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
+  }
+
+  let html = "";
+
+  iniciativas.forEach(function(element) {
       html += '<tr>';
       html += '<td>' + element.tipo + '</td>';
       html += '<td>' + element.local + '</td>';
       html += '<td>' + element.data + '</td>';
       html += '<td>';
-      if (element.inscrito) {
-          html += '<span id="inscritoText' + index + '" class="inscrito-text">Inscrito</span>';
+      if (inscricoes.includes(element.id)) {
+          html += '<span id="inscritoText' + element.id + '" class="inscrito-text">Inscrito</span>';
       } else {
-          html += '<button id="inscreverBotao' + index + '" onclick="inscrever(' + index + ')" class="voluntarios-botao">Inscrever</button>';
-          html += '<span id="inscritoIniciativa' + index + '" style="display: none;">Inscrito</span>';
+          html += '<button id="inscreverBotao' + element.id + '" onclick="inscrever(' + element.id + ')" class="voluntarios-botao">Inscrever</button>';
+          html += '<span id="inscritoIniciativa' + element.id + '" style="display: none;">Inscrito</span>';
       }
       html += '</td>';
       html += '</tr>';
   });
-  
-  
-  
-    const tables = document.querySelectorAll('#sugestoes-table-vol tbody');
-  
-    tables.forEach(table =>{
+
+  const tables = document.querySelectorAll('#sugestoes-table-vol tbody');
+  tables.forEach(table => {
       table.innerHTML = html;
-    });
+  });
 }
 
+document.addEventListener("DOMContentLoaded", inscreverVoluntario);
 
 function inscrever(index) {
   let sugestoes = JSON.parse(localStorage.getItem("sugestoes"));
@@ -46,9 +62,14 @@ function inscrever(index) {
   let text = document.getElementById('inscritoIniciativa' + index);
 
   button.style.display = 'none'; 
-  text.classList.add('inscrito-text'); // Adiciona a classe CSS
+  text.classList.add('inscrito-text'); 
   text.style.display = 'inline'; 
 }
 
+<<<<<<< HEAD
 document.onload = inscreverVoluntario();
 
+*/
+=======
+inscrever();
+>>>>>>> 53f2b02f02ead27870737780cd1a32e9fa8e2c3a

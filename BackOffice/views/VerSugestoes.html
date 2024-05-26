@@ -210,6 +210,99 @@
           </div>
         </div>
       </div>
+      <div id="popup-background-sugestoes">
+        <div id="popup-container">
+          <span id="close-popup-sugestoes" onclick="return hidePopupSugestoes()">&times;</span>
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Completar Iniciativa</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form id="form-popup-sugestoes">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="iniciativa">Iniciativa</label>
+                  <input type="text" class="form-control" id="iniciativa" name="iniciativa" required>
+                </div>
+                <div class="form-group">
+                  <label for="descricao">Descrição da Iniciativa</label>
+                  <textarea id="descricao" class="form-control" name="descricao" rows="4" cols="50" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="local">Local</label>
+                  <input type="text" class="form-control" id="local" name="local" required>
+                </div>
+                <div class="form-group">
+                  <label for="data">Data Inicio</label>
+                  <input type="date" class="form-control" id="data" name="data" required>
+                </div>
+                <div class="form-group">
+                  <label for="vagas">Vagas</label>
+                  <input type="number" class="form-control" id="vagas" name="vagas" required>
+                </div>
+                <div class="form-group">
+                  <label for="budget">Orçamento</label>
+                  <input type="number" class="form-control" id="budget" name="budget" required>
+                </div>
+                <div class="form-group">
+                  <label for="tipo">Tipo</label>
+                  <select id="tipo" class="form-control" name="tipo">
+                    <option value="Ajuda Social">Ajuda Social</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Ambiental">Ambiental</option>
+                    <option value="Inclusão Social">Inclusão Social</option>
+                    <option value="Recolha de bens">Recolha de Bens</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button id="Aceitar" type="submit" class="btn btn-primary">Aceitar</button>
+                <button id="Voltar" type="button" class="btn btn-secondary" onclick="return hidePopupSugestoes();">Voltar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <style>
+
+        #popup-background-sugestoes {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          overflow: auto;
+          padding: 20px;
+        }
+        
+        #popup-container {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: relative;
+          max-width: 90%;
+          max-height: 90%;
+          overflow: auto;
+        }
+        
+        #close-popup-sugestoes {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      </style>
     </section>
 
     
