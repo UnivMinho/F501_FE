@@ -26,8 +26,6 @@ function addDataColaboradores(event) {
 }
 
 
-
-
 function showPopupCriar(){
   document.getElementById('popup-background-criar').style.display = 'flex';
 }
@@ -43,8 +41,6 @@ function hidePopupCriar(){
 function hidePopupEditar(){
   document.getElementById('popup-background-editar').style.display = 'none';
 }
-
-
 
 
 function showDataColaboradores(){
