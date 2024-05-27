@@ -110,6 +110,8 @@ function hidePopup(){
   document.getElementById('popup-background').style.display = 'none';
 }
 
+
+
 function updateData(id){
   // Recupera as iniciativas do localStorage
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
@@ -127,7 +129,6 @@ function updateData(id){
       form.elements["local"].value = iniciativaSelecionada.local;
       form.elements["data"].value = iniciativaSelecionada.data;
       form.elements["vagas"].value = iniciativaSelecionada.vagas;
-      form.elements["budget"].value = iniciativaSelecionada.budget;
       form.elements["tipo"].value = iniciativaSelecionada.tipo;
 
       showPopup();
