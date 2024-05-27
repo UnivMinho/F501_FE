@@ -360,30 +360,20 @@ function aceitarSugestao(id) {
     form.elements["local"].value = iniciativaSelecionada.local;
     form.elements["data"].value = iniciativaSelecionada.data;
     form.elements["tipo"].value = iniciativaSelecionada.tipo;
+    form.elements["budget"].value = iniciativaSelecionada.budget;
 
     showPopupSugestoes();
 
     form.addEventListener("submit", function(event) {
       event.preventDefault();
 
-      let budget = NaN;
       let fundoManeio = parseFloat(localStorage.getItem("fundoManeio")) || 0;
+      let budgetInput = form.elements["budget"];
+      let budget = parseFloat(budgetInput.value);
 
-      // Enquanto o orçamento for inválido, continue solicitando um novo orçamento
+      // Loop para validação do orçamento
       while (isNaN(budget) || budget < 0 || budget > fundoManeio) {
-        // Solicita um novo orçamento
-        budget = parseFloat(prompt("Insira um orçamento válido:"));
-
-        // Se o usuário clicar em "Cancelar" ou não inserir um valor, saia do loop
-        if (budget === null || isNaN(budget)) {
-          alert("Operação cancelada.");
-          return;
-        }
-
-        // Se o orçamento for inválido, emite um alerta
-        if (budget < 0 || budget > fundoManeio) {
-          alert("Orçamento selecionado inválido. Por favor, insira um valor válido.");
-        }
+        return;
       }
 
       // Atualiza o fundoManeio
@@ -418,6 +408,7 @@ function aceitarSugestao(id) {
     }, { once: true }); // Adiciona o evento somente uma vez para evitar múltiplos handlers
   }
 }
+
 
 
 function showPopupSugestoes(){
