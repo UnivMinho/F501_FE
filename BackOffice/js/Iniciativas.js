@@ -414,8 +414,6 @@ function aceitarSugestao(id) {
   }
 }
 
-
-
 function showPopupSugestoes(){
   document.getElementById('popup-background-sugestoes').style.display = 'flex';
 }
