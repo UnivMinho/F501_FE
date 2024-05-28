@@ -376,6 +376,8 @@ function aceitarSugestao(id) {
 
       // Loop para validação do orçamento
       while (isNaN(budget) || budget < 0 || budget > fundoManeio) {
+        alert("Orçamento valor invalido!");
+        hidePopupSugestoes();
         return;
       }
 
