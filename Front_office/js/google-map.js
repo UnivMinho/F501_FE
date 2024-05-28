@@ -1,3 +1,5 @@
+
+//funcao para ir buscar o google maps 
 function init() {
     var myLatlng = new google.maps.LatLng(41.55020822595881, -8.41048971953753);
     

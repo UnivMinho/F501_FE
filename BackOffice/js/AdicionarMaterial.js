@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Selecionar a tabela onde os dados serão inseridos
     let table = document.querySelector('.materialTable tbody');
 
-    // Limpar qualquer conteúdo existente na tabela
+   
 
     // Iterar sobre os dados e inseri-los na tabela
     materiaisArray.forEach(function(material, index) {

@@ -1,3 +1,5 @@
+
+//funcao para ir buscar as iniciativas ao array em localStorage
 function showDataIniciativas(){ 
   let iniciativas;
   if(localStorage.getItem("iniciativas") == null){
@@ -22,8 +24,10 @@ function showDataIniciativas(){
   document.querySelector("#sugestoes-table2 tbody").innerHTML = html;
 }
 
+
+//funcao para ir buscar os dados das iniciativas existentes
 function showDataIniciativasVoluntarios(){ 
-  let iniciativas = filterIniciativas("Aceite");
+  let iniciativas = filterIniciativas("Aceite");//apenas mostra as aceites
 
   let html = "";
   iniciativas.forEach(function(element, index) {
@@ -45,6 +49,7 @@ function showDataIniciativasVoluntarios(){
   document.querySelector("#sugestoes-table-vol tbody").innerHTML = html;
 }
 
+//funcao para filtrar as iniciativas e mostrar o estado da mesma
 function filterIniciativas(estado){
   let iniciativas;
   if(localStorage.getItem("iniciativas") == null){
@@ -56,6 +61,7 @@ function filterIniciativas(estado){
   return iniciativas.filter(iniciativa => iniciativa.estado === estado);
 }
 
+//funcao para os voluntarios se inscreverem nas iniciativas
 function inscrever(index) {
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas"));
 

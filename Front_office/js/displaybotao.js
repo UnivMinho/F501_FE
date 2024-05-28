@@ -1,4 +1,4 @@
-
+//funcao para apenas mostrar os botoes permitidos de cada cargo
 function displayBotao() {
     document.addEventListener("DOMContentLoaded", function() {
         let cargoopt = localStorage.getItem("dadosUser");

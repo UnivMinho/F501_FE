@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+//mostrar as iniciativas aceites
 function showDataIniciativas(){
 
   const iniciativas = filterIniciativas("Aceite");
@@ -111,7 +111,7 @@ function hidePopup(){
 }
 
 
-
+//editar iniciativa
 function updateData(id){
   // Recupera as iniciativas do localStorage
   let iniciativas = JSON.parse(localStorage.getItem("iniciativas")) || [];
@@ -201,6 +201,7 @@ function filterIniciativas(estado){
   return iniciativasFiltradas;
 }
 
+//atribuir id as iniciativas no array
 function darID() {
   let id = localStorage.getItem("id") ? JSON.parse(localStorage.getItem("id")) : 0;
   id += 1;
@@ -208,6 +209,8 @@ function darID() {
   return id;
 }
 
+
+//criar iniciativas
 function AddDataBackOffice(event){
   event.preventDefault();
 

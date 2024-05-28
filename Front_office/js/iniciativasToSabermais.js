@@ -1,7 +1,9 @@
+// funcao que permite mostrar as iniciativas no saber mais de acordo com o seu tipo
 function obterParametroDaURL(nome) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(nome);
 }
+
 
 function showDataSaber(tipo) {
     let iniciativas;

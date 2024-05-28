@@ -17,7 +17,7 @@ const auth = getAuth(app);
 auth.languageCode = 'pt';
 const provider = new GoogleAuthProvider();
 
-
+//funcao login
 function googleLogin(event) {
   event.preventDefault();
   signInWithPopup(auth, provider)
@@ -34,7 +34,7 @@ function googleLogin(event) {
 
       localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
       showPopup();  
-
+//Selecionar o tipo de cargo 
       document.getElementById("voluntarioBtn").onclick = function() {
         dadosUser.cargo = "Voluntario";
         localStorage.setItem("dadosUser", JSON.stringify(dadosUser));
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+//vai buscar os dados do user armazenados em localStorage 
 
 function showDataColaboradores() {
 
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//Logout Function
+//Funcao para terminar sessao
 
 function googleLogout(event) {
   event.preventDefault();
